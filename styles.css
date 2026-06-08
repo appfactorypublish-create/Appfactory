@@ -899,9 +899,13 @@ h3 {
 }
 
 .lang-switch button {
-  min-width: 40px;
+  display: inline-flex;
+  gap: 0.3rem;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
   min-height: 38px;
-  padding: 0.35rem 0.55rem;
+  padding: 0.35rem 0.5rem;
   color: var(--muted);
   font: inherit;
   font-size: 0.74rem;
@@ -916,6 +920,11 @@ h3 {
     background 160ms ease;
 }
 
+.lang-switch .flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
 .lang-switch button:hover {
   color: var(--text);
 }
@@ -926,11 +935,21 @@ h3 {
   box-shadow: 0 0 18px rgba(55, 229, 255, 0.28);
 }
 
-/* Single-language display toggle (hero sub-message + CTA buttons stay multilingual) */
-body[data-lang="ko"] [data-l]:not([data-l="ko"]),
-body[data-lang="en"] [data-l]:not([data-l="en"]),
-body[data-lang="ja"] [data-l]:not([data-l="ja"]) {
-  display: none;
+/* On the narrowest screens, show flags only so four buttons + brand still fit. */
+@media (max-width: 480px) {
+  .lang-switch .lang-code {
+    display: none;
+  }
+
+  .lang-switch button {
+    min-width: 30px;
+    padding: 0.35rem 0.4rem;
+  }
+}
+
+.footer-rights {
+  font-size: 0.85rem;
+  opacity: 0.72;
 }
 
 .section-intro {
