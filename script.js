@@ -203,10 +203,14 @@ const translations = {
 
     cta_eyebrow: "함께 만들 준비가 되어 있습니다",
     cta_h2: "당신의 아이디어를 글로벌 앱 서비스로.",
-    cta_lead: "아직 아이디어 단계라도 괜찮습니다. 편하게 들려주시면 다음 단계를 함께 정리해 드리겠습니다.",
+    cta_lead: "프로젝트 문의는 이메일로 연락해 주세요. 아이디어 단계라도 편하게 보내주시면 빠르게 회신드리겠습니다.",
     cta_primary: "프로젝트 문의하기",
 
     footer_copy: "사람과 사람을 이어주는 앱을 만듭니다.",
+    footer_privacy: "개인정보처리방침",
+    footer_terms: "이용약관",
+    footer_contact: "문의",
+    footer_delete: "계정 삭제",
     footer_rights: "© 2026 AppFactory. 모든 권리 보유.",
   },
 
@@ -272,10 +276,14 @@ const translations = {
 
     cta_eyebrow: "Let’s build it together",
     cta_h2: "Turn your idea into a global app service.",
-    cta_lead: "Even a rough idea is enough. Tell us where you are, and we’ll help shape the next step — no pressure.",
+    cta_lead: "App development inquiries are welcome by email. Even a rough idea is fine — send it over and we’ll reply quickly.",
     cta_primary: "Start a Project",
 
     footer_copy: "We build apps that connect humans.",
+    footer_privacy: "Privacy Policy",
+    footer_terms: "Terms of Service",
+    footer_contact: "Contact",
+    footer_delete: "Delete Account",
     footer_rights: "© 2026 AppFactory. All rights reserved.",
   },
 
@@ -341,10 +349,14 @@ const translations = {
 
     cta_eyebrow: "一緒につくる準備、できています",
     cta_h2: "あなたのアイデアを、世界へ届くアプリサービスに。",
-    cta_lead: "アイデア段階でも大丈夫です。お気軽にお聞かせください。次の一歩を一緒に整理します。",
+    cta_lead: "アプリ制作のご相談はメールでお問い合わせください。アイデア段階でもお気軽にどうぞ。すぐにご返信します。",
     cta_primary: "プロジェクトを相談する",
 
     footer_copy: "人と人をつなぐアプリをつくります。",
+    footer_privacy: "プライバシーポリシー",
+    footer_terms: "利用規約",
+    footer_contact: "お問い合わせ",
+    footer_delete: "アカウント削除",
     footer_rights: "© 2026 AppFactory. 無断転載を禁じます。",
   },
 
@@ -410,10 +422,14 @@ const translations = {
 
     cta_eyebrow: "Sẵn sàng cùng bạn bắt đầu",
     cta_h2: "Biến ý tưởng của bạn thành dịch vụ ứng dụng toàn cầu.",
-    cta_lead: "Dù mới chỉ là ý tưởng cũng không sao. Cứ chia sẻ, chúng tôi sẽ cùng bạn định hình bước tiếp theo.",
+    cta_lead: "Vui lòng liên hệ qua email để trao đổi về dự án ứng dụng. Dù mới là ý tưởng cũng được — gửi cho chúng tôi và sẽ phản hồi nhanh.",
     cta_primary: "Bắt đầu dự án",
 
     footer_copy: "Chúng tôi tạo ra những ứng dụng kết nối con người với con người.",
+    footer_privacy: "Chính sách bảo mật",
+    footer_terms: "Điều khoản dịch vụ",
+    footer_contact: "Liên hệ",
+    footer_delete: "Xóa tài khoản",
     footer_rights: "© 2026 AppFactory. Bảo lưu mọi quyền.",
   },
 };
