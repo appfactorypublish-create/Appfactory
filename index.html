@@ -3,11 +3,43 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AppFactory | Human to Human, Powered by Technology</title>
     <meta
       name="description"
-      content="AppFactory is an H2H (Human to Human) technology company building apps that connect people, communities, services, and global markets."
+      content="AppFactory is an H2H (Human to Human) technology company building apps that connect people, communities, services, and global markets. Available in Korean, English, Japanese, and Vietnamese."
     />
-    <title>AppFactory | Human to Human, Powered by Technology</title>
+    <meta name="theme-color" content="#030711" />
+    <link rel="canonical" href="https://appfactory.vn/" />
+
+    <!-- Favicon (inline-styled SVG, no external request) -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AppFactory" />
+    <meta property="og:title" content="AppFactory | Human to Human, Powered by Technology" />
+    <meta
+      property="og:description"
+      content="We build apps that connect humans. From idea to global app service."
+    />
+    <meta property="og:url" content="https://appfactory.vn/" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:locale:alternate" content="vi_VN" />
+    <!-- TODO: add a 1200x630 social share image once brand artwork exists:
+         <meta property="og:image" content="https://appfactory.vn/og-image.png" />
+         <meta name="twitter:card" content="summary_large_image" /> (upgrade from summary) -->
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="AppFactory | Human to Human, Powered by Technology" />
+    <meta
+      name="twitter:description"
+      content="We build apps that connect humans. From idea to global app service."
+    />
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -27,16 +59,16 @@
             <a href="#projects" data-i18n="nav_projects">프로젝트</a>
           </div>
           <div class="lang-switch" role="group" aria-label="Select language / 언어 선택">
-            <button type="button" data-set-lang="ko" aria-pressed="true" lang="ko">
+            <button type="button" data-set-lang="ko" aria-pressed="true" lang="ko" aria-label="한국어">
               <span class="flag" aria-hidden="true">🇰🇷</span><span class="lang-code">KR</span>
             </button>
-            <button type="button" data-set-lang="en" aria-pressed="false" lang="en">
+            <button type="button" data-set-lang="en" aria-pressed="false" lang="en" aria-label="English">
               <span class="flag" aria-hidden="true">🇺🇸</span><span class="lang-code">EN</span>
             </button>
-            <button type="button" data-set-lang="ja" aria-pressed="false" lang="ja">
+            <button type="button" data-set-lang="ja" aria-pressed="false" lang="ja" aria-label="日本語">
               <span class="flag" aria-hidden="true">🇯🇵</span><span class="lang-code">JP</span>
             </button>
-            <button type="button" data-set-lang="vi" aria-pressed="false" lang="vi">
+            <button type="button" data-set-lang="vi" aria-pressed="false" lang="vi" aria-label="Tiếng Việt">
               <span class="flag" aria-hidden="true">🇻🇳</span><span class="lang-code">VI</span>
             </button>
           </div>
