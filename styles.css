@@ -962,120 +962,27 @@ h3 {
 }
 
 .lang-switch .flag {
-  position: relative;
-  display: grid;
-  place-items: center;
+  display: block;
   flex: 0 0 auto;
-  width: 1.8rem;
-  height: 1.2rem;
+  width: 1.9rem;
+  height: 1.27rem;
   overflow: hidden;
-  color: transparent;
-  font-size: 0;
-  line-height: 1;
-  background: #f8fbff;
-  border: 1px solid rgba(255, 255, 255, 0.36);
-  border-radius: 3px;
+  background: transparent;
+  border-radius: 4px;
   box-shadow:
-    inset 0 0 0 1px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
     0 2px 7px rgba(0, 0, 0, 0.5);
-  filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.5));
-  transition: transform 160ms ease;
+  filter:
+    saturate(1.08)
+    drop-shadow(0 2px 7px rgba(0, 0, 0, 0.52));
+  pointer-events: none;
+  transition:
+    filter 160ms ease,
+    transform 160ms ease;
 }
 
-.lang-switch .flag::before,
-.lang-switch .flag::after {
-  position: absolute;
-  content: "";
-}
-
-.lang-switch button[data-set-lang="ko"] .flag {
-  background: #f8fbff;
-}
-
-.lang-switch button[data-set-lang="ko"] .flag::before {
-  top: 50%;
-  left: 50%;
-  width: 0.54rem;
-  height: 0.54rem;
-  background: linear-gradient(180deg, #cd2e3a 0 50%, #0047a0 50% 100%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) rotate(28deg);
-}
-
-.lang-switch button[data-set-lang="ko"] .flag::after {
-  top: 0.14rem;
-  left: 0.18rem;
-  width: 0.1rem;
-  height: 0.34rem;
-  background: #111827;
-  box-shadow:
-    0.16rem 0 0 #111827,
-    0.98rem 0.38rem 0 #111827,
-    1.14rem 0.38rem 0 #111827;
-  transform: rotate(-24deg);
-}
-
-.lang-switch button[data-set-lang="en"] .flag {
-  background: repeating-linear-gradient(
-    to bottom,
-    #b22234 0,
-    #b22234 7.69%,
-    #fff 7.69%,
-    #fff 15.38%
-  );
-}
-
-.lang-switch button[data-set-lang="en"] .flag::before {
-  top: 0;
-  left: 0;
-  width: 46%;
-  height: 54%;
-  background: #3c3b6e;
-}
-
-.lang-switch button[data-set-lang="en"] .flag::after {
-  top: 0.08rem;
-  left: 0.08rem;
-  width: 0.54rem;
-  height: 0.34rem;
-  background-image: radial-gradient(circle, #fff 0 0.045rem, transparent 0.05rem);
-  background-size: 0.16rem 0.15rem;
-}
-
-.lang-switch button[data-set-lang="ja"] .flag {
-  background: #fff;
-}
-
-.lang-switch button[data-set-lang="ja"] .flag::before {
-  top: 50%;
-  left: 50%;
-  width: 0.48rem;
-  height: 0.48rem;
-  background: #bc002d;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.lang-switch button[data-set-lang="ja"] .flag::after {
-  display: none;
-}
-
-.lang-switch button[data-set-lang="vi"] .flag {
-  background: #da251d;
-}
-
-.lang-switch button[data-set-lang="vi"] .flag::before {
-  top: 50%;
-  left: 50%;
-  width: 0.58rem;
-  height: 0.58rem;
-  background: #ffdf00;
-  clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 56%, 79% 91%, 50% 69%, 21% 91%, 32% 56%, 2% 35%, 39% 35%);
-  transform: translate(-50%, -50%);
-}
-
-.lang-switch button[data-set-lang="vi"] .flag::after {
-  display: none;
+.lang-switch .flag * {
+  vector-effect: non-scaling-stroke;
 }
 
 .lang-switch button:hover,
@@ -1105,7 +1012,11 @@ h3 {
 }
 
 .lang-switch button[aria-pressed="true"] .flag {
-  transform: translateY(-1px) scale(1.07);
+  filter:
+    saturate(1.16)
+    drop-shadow(0 0 7px rgba(55, 229, 255, 0.42))
+    drop-shadow(0 2px 7px rgba(0, 0, 0, 0.5));
+  transform: translateY(-1px) scale(1.06);
 }
 
 @media (max-width: 480px) {
@@ -1135,8 +1046,8 @@ h3 {
   }
 
   .lang-switch .flag {
-    width: 1.34rem;
-    height: 0.9rem;
+    width: 1.42rem;
+    height: 0.95rem;
   }
 }
 
