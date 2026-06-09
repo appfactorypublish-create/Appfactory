@@ -12,7 +12,7 @@ const uiText = {
   ko: {
     nav_home: "홈",
     back_home: "← 홈으로 돌아가기",
-    footer_copy: "사람과 사람을 이어주는 앱을 만듭니다.",
+    footer_copy: "AppFactory는 사람과 사람을 이어주는 H2H 앱 서비스를 만듭니다.",
     footer_privacy: "개인정보처리방침",
     footer_terms: "이용약관",
     footer_contact: "문의",
@@ -22,7 +22,7 @@ const uiText = {
   en: {
     nav_home: "Home",
     back_home: "← Back to home",
-    footer_copy: "We build apps that connect humans.",
+    footer_copy: "AppFactory creates H2H app services that connect people.",
     footer_privacy: "Privacy Policy",
     footer_terms: "Terms of Service",
     footer_contact: "Contact",
@@ -32,7 +32,7 @@ const uiText = {
   ja: {
     nav_home: "ホーム",
     back_home: "← ホームに戻る",
-    footer_copy: "人と人をつなぐアプリをつくります。",
+    footer_copy: "AppFactoryは人と人をつなぐH2Hアプリサービスをつくります。",
     footer_privacy: "プライバシーポリシー",
     footer_terms: "利用規約",
     footer_contact: "お問い合わせ",
@@ -42,7 +42,7 @@ const uiText = {
   vi: {
     nav_home: "Trang chủ",
     back_home: "← Quay lại trang chủ",
-    footer_copy: "Chúng tôi tạo ra những ứng dụng kết nối con người với con người.",
+    footer_copy: "AppFactory tạo ra các dịch vụ ứng dụng H2H kết nối con người với con người.",
     footer_privacy: "Chính sách bảo mật",
     footer_terms: "Điều khoản dịch vụ",
     footer_contact: "Liên hệ",
