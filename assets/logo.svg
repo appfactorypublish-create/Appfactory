@@ -20,6 +20,29 @@
       <stop offset="0" stop-color="#dbeaff" />
       <stop offset="1" stop-color="#8fa4bd" />
     </linearGradient>
+    <linearGradient id="icon-bg" x1="8" y1="8" x2="78" y2="66" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#10243c" />
+      <stop offset="0.48" stop-color="#071321" />
+      <stop offset="1" stop-color="#0b0d24" />
+    </linearGradient>
+    <linearGradient id="beam" x1="7" y1="33" x2="81" y2="39" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#37e5ff" stop-opacity="0" />
+      <stop offset="0.18" stop-color="#37e5ff" stop-opacity="0.74" />
+      <stop offset="0.54" stop-color="#ffffff" stop-opacity="0.95" />
+      <stop offset="0.82" stop-color="#9a6cff" stop-opacity="0.78" />
+      <stop offset="1" stop-color="#9a6cff" stop-opacity="0" />
+    </linearGradient>
+    <filter id="icon-shadow" x="-25%" y="-30%" width="150%" height="165%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#010611" flood-opacity="0.72" />
+      <feDropShadow dx="0" dy="0" stdDeviation="9" flood-color="#37e5ff" flood-opacity="0.22" />
+    </filter>
+    <filter id="beam-glow" x="-30%" y="-180%" width="160%" height="460%">
+      <feGaussianBlur stdDeviation="1.4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
     <filter id="symbol-depth" x="-40%" y="-45%" width="180%" height="190%" color-interpolation-filters="sRGB">
       <feDropShadow dx="0" dy="12" stdDeviation="8" flood-color="#020711" flood-opacity="0.72" />
       <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#37e5ff" flood-opacity="0.42" />
@@ -29,6 +52,30 @@
       <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#37e5ff" flood-opacity="0.18" />
     </filter>
   </defs>
+  <style>
+    .connection-beam {
+      animation: beam-drift 5.2s ease-in-out infinite;
+      transform-origin: 44px 36px;
+    }
+
+    @keyframes beam-drift {
+      0%, 100% { opacity: 0.5; transform: translateX(-1.2px); }
+      50% { opacity: 0.95; transform: translateX(1.8px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .connection-beam { animation: none; }
+    }
+  </style>
+
+  <g filter="url(#icon-shadow)">
+    <rect x="4" y="7" width="78" height="58" rx="13" fill="url(#icon-bg)" />
+    <rect x="4.7" y="7.7" width="76.6" height="56.6" rx="12.2" fill="none" stroke="#8bdfff" stroke-opacity="0.18" stroke-width="1.4" />
+    <path d="M10 36.7 C23 31.5 34 34.2 45 36.1 C58 38.3 68.5 37 78 31.7" fill="none" stroke="url(#beam)" stroke-width="1.55" stroke-linecap="round" opacity="0.86" filter="url(#beam-glow)" class="connection-beam" />
+    <path d="M12 38.6 C26 34.5 36.8 36.6 47.5 38.4 C58.8 40.3 68.2 39.2 76 35.5" fill="none" stroke="#37e5ff" stroke-width="5" stroke-linecap="round" opacity="0.08" class="connection-beam" />
+    <circle cx="13.8" cy="36.2" r="1.35" fill="#37e5ff" opacity="0.82" />
+    <circle cx="75.2" cy="32.6" r="1.15" fill="#9a6cff" opacity="0.72" />
+  </g>
 
   <g filter="url(#symbol-depth)">
     <path

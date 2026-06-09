@@ -925,12 +925,11 @@ h3 {
   position: relative;
   isolation: isolate;
   display: inline-flex;
-  gap: 0.32rem;
   align-items: center;
   justify-content: center;
-  min-width: 49px;
+  min-width: 45px;
   min-height: 40px;
-  padding: 0.34rem 0.48rem;
+  padding: 0.34rem 0.46rem;
   overflow: hidden;
   color: var(--muted);
   font: inherit;
@@ -967,8 +966,8 @@ h3 {
   display: grid;
   place-items: center;
   flex: 0 0 auto;
-  width: 1.48rem;
-  height: 1rem;
+  width: 1.8rem;
+  height: 1.2rem;
   overflow: hidden;
   color: transparent;
   font-size: 0;
@@ -1079,10 +1078,6 @@ h3 {
   display: none;
 }
 
-.lang-switch .lang-code {
-  line-height: 1;
-}
-
 .lang-switch button:hover,
 .lang-switch button:focus-visible {
   color: var(--text);
@@ -1134,20 +1129,14 @@ h3 {
   }
 
   .lang-switch button {
-    flex-direction: column;
-    gap: 0.06rem;
-    min-width: 36px;
-    min-height: 42px;
-    padding: 0.24rem 0.22rem;
+    min-width: 34px;
+    min-height: 40px;
+    padding: 0.24rem 0.2rem;
   }
 
   .lang-switch .flag {
-    width: 1.18rem;
-    height: 0.82rem;
-  }
-
-  .lang-switch .lang-code {
-    font-size: 0.56rem;
+    width: 1.34rem;
+    height: 0.9rem;
   }
 }
 
