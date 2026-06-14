@@ -117,6 +117,11 @@
       b.classList.toggle('is-active', active);
       b.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
+
+    /* Notify dynamic renderers (e.g. app-policies.js) that the language changed */
+    try {
+      window.dispatchEvent(new CustomEvent('af:lang', { detail: lang }));
+    } catch (e) {}
   }
 
   /* ---- Inline SVG flags (no text, real flag artwork) --------------------- */
@@ -311,6 +316,8 @@
         termsDesc: '서비스 이용에 관한 약관입니다.',
         del: '계정 삭제 요청',
         delDesc: '앱 계정과 데이터 삭제를 요청하는 방법입니다.',
+        appHub: '앱별 정책',
+        appHubDesc: '각 앱의 개인정보 처리방침·이용약관·계정 삭제 안내를 앱별로 제공합니다.',
         open: '열기'
       },
       contact: {
@@ -325,6 +332,7 @@
         tagline: '사람과 사람을 잇는 H2H 앱 서비스 회사',
         nav: '둘러보기',
         legal: '정책',
+        appPolicies: '앱별 정책',
         contact: '문의',
         rights: '모든 권리 보유.'
       },
@@ -401,6 +409,8 @@
         termsDesc: 'The terms for using our services.',
         del: 'Delete Account Request',
         delDesc: 'How to request deletion of your app account and data.',
+        appHub: 'App Policies',
+        appHubDesc: 'Per-app privacy policy, terms, and account deletion guides.',
         open: 'Open'
       },
       contact: {
@@ -415,6 +425,7 @@
         tagline: 'An H2H app service company connecting people to people',
         nav: 'Explore',
         legal: 'Policies',
+        appPolicies: 'App Policies',
         contact: 'Contact',
         rights: 'All rights reserved.'
       },
@@ -491,6 +502,8 @@
         termsDesc: 'サービス利用に関する規約です。',
         del: 'アカウント削除リクエスト',
         delDesc: 'アプリのアカウントとデータの削除を依頼する方法です。',
+        appHub: 'アプリ別ポリシー',
+        appHubDesc: 'アプリごとのプライバシーポリシー・利用規約・アカウント削除のご案内。',
         open: '開く'
       },
       contact: {
@@ -505,6 +518,7 @@
         tagline: '人と人をつなぐH2Hアプリサービス企業',
         nav: '見る',
         legal: 'ポリシー',
+        appPolicies: 'アプリ別ポリシー',
         contact: 'お問い合わせ',
         rights: 'All rights reserved.'
       },
@@ -581,6 +595,8 @@
         termsDesc: 'Điều khoản sử dụng dịch vụ.',
         del: 'Yêu cầu xóa tài khoản',
         delDesc: 'Cách yêu cầu xóa tài khoản và dữ liệu ứng dụng.',
+        appHub: 'Chính sách theo ứng dụng',
+        appHubDesc: 'Chính sách quyền riêng tư, điều khoản và hướng dẫn xóa tài khoản theo từng ứng dụng.',
         open: 'Mở'
       },
       contact: {
@@ -595,6 +611,7 @@
         tagline: 'Công ty dịch vụ ứng dụng H2H kết nối con người',
         nav: 'Khám phá',
         legal: 'Chính sách',
+        appPolicies: 'Chính sách theo ứng dụng',
         contact: 'Liên hệ',
         rights: 'Đã đăng ký bản quyền.'
       },
