@@ -42,11 +42,28 @@
     return node == null ? null : node;
   }
 
+  /* Detect a supported language from the browser when nothing is stored. */
+  function detectLang() {
+    var candidates = [];
+    try {
+      if (navigator.languages && navigator.languages.length) {
+        candidates = navigator.languages;
+      } else if (navigator.language) {
+        candidates = [navigator.language];
+      }
+    } catch (e) {}
+    for (var i = 0; i < candidates.length; i++) {
+      var code = String(candidates[i]).toLowerCase().slice(0, 2);
+      if (SUPPORTED.indexOf(code) !== -1) return code;
+    }
+    return DEFAULT_LANG;
+  }
+
   function getLang() {
     var stored = null;
     try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
     if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
-    return DEFAULT_LANG;
+    return detectLang();
   }
 
   function setLang(lang) {
