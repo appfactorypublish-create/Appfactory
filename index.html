@@ -82,71 +82,104 @@
         <div class="hero-visual" aria-hidden="true">
           <svg viewBox="0 0 360 360" role="img">
             <defs>
-              <linearGradient id="hvAStroke" x1="0.05" y1="0.95" x2="0.95" y2="0.05">
-                <stop offset="0" stop-color="#3b82f6" />
-                <stop offset=".5" stop-color="#22d3ee" />
-                <stop offset="1" stop-color="#a78bfa" />
+              <linearGradient id="hvIconBg" x1="48" y1="36" x2="312" y2="324">
+                <stop offset="0" stop-color="#18295a" />
+                <stop offset=".48" stop-color="#0d1738" />
+                <stop offset="1" stop-color="#20174a" />
               </linearGradient>
-              <linearGradient id="hvArc" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#22d3ee" stop-opacity="0" />
-                <stop offset=".5" stop-color="#aef6ff" />
-                <stop offset="1" stop-color="#8b5cf6" stop-opacity="0" />
+              <radialGradient id="hvIconGlow" cx="50%" cy="38%" r="62%">
+                <stop offset="0" stop-color="#42e8ff" stop-opacity=".34" />
+                <stop offset=".45" stop-color="#5d8bff" stop-opacity=".13" />
+                <stop offset="1" stop-color="#0b1028" stop-opacity="0" />
+              </radialGradient>
+              <linearGradient id="hvLeftRibbon" x1="98" y1="306" x2="196" y2="54">
+                <stop offset="0" stop-color="#397cff" />
+                <stop offset=".52" stop-color="#2edcff" />
+                <stop offset="1" stop-color="#b8f7ff" />
               </linearGradient>
-              <radialGradient id="hvNodeA" cx="0.5" cy="0.38" r="0.72">
-                <stop offset="0" stop-color="#eafdff" />
-                <stop offset="1" stop-color="#3b82f6" />
+              <linearGradient id="hvRightRibbon" x1="262" y1="306" x2="180" y2="54">
+                <stop offset="0" stop-color="#29e2f0" />
+                <stop offset=".46" stop-color="#4e89ff" />
+                <stop offset="1" stop-color="#b58cff" />
+              </linearGradient>
+              <linearGradient id="hvRibbonEdge" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".72" />
+                <stop offset=".42" stop-color="#d9fbff" stop-opacity=".18" />
+                <stop offset="1" stop-color="#ffffff" stop-opacity=".04" />
+              </linearGradient>
+              <linearGradient id="hvNetwork" x1="54" y1="52" x2="306" y2="308">
+                <stop offset="0" stop-color="#69f5ff" stop-opacity=".08" />
+                <stop offset=".5" stop-color="#b7f7ff" stop-opacity=".58" />
+                <stop offset="1" stop-color="#a78bfa" stop-opacity=".08" />
+              </linearGradient>
+              <radialGradient id="hvNode" cx="0.4" cy="0.36" r="0.72">
+                <stop offset="0" stop-color="#ffffff" />
+                <stop offset=".38" stop-color="#bff9ff" />
+                <stop offset="1" stop-color="#4d7cff" />
               </radialGradient>
-              <radialGradient id="hvNodeB" cx="0.5" cy="0.38" r="0.72">
-                <stop offset="0" stop-color="#f3edff" />
-                <stop offset="1" stop-color="#8b5cf6" />
-              </radialGradient>
-              <filter id="hvSoft" x="-80%" y="-80%" width="260%" height="260%">
-                <feGaussianBlur stdDeviation="3.5" />
+              <filter id="hvAmbientBlur" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="12" />
               </filter>
-              <filter id="hvAGlow" x="-70%" y="-70%" width="240%" height="240%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="11" result="blur" />
-                <feColorMatrix in="blur" type="matrix"
-                  values="0 0 0 0 0.20  0 0 0 0 0.83  0 0 0 0 1  0 0 0 .9 0" result="glow" />
-                <feMerge>
-                  <feMergeNode in="glow" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
+              <filter id="hvRibbonGlow" x="-60%" y="-60%" width="220%" height="220%">
+                <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#04101f" flood-opacity=".72" />
+                <feDropShadow dx="0" dy="0" stdDeviation="13" flood-color="#37dfff" flood-opacity=".38" />
+              </filter>
+              <filter id="hvNodeGlow" x="-120%" y="-120%" width="340%" height="340%">
+                <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#6ff4ff" flood-opacity=".68" />
               </filter>
             </defs>
 
-            <!-- H2H connection light: thin glowing arc linking the two nodes over the A -->
-            <path d="M118 120 Q180 -16 242 120" fill="none" stroke="url(#hvArc)"
-                  stroke-width="7" stroke-linecap="round" opacity=".5" filter="url(#hvSoft)" />
-            <path d="M118 120 Q180 -16 242 120" fill="none" stroke="#dffaff"
-                  stroke-opacity=".7" stroke-width="2" stroke-linecap="round"
-                  stroke-dasharray="1.5 10" />
+            <rect x="34" y="34" width="292" height="292" rx="56" fill="url(#hvIconBg)" />
+            <rect x="34" y="34" width="292" height="292" rx="56" fill="url(#hvIconGlow)" />
+            <ellipse cx="180" cy="192" rx="112" ry="116" fill="#37dfff" opacity=".14" filter="url(#hvAmbientBlur)" />
+            <ellipse cx="216" cy="210" rx="96" ry="110" fill="#8b5cf6" opacity=".12" filter="url(#hvAmbientBlur)" />
 
-            <!-- MAIN brand symbol: large crossbar-free A -->
-            <path d="M94 304 L180 58 L266 304" fill="none" stroke="url(#hvAStroke)"
-                  stroke-width="32" stroke-linecap="round" stroke-linejoin="round"
-                  filter="url(#hvAGlow)" />
-            <!-- 3D edge highlight -->
-            <path d="M94 304 L180 58 L266 304" fill="none" stroke="#ffffff"
-                  stroke-opacity=".30" stroke-width="8" stroke-linecap="round"
-                  stroke-linejoin="round" transform="translate(-2.5,-3)" />
-
-            <!-- small supporting H2H person nodes (secondary to the A) -->
-            <g transform="translate(118,120)">
-              <circle r="15" fill="url(#hvNodeA)" opacity=".26" filter="url(#hvSoft)" />
-              <circle r="10.5" fill="#0a0d1c" stroke="#5cd9f0" stroke-width="1.4" />
-              <circle cx="0" cy="-3" r="3.3" fill="#d9f7ff" />
-              <path d="M-6 6 a6 5 0 0 1 12 0" fill="#d9f7ff" />
-            </g>
-            <g transform="translate(242,120)">
-              <circle r="15" fill="url(#hvNodeB)" opacity=".26" filter="url(#hvSoft)" />
-              <circle r="10.5" fill="#0a0d1c" stroke="#b89bff" stroke-width="1.4" />
-              <circle cx="0" cy="-3" r="3.3" fill="#ece4ff" />
-              <path d="M-6 6 a6 5 0 0 1 12 0" fill="#ece4ff" />
+            <!-- Abstract H2H network, kept behind the symbol. -->
+            <g opacity=".78">
+              <path d="M92 202 C78 140 112 86 166 70 C226 52 279 98 288 164"
+                    fill="none" stroke="url(#hvNetwork)" stroke-width="1.35" stroke-linecap="round" />
+              <path d="M74 230 C112 294 206 322 276 236"
+                    fill="none" stroke="url(#hvNetwork)" stroke-width="1.15" stroke-linecap="round" />
+              <g filter="url(#hvNodeGlow)">
+                <circle cx="116" cy="118" r="3.9" fill="url(#hvNode)" />
+                <circle cx="250" cy="122" r="3.7" fill="url(#hvNode)" />
+                <circle cx="92" cy="202" r="3.3" fill="#d9fcff" />
+                <circle cx="270" cy="210" r="3.3" fill="#efe9ff" />
+                <circle cx="130" cy="282" r="2.8" fill="#bff9ff" opacity=".9" />
+                <circle cx="234" cy="286" r="2.8" fill="#d8ccff" opacity=".9" />
+              </g>
             </g>
 
-            <!-- pulse dots travelling the connection -->
-            <circle cx="150" cy="58" r="2.6" fill="#eafdff" opacity=".9" />
-            <circle cx="210" cy="58" r="2.6" fill="#eafdff" opacity=".9" />
+            <!-- Crossbar-less A built from two dimensional prism ribbons. -->
+            <g filter="url(#hvRibbonGlow)">
+              <path d="M88 296 L156 88 C162 69 171 58 183 55 L204 72 C194 80 188 92 184 106 L122 304 C119 314 106 318 96 313 C88 309 85 303 88 296 Z"
+                    fill="#071126" opacity=".56" transform="translate(7,9)" />
+              <path d="M272 296 L204 88 C198 69 189 58 177 55 L156 72 C166 80 172 92 176 106 L238 304 C241 314 254 318 264 313 C272 309 275 303 272 296 Z"
+                    fill="#071126" opacity=".54" transform="translate(-7,9)" />
+              <path d="M91 296 L158 88 C164 69 173 59 184 55 L203 72 C193 80 188 93 183 108 L123 303 C120 313 108 317 99 313 C91 309 88 302 91 296 Z"
+                    fill="url(#hvLeftRibbon)" />
+              <path d="M269 296 L202 88 C196 69 187 59 176 55 L157 72 C167 80 172 93 177 108 L237 303 C240 313 252 317 261 313 C269 309 272 302 269 296 Z"
+                    fill="url(#hvRightRibbon)" />
+              <path d="M158 88 C164 69 173 59 184 55 L203 72 C193 80 188 93 183 108 L177 126 C173 104 166 92 158 88 Z"
+                    fill="#ffffff" opacity=".20" />
+              <path d="M202 88 C196 69 187 59 176 55 L157 72 C167 80 172 93 177 108 L183 126 C187 104 194 92 202 88 Z"
+                    fill="#ffffff" opacity=".16" />
+              <path d="M108 292 L171 99 C175 88 179 78 188 70"
+                    fill="none" stroke="url(#hvRibbonEdge)" stroke-width="5" stroke-linecap="round" stroke-opacity=".42" />
+              <path d="M252 292 L189 99 C185 88 181 78 172 70"
+                    fill="none" stroke="url(#hvRibbonEdge)" stroke-width="5" stroke-linecap="round" stroke-opacity=".34" />
+              <path d="M121 300 L183 108" fill="none" stroke="#09142d" stroke-width="3.8" stroke-linecap="round" stroke-opacity=".22" />
+              <path d="M239 300 L177 108" fill="none" stroke="#09142d" stroke-width="3.8" stroke-linecap="round" stroke-opacity=".20" />
+            </g>
+
+            <!-- Subtle floating particles for depth. -->
+            <g opacity=".62">
+              <circle cx="92" cy="88" r="1.7" fill="#d9fcff" />
+              <circle cx="272" cy="92" r="1.5" fill="#ede7ff" />
+              <circle cx="286" cy="262" r="1.4" fill="#aef6ff" />
+              <circle cx="78" cy="262" r="1.3" fill="#8beeff" />
+              <circle cx="221" cy="66" r="1.2" fill="#ffffff" />
+            </g>
           </svg>
         </div>
       </div>
