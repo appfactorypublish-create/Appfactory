@@ -82,51 +82,71 @@
         <div class="hero-visual" aria-hidden="true">
           <svg viewBox="0 0 360 360" role="img">
             <defs>
-              <linearGradient id="hvBeam" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#3b82f6" stop-opacity="0" />
+              <linearGradient id="hvAStroke" x1="0.05" y1="0.95" x2="0.95" y2="0.05">
+                <stop offset="0" stop-color="#3b82f6" />
+                <stop offset=".5" stop-color="#22d3ee" />
+                <stop offset="1" stop-color="#a78bfa" />
+              </linearGradient>
+              <linearGradient id="hvArc" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#22d3ee" stop-opacity="0" />
                 <stop offset=".5" stop-color="#aef6ff" />
                 <stop offset="1" stop-color="#8b5cf6" stop-opacity="0" />
               </linearGradient>
-              <radialGradient id="hvNodeA" cx="0.5" cy="0.4" r="0.7">
-                <stop offset="0" stop-color="#bfe6ff" />
+              <radialGradient id="hvNodeA" cx="0.5" cy="0.38" r="0.72">
+                <stop offset="0" stop-color="#eafdff" />
                 <stop offset="1" stop-color="#3b82f6" />
               </radialGradient>
-              <radialGradient id="hvNodeB" cx="0.5" cy="0.4" r="0.7">
-                <stop offset="0" stop-color="#e3d4ff" />
+              <radialGradient id="hvNodeB" cx="0.5" cy="0.38" r="0.72">
+                <stop offset="0" stop-color="#f3edff" />
                 <stop offset="1" stop-color="#8b5cf6" />
               </radialGradient>
-              <filter id="hvGlow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="6" />
+              <filter id="hvSoft" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="3.5" />
+              </filter>
+              <filter id="hvAGlow" x="-70%" y="-70%" width="240%" height="240%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="11" result="blur" />
+                <feColorMatrix in="blur" type="matrix"
+                  values="0 0 0 0 0.20  0 0 0 0 0.83  0 0 0 0 1  0 0 0 .9 0" result="glow" />
+                <feMerge>
+                  <feMergeNode in="glow" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
               </filter>
             </defs>
 
-            <!-- connecting light beam (H2H) -->
-            <line x1="92" y1="180" x2="268" y2="180" stroke="url(#hvBeam)" stroke-width="10" filter="url(#hvGlow)" />
-            <line x1="92" y1="180" x2="268" y2="180" stroke="url(#hvBeam)" stroke-width="3" />
+            <!-- H2H connection light: thin glowing arc linking the two nodes over the A -->
+            <path d="M118 120 Q180 -16 242 120" fill="none" stroke="url(#hvArc)"
+                  stroke-width="7" stroke-linecap="round" opacity=".5" filter="url(#hvSoft)" />
+            <path d="M118 120 Q180 -16 242 120" fill="none" stroke="#dffaff"
+                  stroke-opacity=".7" stroke-width="2" stroke-linecap="round"
+                  stroke-dasharray="1.5 10" />
 
-            <!-- person A -->
-            <g transform="translate(92,180)">
-              <circle r="34" fill="url(#hvNodeA)" filter="url(#hvGlow)" opacity=".55" />
-              <circle r="26" fill="#0a0d1c" stroke="#3b82f6" stroke-width="2" />
-              <circle cx="0" cy="-7" r="8" fill="#bfe6ff" />
-              <path d="M-13 13 a13 11 0 0 1 26 0" fill="#bfe6ff" />
+            <!-- MAIN brand symbol: large crossbar-free A -->
+            <path d="M94 304 L180 58 L266 304" fill="none" stroke="url(#hvAStroke)"
+                  stroke-width="32" stroke-linecap="round" stroke-linejoin="round"
+                  filter="url(#hvAGlow)" />
+            <!-- 3D edge highlight -->
+            <path d="M94 304 L180 58 L266 304" fill="none" stroke="#ffffff"
+                  stroke-opacity=".30" stroke-width="8" stroke-linecap="round"
+                  stroke-linejoin="round" transform="translate(-2.5,-3)" />
+
+            <!-- small supporting H2H person nodes (secondary to the A) -->
+            <g transform="translate(118,120)">
+              <circle r="15" fill="url(#hvNodeA)" opacity=".26" filter="url(#hvSoft)" />
+              <circle r="10.5" fill="#0a0d1c" stroke="#5cd9f0" stroke-width="1.4" />
+              <circle cx="0" cy="-3" r="3.3" fill="#d9f7ff" />
+              <path d="M-6 6 a6 5 0 0 1 12 0" fill="#d9f7ff" />
+            </g>
+            <g transform="translate(242,120)">
+              <circle r="15" fill="url(#hvNodeB)" opacity=".26" filter="url(#hvSoft)" />
+              <circle r="10.5" fill="#0a0d1c" stroke="#b89bff" stroke-width="1.4" />
+              <circle cx="0" cy="-3" r="3.3" fill="#ece4ff" />
+              <path d="M-6 6 a6 5 0 0 1 12 0" fill="#ece4ff" />
             </g>
 
-            <!-- person B -->
-            <g transform="translate(268,180)">
-              <circle r="34" fill="url(#hvNodeB)" filter="url(#hvGlow)" opacity=".55" />
-              <circle r="26" fill="#0a0d1c" stroke="#8b5cf6" stroke-width="2" />
-              <circle cx="0" cy="-7" r="8" fill="#e3d4ff" />
-              <path d="M-13 13 a13 11 0 0 1 26 0" fill="#e3d4ff" />
-            </g>
-
-            <!-- pulse dots travelling the beam -->
-            <circle cx="150" cy="180" r="3.5" fill="#eafdff" />
-            <circle cx="210" cy="180" r="3.5" fill="#eafdff" />
-
-            <!-- A peak motif, no crossbar -->
-            <path d="M150 250 L180 196 L210 250" fill="none" stroke="#ffffff" stroke-opacity=".22"
-                  stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            <!-- pulse dots travelling the connection -->
+            <circle cx="150" cy="58" r="2.6" fill="#eafdff" opacity=".9" />
+            <circle cx="210" cy="58" r="2.6" fill="#eafdff" opacity=".9" />
           </svg>
         </div>
       </div>

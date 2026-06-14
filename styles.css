@@ -279,7 +279,7 @@ section { position: relative; }
   align-items: center;
   justify-content: center;
 }
-.hero-visual svg { width: 86%; height: 86%; }
+.hero-visual svg { width: 90%; height: 90%; }
 
 /* ----------------------------- Grids ------------------------------------ */
 .grid { display: grid; gap: 26px; }
@@ -533,6 +533,7 @@ section { position: relative; }
   .footer-bottom { justify-content: center; text-align: center; }
   .lang-btn { width: 36px; height: 25px; }
   .hero-cta .btn { flex: 1; justify-content: center; }
+  .hero-visual svg { width: 94%; height: 94%; }
 }
 
 @media (max-width: 380px) {
