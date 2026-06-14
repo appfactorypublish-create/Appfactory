@@ -2,3 +2,7 @@
 *.zip
 .DS_Store
 Thumbs.db
+
+# Local QA / verification screenshots (not site assets)
+hero-desktop.png
+hero-mobile.png
