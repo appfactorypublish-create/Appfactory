@@ -41,6 +41,8 @@
       tServiceB: '{app}은(는) AppFactory가 직접 만들고 운영하는 H2H 앱 서비스입니다. 세부 기능은 업데이트에 따라 달라질 수 있습니다.',
       tConductH: '이용자의 책임',
       tConductB: '이용자는 불법, 허위, 사기, 모욕, 차별, 스팸, 타인의 권리를 침해하는 행위를 해서는 안 되며, 관련 법령과 본 약관을 준수하여 서비스를 이용해야 합니다.',
+      tPaymentH: '결제 및 유료 기능',
+      tPaymentB: '일부 앱 또는 향후 기능에는 유료 서비스가 포함될 수 있으며, 결제 조건은 해당 앱 또는 스토어 화면에서 별도로 안내됩니다.',
       tMeetH: '사용자 간 연결 시 주의',
       tMeetB: 'H2H 서비스 특성상 사용자 간 만남과 소통에는 신중함과 책임이 필요합니다. AppFactory는 사용자 간 직접적인 상호작용의 결과를 보증하지 않으며, 이용자는 안전에 유의해야 합니다.',
       tIpH: '지식재산권',
@@ -65,7 +67,7 @@
       contactB: '본 정책에 대한 문의나 개인정보 관련 요청은 다음 이메일로 보내주세요: ',
       disclaimer: '본 문서는 법률 자문이 아니며, 일반적인 앱 출시 준비를 위한 초안입니다. 실제 서비스 운영 시 관련 법령에 맞게 검토하시기 바랍니다.',
       hubTitle: '앱별 정책',
-      hubLead: 'AppFactory가 직접 만들고 운영하는 H2H 앱들의 정책입니다. 각 앱의 개인정보 처리방침, 이용약관, 계정 삭제 요청 안내를 앱별로 제공합니다. Google Play / Apple App Store 제출용 정책 URL로 사용할 수 있습니다.',
+      hubLead: 'AppFactory는 자체 H2H 앱 서비스를 운영합니다. 각 앱은 기능과 운영 방식에 따라 개인정보 처리 항목과 이용 조건이 다를 수 있으므로, 아래에서 앱별 개인정보 처리방침과 이용약관을 확인할 수 있습니다.',
       hubNote: 'AppFactory 홈페이지는 회사 및 앱 소개를 위한 정적 사이트로, 회원가입·로그인·결제·게시판·댓글·문의폼이 없습니다. 문의는 이메일로만 받습니다.',
       linkPrivacy: '개인정보 처리방침',
       linkTerms: '이용약관',
@@ -97,6 +99,8 @@
       tServiceB: '{app} is an H2H app service built and operated by AppFactory. Specific features may change with updates.',
       tConductH: 'User Responsibilities',
       tConductB: 'You must not engage in illegal, false, fraudulent, abusive, discriminatory, spam, or rights-infringing behavior, and you must use the service in compliance with applicable law and these Terms.',
+      tPaymentH: 'Payments & Paid Features',
+      tPaymentB: 'Some apps or future features may include paid services. Where they apply, payment terms are provided separately within the relevant app or on the app store screen.',
       tMeetH: 'Caution When Connecting With Others',
       tMeetB: 'Because this is an H2H service, meeting and communicating with other users requires care and responsibility. AppFactory does not guarantee the outcome of direct interactions between users; please stay safe.',
       tIpH: 'Intellectual Property',
@@ -121,7 +125,7 @@
       contactB: 'For questions about this policy or privacy-related requests, please email: ',
       disclaimer: 'This document is not legal advice; it is a general draft to help prepare app store submissions. Please review it against applicable law for actual operation.',
       hubTitle: 'App Policies',
-      hubLead: 'Policies for the H2H apps that AppFactory builds and operates. Each app has its own Privacy Policy, Terms of Service, and Delete Account guide. These can be used as policy URLs for Google Play / Apple App Store submission.',
+      hubLead: 'AppFactory operates its own H2H app services. Each app may have different data practices, payment conditions, and service rules depending on its features and operation. You can review each app’s Privacy Policy and Terms of Service below.',
       hubNote: 'The AppFactory homepage is a static company/app information site with no sign-up, login, payment, board, comments, or contact form. Inquiries are handled by email only.',
       linkPrivacy: 'Privacy Policy',
       linkTerms: 'Terms of Service',
@@ -153,6 +157,8 @@
       tServiceB: '{app}は、AppFactoryが自ら開発・運営するH2Hアプリサービスです。具体的な機能は更新により変わることがあります。',
       tConductH: '利用者の責任',
       tConductB: '利用者は、違法・虚偽・詐欺・侮辱・差別・スパム・他者の権利を侵害する行為を行ってはならず、適用法令および本規約を遵守して利用するものとします。',
+      tPaymentH: '決済・有料機能',
+      tPaymentB: '一部のアプリや今後の機能には有料サービスが含まれる場合があり、決済条件は該当アプリまたはストア画面で別途ご案内します。',
       tMeetH: '利用者間のつながりにおける注意',
       tMeetB: 'H2Hサービスの特性上、利用者間の出会いやコミュニケーションには慎重さと責任が必要です。AppFactoryは利用者間の直接的なやり取りの結果を保証せず、利用者は安全に十分ご留意ください。',
       tIpH: '知的財産権',
@@ -177,7 +183,7 @@
       contactB: '本ポリシーに関するお問い合わせや個人情報に関するご請求は、次のメールまでご連絡ください: ',
       disclaimer: '本書類は法的助言ではなく、一般的なアプリ提出準備のための草案です。実際の運営では適用法令に照らしてご確認ください。',
       hubTitle: 'アプリ別ポリシー',
-      hubLead: 'AppFactoryが自ら開発・運営するH2Hアプリのポリシーです。各アプリのプライバシーポリシー、利用規約、アカウント削除のご案内をアプリごとに提供します。Google Play / Apple App Store提出用のポリシーURLとして利用できます。',
+      hubLead: 'AppFactoryは独自のH2Hアプリサービスを運営しています。各アプリは機能や運営方式によって、個人情報の取り扱いや利用条件が異なる場合があります。以下からアプリ別のプライバシーポリシーと利用規約をご確認いただけます。',
       hubNote: 'AppFactoryホームページは会社およびアプリ紹介のための静的サイトで、会員登録・ログイン・決済・掲示板・コメント・お問い合わせフォームはありません。お問い合わせはメールのみで受け付けます。',
       linkPrivacy: 'プライバシーポリシー',
       linkTerms: '利用規約',
@@ -209,6 +215,8 @@
       tServiceB: '{app} là dịch vụ ứng dụng H2H do AppFactory tự xây dựng và vận hành. Các tính năng cụ thể có thể thay đổi theo bản cập nhật.',
       tConductH: 'Trách nhiệm của người dùng',
       tConductB: 'Bạn không được thực hiện các hành vi bất hợp pháp, sai sự thật, lừa đảo, lăng mạ, phân biệt đối xử, spam hoặc xâm phạm quyền của người khác, và phải tuân thủ pháp luật hiện hành cùng các điều khoản này.',
+      tPaymentH: 'Thanh toán & tính năng trả phí',
+      tPaymentB: 'Một số ứng dụng hoặc tính năng trong tương lai có thể bao gồm dịch vụ trả phí; khi áp dụng, điều kiện thanh toán được hướng dẫn riêng trong ứng dụng liên quan hoặc trên màn hình app store.',
       tMeetH: 'Lưu ý khi kết nối với người khác',
       tMeetB: 'Do đặc thù của dịch vụ H2H, việc gặp gỡ và giao tiếp giữa người dùng đòi hỏi sự thận trọng và trách nhiệm. AppFactory không bảo đảm kết quả của những tương tác trực tiếp giữa người dùng; vui lòng giữ an toàn.',
       tIpH: 'Sở hữu trí tuệ',
@@ -233,7 +241,7 @@
       contactB: 'Mọi thắc mắc về chính sách này hoặc yêu cầu liên quan đến quyền riêng tư, vui lòng gửi email tới: ',
       disclaimer: 'Tài liệu này không phải là tư vấn pháp lý; đây là bản nháp chung giúp chuẩn bị nộp lên app store. Vui lòng rà soát theo luật hiện hành khi vận hành thực tế.',
       hubTitle: 'Chính sách theo ứng dụng',
-      hubLead: 'Chính sách cho các ứng dụng H2H do AppFactory tự xây dựng và vận hành. Mỗi ứng dụng có Chính sách quyền riêng tư, Điều khoản sử dụng và hướng dẫn Xóa tài khoản riêng. Có thể dùng làm URL chính sách để nộp lên Google Play / Apple App Store.',
+      hubLead: 'AppFactory vận hành các dịch vụ ứng dụng H2H riêng. Tùy theo tính năng và cách vận hành, mỗi ứng dụng có thể có chính sách xử lý dữ liệu, điều kiện thanh toán và quy tắc sử dụng khác nhau. Bạn có thể xem Chính sách quyền riêng tư và Điều khoản sử dụng của từng ứng dụng bên dưới.',
       hubNote: 'Trang chủ AppFactory là website tĩnh giới thiệu công ty và ứng dụng, không có đăng ký, đăng nhập, thanh toán, diễn đàn, bình luận hay biểu mẫu liên hệ. Mọi liên hệ chỉ qua email.',
       linkPrivacy: 'Chính sách quyền riêng tư',
       linkTerms: 'Điều khoản sử dụng',
@@ -380,6 +388,7 @@
     html += h2(t.tServiceH) + p(tpl(t.tServiceB, app.name));
     html += h2(t.tConductH) + p(t.tConductB);
     if (app.matching) html += h2(t.tMeetH) + p(t.tMeetB);
+    html += h2(t.tPaymentH) + p(t.tPaymentB);
     html += h2(t.tIpH) + p(t.tIpB);
     html += h2(t.tChangeH) + p(t.tChangeB);
     html += h2(t.tLiabH) + p(t.tLiabB);
@@ -457,7 +466,6 @@
         '<div class="app-card-links">' +
           '<a href="/apps/' + id + '/privacy">' + esc(t.linkPrivacy) + '</a>' +
           '<a href="/apps/' + id + '/terms">' + esc(t.linkTerms) + '</a>' +
-          '<a href="/apps/' + id + '/delete-account">' + esc(t.linkDelete) + '</a>' +
         '</div>' +
       '</article>';
     });

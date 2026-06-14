@@ -316,7 +316,7 @@
       policies: {
         tag: 'Policies',
         title: '정책 안내',
-        lead: 'AppFactory는 투명한 서비스 운영을 위해 앱마다 정책 페이지를 제공합니다. Google Play와 Apple App Store 제출에 필요한 개인정보 처리방침, 이용약관, 계정 삭제 안내를 앱별로 정리해, 각 서비스가 데이터를 어떻게 다루는지 누구나 확인할 수 있도록 했습니다.',
+        lead: 'AppFactory는 투명한 서비스 운영을 위해 앱마다 정책 페이지를 제공합니다. Google Play와 Apple App Store 제출에 필요한 개인정보 처리방침과 이용약관을 앱별로 정리해, 각 서비스가 데이터를 어떻게 다루는지 누구나 확인할 수 있도록 했습니다.',
         privacy: '개인정보 처리방침',
         privacyDesc: '우리 앱이 정보를 어떻게 다루는지 안내합니다.',
         terms: '이용약관',
@@ -324,7 +324,7 @@
         del: '계정 삭제 요청',
         delDesc: '앱 계정과 데이터 삭제를 요청하는 방법입니다.',
         appHub: '앱별 정책',
-        appHubDesc: '각 앱의 개인정보 처리방침·이용약관·계정 삭제 안내를 앱별로 제공합니다.',
+        appHubDesc: '각 앱의 개인정보 처리방침과 이용약관을 앱별로 제공합니다.',
         open: '열기'
       },
       contact: {
@@ -416,7 +416,7 @@
       policies: {
         tag: 'Policies',
         title: 'Policies',
-        lead: 'For transparent operation, AppFactory provides a clear policy page for every app. Here you’ll find the privacy policies, terms, and account-deletion guides required for Google Play and the Apple App Store, organized app by app — so anyone can see how each service handles data.',
+        lead: 'For transparent operation, AppFactory provides a clear policy page for every app. Here you’ll find the privacy policies and terms required for Google Play and the Apple App Store, organized app by app — so anyone can see how each service handles data.',
         privacy: 'Privacy Policy',
         privacyDesc: 'How our apps handle information.',
         terms: 'Terms of Service',
@@ -424,7 +424,7 @@
         del: 'Delete Account Request',
         delDesc: 'How to request deletion of your app account and data.',
         appHub: 'App Policies',
-        appHubDesc: 'Per-app privacy policy, terms, and account deletion guides.',
+        appHubDesc: 'Per-app privacy policy and terms of service.',
         open: 'Open'
       },
       contact: {
@@ -516,7 +516,7 @@
       policies: {
         tag: 'Policies',
         title: 'ポリシー',
-        lead: 'AppFactoryは透明なサービス運営のため、アプリごとにポリシーページを用意しています。Google PlayやApple App Storeの提出に必要なプライバシーポリシー、利用規約、アカウント削除のご案内をアプリ別に整理し、各サービスがデータをどう扱うかを誰でも確認できるようにしています。',
+        lead: 'AppFactoryは透明なサービス運営のため、アプリごとにポリシーページを用意しています。Google PlayやApple App Storeの提出に必要なプライバシーポリシーと利用規約をアプリ別に整理し、各サービスがデータをどう扱うかを誰でも確認できるようにしています。',
         privacy: 'プライバシーポリシー',
         privacyDesc: '私たちのアプリが情報をどう扱うかをご案内します。',
         terms: '利用規約',
@@ -524,7 +524,7 @@
         del: 'アカウント削除リクエスト',
         delDesc: 'アプリのアカウントとデータの削除を依頼する方法です。',
         appHub: 'アプリ別ポリシー',
-        appHubDesc: 'アプリごとのプライバシーポリシー・利用規約・アカウント削除のご案内。',
+        appHubDesc: 'アプリごとのプライバシーポリシーと利用規約。',
         open: '開く'
       },
       contact: {
@@ -616,7 +616,7 @@
       policies: {
         tag: 'Policies',
         title: 'Chính sách',
-        lead: 'Để vận hành minh bạch, AppFactory cung cấp trang chính sách riêng cho từng ứng dụng. Tại đây bạn sẽ tìm thấy chính sách quyền riêng tư, điều khoản và hướng dẫn xóa tài khoản cần cho Google Play và Apple App Store, sắp xếp theo từng ứng dụng — để bất kỳ ai cũng thấy mỗi dịch vụ xử lý dữ liệu ra sao.',
+        lead: 'Để vận hành minh bạch, AppFactory cung cấp trang chính sách riêng cho từng ứng dụng. Tại đây bạn sẽ tìm thấy chính sách quyền riêng tư và điều khoản cần cho Google Play và Apple App Store, sắp xếp theo từng ứng dụng — để bất kỳ ai cũng thấy mỗi dịch vụ xử lý dữ liệu ra sao.',
         privacy: 'Chính sách quyền riêng tư',
         privacyDesc: 'Cách ứng dụng của chúng tôi xử lý thông tin.',
         terms: 'Điều khoản dịch vụ',
@@ -624,7 +624,7 @@
         del: 'Yêu cầu xóa tài khoản',
         delDesc: 'Cách yêu cầu xóa tài khoản và dữ liệu ứng dụng.',
         appHub: 'Chính sách theo ứng dụng',
-        appHubDesc: 'Chính sách quyền riêng tư, điều khoản và hướng dẫn xóa tài khoản theo từng ứng dụng.',
+        appHubDesc: 'Chính sách quyền riêng tư và điều khoản theo từng ứng dụng.',
         open: 'Mở'
       },
       contact: {
