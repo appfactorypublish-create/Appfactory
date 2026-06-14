@@ -1,505 +1,608 @@
-const canvas = document.querySelector("#network-canvas");
-const ctx = canvas.getContext("2d");
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+/* =========================================================================
+   AppFactory — H2H Homepage
+   Core script: i18n engine, language switching, inline SVG flags, navigation
+   ========================================================================= */
+(function () {
+  'use strict';
 
-let width = 0;
-let height = 0;
-let dpr = 1;
-let points = [];
-let animationFrame = 0;
+  var STORAGE_KEY = 'appfactory_lang';
+  var SUPPORTED = ['ko', 'en', 'ja', 'vi'];
+  var DEFAULT_LANG = 'en';
 
-const palette = [
-  "rgba(55, 229, 255, 0.9)",
-  "rgba(79, 141, 255, 0.85)",
-  "rgba(154, 108, 255, 0.78)",
-  "rgba(255, 114, 210, 0.58)",
-];
+  /* ---- Translation store -------------------------------------------------
+     Pages register their strings via window.AF.register({ ko:{}, en:{} ... }).
+     Long-form legal text lives in policy.js and registers the same way. */
+  var STORE = { ko: {}, en: {}, ja: {}, vi: {} };
 
-function randomBetween(min, max) {
-  return Math.random() * (max - min) + min;
-}
+  function deepMerge(target, source) {
+    Object.keys(source).forEach(function (k) {
+      if (source[k] && typeof source[k] === 'object' && !Array.isArray(source[k])) {
+        target[k] = target[k] || {};
+        deepMerge(target[k], source[k]);
+      } else {
+        target[k] = source[k];
+      }
+    });
+  }
 
-function resizeCanvas() {
-  const rect = canvas.getBoundingClientRect();
-  dpr = Math.min(window.devicePixelRatio || 1, 2);
-  width = rect.width;
-  height = rect.height;
-  canvas.width = Math.floor(width * dpr);
-  canvas.height = Math.floor(height * dpr);
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  createNetwork();
-}
+  function register(dict) {
+    SUPPORTED.forEach(function (lang) {
+      if (dict[lang]) deepMerge(STORE[lang], dict[lang]);
+    });
+  }
 
-function createNetwork() {
-  const count = Math.max(30, Math.min(76, Math.floor(width / 18)));
-  points = Array.from({ length: count }, (_, index) => {
-    const sideBias = index % 3 === 0 ? randomBetween(0.48, 0.98) : Math.random();
-    return {
-      x: width * sideBias,
-      y: randomBetween(height * 0.08, height * 0.9),
-      vx: randomBetween(-0.18, 0.18),
-      vy: randomBetween(-0.15, 0.15),
-      radius: randomBetween(1.2, 2.8),
-      color: palette[index % palette.length],
-      pulse: randomBetween(0, Math.PI * 2),
+  /* Resolve a dotted key path ("hero.title") against a language object. */
+  function resolve(lang, key) {
+    var parts = key.split('.');
+    var node = STORE[lang];
+    for (var i = 0; i < parts.length; i++) {
+      if (node == null) return null;
+      node = node[parts[i]];
+    }
+    return node == null ? null : node;
+  }
+
+  function getLang() {
+    var stored = null;
+    try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
+    return DEFAULT_LANG;
+  }
+
+  function setLang(lang) {
+    if (SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+    apply(lang);
+  }
+
+  /* Apply translations to every [data-i18n] element on the page. */
+  function apply(lang) {
+    document.documentElement.setAttribute('lang', lang);
+
+    var nodes = document.querySelectorAll('[data-i18n]');
+    nodes.forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      var val = resolve(lang, key);
+      if (val == null) { val = resolve(DEFAULT_LANG, key); }
+      if (val == null) return;
+      if (el.hasAttribute('data-i18n-html')) {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    });
+
+    /* Attribute translations: data-i18n-attr="placeholder:key;title:key2" */
+    var attrNodes = document.querySelectorAll('[data-i18n-attr]');
+    attrNodes.forEach(function (el) {
+      var spec = el.getAttribute('data-i18n-attr');
+      spec.split(';').forEach(function (pair) {
+        var bits = pair.split(':');
+        if (bits.length !== 2) return;
+        var attr = bits[0].trim();
+        var val = resolve(lang, bits[1].trim());
+        if (val == null) val = resolve(DEFAULT_LANG, bits[1].trim());
+        if (val != null) el.setAttribute(attr, val);
+      });
+    });
+
+    /* Page <title> if it carries a key */
+    var titleEl = document.querySelector('title[data-i18n]');
+    if (titleEl) {
+      var tval = resolve(lang, titleEl.getAttribute('data-i18n'));
+      if (tval != null) document.title = tval;
+    }
+
+    /* Reflect active state on language buttons */
+    var btns = document.querySelectorAll('.lang-btn');
+    btns.forEach(function (b) {
+      var active = b.getAttribute('data-lang') === lang;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  }
+
+  /* ---- Inline SVG flags (no text, real flag artwork) --------------------- */
+  var FLAGS = {
+    ko:
+      '<svg viewBox="0 0 36 24" role="img" aria-label="한국어">' +
+        '<rect width="36" height="24" rx="3" fill="#fff"/>' +
+        '<g transform="translate(18,12)">' +
+          '<circle r="6" fill="#fff"/>' +
+          '<path d="M-6 0 A6 6 0 0 1 6 0 A3 3 0 0 1 0 0 A3 3 0 0 0 -6 0 Z" fill="#cd2e3a"/>' +
+          '<path d="M6 0 A6 6 0 0 1 -6 0 A3 3 0 0 1 0 0 A3 3 0 0 0 6 0 Z" fill="#0047a0"/>' +
+        '</g>' +
+        '<g stroke="#000" stroke-width="0.9" transform="translate(18,12)">' +
+          '<g transform="rotate(33.69)">' +
+            '<g transform="translate(-9.3,0)">' +
+              '<line x1="-2" y1="-1.1" x2="2" y2="-1.1"/><line x1="-2" y1="0" x2="2" y2="0"/><line x1="-2" y1="1.1" x2="2" y2="1.1"/>' +
+            '</g>' +
+            '<g transform="translate(9.3,0)">' +
+              '<line x1="-2" y1="-1.1" x2="-0.4" y2="-1.1"/><line x1="0.4" y1="-1.1" x2="2" y2="-1.1"/>' +
+              '<line x1="-2" y1="0" x2="2" y2="0"/>' +
+              '<line x1="-2" y1="1.1" x2="-0.4" y2="1.1"/><line x1="0.4" y1="1.1" x2="2" y2="1.1"/>' +
+            '</g>' +
+          '</g>' +
+          '<g transform="rotate(-33.69)">' +
+            '<g transform="translate(-9.3,0)">' +
+              '<line x1="-2" y1="-1.1" x2="-0.4" y2="-1.1"/><line x1="0.4" y1="-1.1" x2="2" y2="-1.1"/>' +
+              '<line x1="-2" y1="0" x2="2" y2="0"/>' +
+              '<line x1="-2" y1="1.1" x2="2" y2="1.1"/>' +
+            '</g>' +
+            '<g transform="translate(9.3,0)">' +
+              '<line x1="-2" y1="-1.1" x2="2" y2="-1.1"/>' +
+              '<line x1="-2" y1="0" x2="-0.4" y2="0"/><line x1="0.4" y1="0" x2="2" y2="0"/>' +
+              '<line x1="-2" y1="1.1" x2="-0.4" y2="1.1"/><line x1="0.4" y1="1.1" x2="2" y2="1.1"/>' +
+            '</g>' +
+          '</g>' +
+        '</g>' +
+      '</svg>',
+    en:
+      '<svg viewBox="0 0 36 24" role="img" aria-label="English">' +
+        '<defs><clipPath id="us-clip"><rect width="36" height="24" rx="3"/></clipPath></defs>' +
+        '<g clip-path="url(#us-clip)">' +
+          '<rect width="36" height="24" fill="#b22234"/>' +
+          '<g fill="#fff">' +
+            '<rect y="1.85" width="36" height="1.85"/><rect y="5.54" width="36" height="1.85"/>' +
+            '<rect y="9.23" width="36" height="1.85"/><rect y="12.92" width="36" height="1.85"/>' +
+            '<rect y="16.62" width="36" height="1.85"/><rect y="20.31" width="36" height="1.85"/>' +
+          '</g>' +
+          '<rect width="15.5" height="12.92" fill="#3c3b6e"/>' +
+          '<g fill="#fff">' +
+            '<circle cx="2.2" cy="2" r="0.6"/><circle cx="5.4" cy="2" r="0.6"/><circle cx="8.6" cy="2" r="0.6"/><circle cx="11.8" cy="2" r="0.6"/>' +
+            '<circle cx="3.8" cy="4" r="0.6"/><circle cx="7" cy="4" r="0.6"/><circle cx="10.2" cy="4" r="0.6"/><circle cx="13.4" cy="4" r="0.6"/>' +
+            '<circle cx="2.2" cy="6" r="0.6"/><circle cx="5.4" cy="6" r="0.6"/><circle cx="8.6" cy="6" r="0.6"/><circle cx="11.8" cy="6" r="0.6"/>' +
+            '<circle cx="3.8" cy="8" r="0.6"/><circle cx="7" cy="8" r="0.6"/><circle cx="10.2" cy="8" r="0.6"/><circle cx="13.4" cy="8" r="0.6"/>' +
+            '<circle cx="2.2" cy="10" r="0.6"/><circle cx="5.4" cy="10" r="0.6"/><circle cx="8.6" cy="10" r="0.6"/><circle cx="11.8" cy="10" r="0.6"/>' +
+          '</g>' +
+        '</g>' +
+      '</svg>',
+    ja:
+      '<svg viewBox="0 0 36 24" role="img" aria-label="日本語">' +
+        '<rect width="36" height="24" rx="3" fill="#fff"/>' +
+        '<circle cx="18" cy="12" r="7.2" fill="#bc002d"/>' +
+      '</svg>',
+    vi:
+      '<svg viewBox="0 0 36 24" role="img" aria-label="Tiếng Việt">' +
+        '<rect width="36" height="24" rx="3" fill="#da251d"/>' +
+        '<path fill="#ff0" d="M18 6 l1.76 5.42 5.7 0 -4.61 3.35 1.76 5.42 -4.61 -3.35 -4.61 3.35 1.76 -5.42 -4.61 -3.35 5.7 0 Z"/>' +
+      '</svg>'
+  };
+
+  function buildLangSwitch() {
+    var containers = document.querySelectorAll('[data-lang-switch]');
+    if (!containers.length) return;
+
+    var labels = {
+      ko: '한국어', en: 'English', ja: '日本語', vi: 'Tiếng Việt'
     };
-  });
-}
 
-function drawGradientField() {
-  const leftGlow = ctx.createRadialGradient(width * 0.22, height * 0.46, 0, width * 0.22, height * 0.46, width * 0.54);
-  leftGlow.addColorStop(0, "rgba(55, 229, 255, 0.12)");
-  leftGlow.addColorStop(1, "rgba(55, 229, 255, 0)");
-  ctx.fillStyle = leftGlow;
-  ctx.fillRect(0, 0, width, height);
-
-  const rightGlow = ctx.createRadialGradient(width * 0.78, height * 0.38, 0, width * 0.78, height * 0.38, width * 0.46);
-  rightGlow.addColorStop(0, "rgba(154, 108, 255, 0.15)");
-  rightGlow.addColorStop(1, "rgba(154, 108, 255, 0)");
-  ctx.fillStyle = rightGlow;
-  ctx.fillRect(0, 0, width, height);
-}
-
-function drawConnections() {
-  for (let i = 0; i < points.length; i += 1) {
-    for (let j = i + 1; j < points.length; j += 1) {
-      const first = points[i];
-      const second = points[j];
-      const dx = first.x - second.x;
-      const dy = first.y - second.y;
-      const distance = Math.hypot(dx, dy);
-      const maxDistance = width < 620 ? 96 : 138;
-
-      if (distance < maxDistance) {
-        const alpha = (1 - distance / maxDistance) * 0.28;
-        ctx.strokeStyle = `rgba(117, 213, 255, ${alpha})`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(first.x, first.y);
-        ctx.lineTo(second.x, second.y);
-        ctx.stroke();
-      }
-    }
-  }
-}
-
-function drawPoints(time) {
-  points.forEach((point) => {
-    const pulse = reduceMotion.matches ? 0.6 : Math.sin(time / 700 + point.pulse) * 0.45 + 0.7;
-    ctx.beginPath();
-    ctx.fillStyle = point.color;
-    ctx.shadowColor = point.color;
-    ctx.shadowBlur = 18 * pulse;
-    ctx.arc(point.x, point.y, point.radius * pulse, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.shadowBlur = 0;
-  });
-}
-
-function updatePoints() {
-  if (reduceMotion.matches) {
-    return;
-  }
-
-  points.forEach((point) => {
-    point.x += point.vx;
-    point.y += point.vy;
-
-    if (point.x < width * 0.06 || point.x > width * 0.98) {
-      point.vx *= -1;
-    }
-
-    if (point.y < height * 0.08 || point.y > height * 0.92) {
-      point.vy *= -1;
-    }
-  });
-}
-
-function render(time = 0) {
-  ctx.clearRect(0, 0, width, height);
-  drawGradientField();
-  drawConnections();
-  drawPoints(time);
-  updatePoints();
-
-  animationFrame = window.requestAnimationFrame(render);
-}
-
-function restartAnimation() {
-  window.cancelAnimationFrame(animationFrame);
-  render();
-}
-
-resizeCanvas();
-restartAnimation();
-
-window.addEventListener("resize", resizeCanvas, { passive: true });
-reduceMotion.addEventListener("change", restartAnimation);
-
-/* ------------------------------------------------------------------ *
- * Multilingual content: Korean / English / Japanese / Vietnamese.
- * Every element carrying a data-i18n key is swapped in setLanguage().
- * ------------------------------------------------------------------ */
-const translations = {
-  ko: {
-    skip: "본문으로 이동",
-    nav_about: "회사소개",
-    nav_services: "서비스",
-    nav_projects: "H2H 서비스",
-    nav_contact: "문의",
-    nav_cta: "문의하기",
-
-    hero_eyebrow: "H2H 앱 서비스",
-    hero_lead1: "사람과 사람을 이어주는 H2H 앱 서비스를 만듭니다.",
-    hero_lead2: "우리는 H2H 앱을 직접 기획하고, 개발하고, 운영합니다.",
-    hero_primary: "AppFactory 알아보기",
-    hero_secondary: "H2H 철학 보기",
-    signal_languages: "지원 언어",
-    signal_philosophy: "철학",
-    signal_connections: "연결",
-
-    about_eyebrow: "회사소개",
-    about_h2: "우리는 H2H 앱 서비스를 직접 만듭니다.",
-    about_intro:
-      "AppFactory는 H2H 앱 서비스를 직접 기획하고, 개발하고, 운영합니다. 우리는 앱을 납품하는 회사가 아니라, 앱을 통해 사람과 사람을 연결하는 서비스를 만듭니다. 관계·매칭·커뮤니티·소통·글로벌 연결을 중심으로 서비스를 넓혀가며, 그 중심에는 언제나 사람이 있습니다.",
-    about_c1_tag: "사람과 커뮤니티",
-    about_c1_h3: "멀리 있어도, 가깝게",
-    about_c1_p: "우리 앱은 흩어져 있던 사람과 커뮤니티를 더 가깝고 자연스럽게 이어줍니다.",
-    about_c2_tag: "직접 만들고 운영",
-    about_c2_h3: "기획부터 운영까지",
-    about_c2_p: "외주가 아니라 우리 서비스입니다. 직접 기획하고 개발하고, 출시 후에도 끝까지 운영합니다.",
-    about_c3_tag: "글로벌 연결",
-    about_c3_h3: "국경을 넘어 더 멀리",
-    about_c3_p: "한국·일본·베트남을 비롯한 글로벌 사용자를 다국어로 자연스럽게 연결합니다.",
-
-    services_eyebrow: "우리가 만드는 것",
-    services_h2: "사람을 잇는 H2H 앱 서비스.",
-    services_intro: "AppFactory가 직접 만들고 운영하는 앱 서비스 영역입니다. 모두 사람과 사람의 연결을 목표로 합니다.",
-    svc1_h3: "H2H Matching Apps",
-    svc1_p: "사람과 사람의 목적, 관심사, 상황을 연결하는 매칭 앱 서비스를 만듭니다.",
-    svc2_h3: "Community Apps",
-    svc2_p: "관심사를 중심으로 사람들이 모이고 머무는 커뮤니티 앱 서비스를 만듭니다.",
-    svc3_h3: "Communication Services",
-    svc3_p: "사람과 사람이 더 쉽고 따뜻하게 소통하도록 돕는 커뮤니케이션 서비스를 만듭니다.",
-    svc4_h3: "Global Connection Platforms",
-    svc4_p: "언어와 국경을 넘어 사람을 연결하는 글로벌 연결 플랫폼을 만듭니다.",
-
-    h2h_eyebrow: "H2H 철학",
-    h2h_h2: "기술은 사람을 대체하지 않습니다.",
-    h2h_p:
-      "H2H는 Human to Human, 사람과 사람입니다. 우리는 기술이 사람을 대신하는 것이 아니라, 사람 사이의 거리를 좁히기 위해 존재한다고 믿습니다. 좋은 앱은 기능이 많은 앱이 아니라 누구나 쉽게 이해하고 쓰는 서비스입니다. 그래서 AppFactory는 우리가 만드는 모든 앱 서비스의 한가운데에 늘 사람을 둡니다.",
-
-    projects_eyebrow: "H2H 서비스 영역",
-    projects_h2: "우리가 만드는 H2H 서비스.",
-    cat1_h3: "Matching Services",
-    cat1_p: "목적과 관심사로 사람을 잇는 매칭 서비스.",
-    cat2_h3: "Community Services",
-    cat2_p: "같은 관심사로 모이는 커뮤니티 서비스.",
-    cat3_h3: "Local Connection Services",
-    cat3_p: "지역 안에서 사람과 사람을 잇는 로컬 연결 서비스.",
-    cat4_h3: "Global Communication Services",
-    cat4_p: "언어를 넘어 소통하게 하는 글로벌 커뮤니케이션 서비스.",
-    cat5_h3: "AI-assisted Human Services",
-    cat5_p: "AI가 사람의 연결을 더 빠르고 자연스럽게 돕는 서비스.",
-
-    cta_eyebrow: "문의",
-    cta_h2: "AppFactory와 이야기하기.",
-    cta_lead: "AppFactory와 관련된 문의는 이메일로 연락해 주세요. 회사·파트너십·서비스·정책 문의를 환영합니다.",
-    cta_button: "이메일로 문의하기",
-
-    footer_copy: "AppFactory는 사람과 사람을 이어주는 H2H 앱 서비스를 만듭니다.",
-    footer_privacy: "개인정보처리방침",
-    footer_terms: "이용약관",
-    footer_contact: "문의",
-    footer_delete: "계정 삭제",
-    footer_rights: "© 2026 AppFactory. 모든 권리 보유.",
-  },
-
-  en: {
-    skip: "Skip to content",
-    nav_about: "About",
-    nav_services: "Services",
-    nav_projects: "H2H Services",
-    nav_contact: "Contact",
-    nav_cta: "Contact",
-
-    hero_eyebrow: "H2H App Service",
-    hero_lead1: "We create H2H apps that connect people.",
-    hero_lead2: "We design, build, and operate our own H2H apps.",
-    hero_primary: "Explore AppFactory",
-    hero_secondary: "View H2H Philosophy",
-    signal_languages: "Languages",
-    signal_philosophy: "Philosophy",
-    signal_connections: "Connections",
-
-    about_eyebrow: "About",
-    about_h2: "We build and run our own H2H app services.",
-    about_intro:
-      "AppFactory plans, develops, and operates its own H2H app services. We don’t deliver apps to others — we build services that connect people through our own apps. We grow around relationships, matching, community, communication, and global connection, always keeping people at the center.",
-    about_c1_tag: "People & Communities",
-    about_c1_h3: "Closer, whatever the distance",
-    about_c1_p: "Our apps bring scattered people and communities closer, more naturally.",
-    about_c2_tag: "Built & Operated",
-    about_c2_h3: "From idea to operation",
-    about_c2_p: "These are our own services, not client work — we plan, build, and keep operating them after launch.",
-    about_c3_tag: "Global Connection",
-    about_c3_h3: "Further, across borders",
-    about_c3_p: "We connect users across Korea, Japan, Vietnam, and beyond — naturally, in their own languages.",
-
-    services_eyebrow: "What We Create",
-    services_h2: "H2H app services that connect people.",
-    services_intro: "These are the app services AppFactory builds and runs itself — all aimed at connecting people.",
-    svc1_h3: "H2H Matching Apps",
-    svc1_p: "We create matching app services that connect people by purpose, interests, and context.",
-    svc2_h3: "Community Apps",
-    svc2_p: "We build community app services where people gather and stay around shared interests.",
-    svc3_h3: "Communication Services",
-    svc3_p: "We make communication services that help people connect more easily and warmly.",
-    svc4_h3: "Global Connection Platforms",
-    svc4_p: "We create global connection platforms that link people across languages and borders.",
-
-    h2h_eyebrow: "H2H Philosophy",
-    h2h_h2: "Technology should never replace people.",
-    h2h_p:
-      "H2H means Human to Human. We believe technology exists not to replace people, but to close the distance between them. A great app isn’t the one with the most features — it’s the one anyone can understand and use. That’s why AppFactory keeps people at the center of every app service we create.",
-
-    projects_eyebrow: "Our H2H Services",
-    projects_h2: "H2H Services We Build.",
-    cat1_h3: "Matching Services",
-    cat1_p: "Matching services that connect people by purpose and interest.",
-    cat2_h3: "Community Services",
-    cat2_p: "Community services where shared interests bring people together.",
-    cat3_h3: "Local Connection Services",
-    cat3_p: "Local connection services that link people within a place.",
-    cat4_h3: "Global Communication Services",
-    cat4_p: "Global communication services that let people talk across languages.",
-    cat5_h3: "AI-assisted Human Services",
-    cat5_p: "Services where AI helps human connection feel faster and more natural.",
-
-    cta_eyebrow: "Get in touch",
-    cta_h2: "Let’s talk with AppFactory.",
-    cta_lead: "For AppFactory, partnership, service, or policy inquiries, please contact us by email.",
-    cta_button: "Email us",
-
-    footer_copy: "AppFactory creates H2H app services that connect people.",
-    footer_privacy: "Privacy Policy",
-    footer_terms: "Terms of Service",
-    footer_contact: "Contact",
-    footer_delete: "Delete Account",
-    footer_rights: "© 2026 AppFactory. All rights reserved.",
-  },
-
-  ja: {
-    skip: "本文へスキップ",
-    nav_about: "会社概要",
-    nav_services: "サービス",
-    nav_projects: "H2Hサービス",
-    nav_contact: "お問い合わせ",
-    nav_cta: "お問い合わせ",
-
-    hero_eyebrow: "H2H アプリサービス",
-    hero_lead1: "人と人をつなぐH2Hアプリサービスをつくります。",
-    hero_lead2: "H2Hアプリを、自分たちで企画し、開発し、運営します。",
-    hero_primary: "AppFactoryを見る",
-    hero_secondary: "H2H理念を見る",
-    signal_languages: "対応言語",
-    signal_philosophy: "哲学",
-    signal_connections: "つながり",
-
-    about_eyebrow: "会社概要",
-    about_h2: "私たちはH2Hアプリサービスを自分たちでつくります。",
-    about_intro:
-      "AppFactoryはH2Hアプリサービスを自社で企画・開発・運営します。私たちはアプリを納品する会社ではなく、アプリを通じて人と人をつなぐサービスをつくる会社です。関係・マッチング・コミュニティ・コミュニケーション・グローバルなつながりを軸にサービスを広げ、その中心には常に人がいます。",
-    about_c1_tag: "人とコミュニティ",
-    about_c1_h3: "離れていても、近くに",
-    about_c1_p: "私たちのアプリは、離れていた人やコミュニティをより身近に、自然につなぎます。",
-    about_c2_tag: "自社で開発・運営",
-    about_c2_h3: "企画から運営まで",
-    about_c2_p: "受託ではなく自社サービスです。自分たちで企画・開発し、公開後も運営し続けます。",
-    about_c3_tag: "グローバルなつながり",
-    about_c3_h3: "国境を越えて、さらに遠くへ",
-    about_c3_p: "韓国・日本・ベトナムをはじめ、世界中のユーザーを多言語で自然につなぎます。",
-
-    services_eyebrow: "私たちがつくるもの",
-    services_h2: "人をつなぐH2Hアプリサービス。",
-    services_intro: "AppFactoryが自社で開発・運営するアプリサービスの領域です。すべて、人と人をつなぐことを目指しています。",
-    svc1_h3: "H2H Matching Apps",
-    svc1_p: "目的・関心・状況に合わせて人と人をつなぐマッチングアプリサービスをつくります。",
-    svc2_h3: "Community Apps",
-    svc2_p: "関心を軸に人が集い、留まるコミュニティアプリサービスをつくります。",
-    svc3_h3: "Communication Services",
-    svc3_p: "人と人がより手軽に、温かく交流できるコミュニケーションサービスをつくります。",
-    svc4_h3: "Global Connection Platforms",
-    svc4_p: "言語や国境を越えて人をつなぐグローバル連結プラットフォームをつくります。",
-
-    h2h_eyebrow: "H2H フィロソフィー",
-    h2h_h2: "テクノロジーは、人の代わりにはならない。",
-    h2h_p:
-      "H2HはHuman to Human、人と人です。私たちは、テクノロジーが人の代わりになるためではなく、人と人との距離を縮めるために存在すると信じています。優れたアプリとは機能が多いアプリではなく、誰もが直感的に理解し、使えるサービスのことです。だからこそAppFactoryは、自分たちがつくるすべてのアプリサービスの中心に、いつも人を置きます。",
-
-    projects_eyebrow: "H2Hサービス領域",
-    projects_h2: "私たちがつくるH2Hサービス。",
-    cat1_h3: "Matching Services",
-    cat1_p: "目的や関心で人をつなぐマッチングサービス。",
-    cat2_h3: "Community Services",
-    cat2_p: "同じ関心で集うコミュニティサービス。",
-    cat3_h3: "Local Connection Services",
-    cat3_p: "地域の中で人と人をつなぐローカル連結サービス。",
-    cat4_h3: "Global Communication Services",
-    cat4_p: "言語を越えて対話できるグローバルコミュニケーションサービス。",
-    cat5_h3: "AI-assisted Human Services",
-    cat5_p: "AIが人のつながりをより速く自然に支えるサービス。",
-
-    cta_eyebrow: "お問い合わせ",
-    cta_h2: "AppFactoryと話す。",
-    cta_lead: "AppFactory、パートナーシップ、サービス、ポリシーに関するお問い合わせはメールでご連絡ください。",
-    cta_button: "メールで問い合わせる",
-
-    footer_copy: "AppFactoryは人と人をつなぐH2Hアプリサービスをつくります。",
-    footer_privacy: "プライバシーポリシー",
-    footer_terms: "利用規約",
-    footer_contact: "お問い合わせ",
-    footer_delete: "アカウント削除",
-    footer_rights: "© 2026 AppFactory. 無断転載を禁じます。",
-  },
-
-  vi: {
-    skip: "Chuyển đến nội dung",
-    nav_about: "Giới thiệu",
-    nav_services: "Dịch vụ",
-    nav_projects: "Dịch vụ H2H",
-    nav_contact: "Liên hệ",
-    nav_cta: "Liên hệ",
-
-    hero_eyebrow: "Dịch vụ ứng dụng H2H",
-    hero_lead1: "Chúng tôi tạo ra các dịch vụ ứng dụng H2H kết nối con người với con người.",
-    hero_lead2: "Chúng tôi tự lên ý tưởng, phát triển và vận hành các ứng dụng H2H của mình.",
-    hero_primary: "Khám phá AppFactory",
-    hero_secondary: "Xem triết lý H2H",
-    signal_languages: "Ngôn ngữ",
-    signal_philosophy: "Triết lý",
-    signal_connections: "Kết nối",
-
-    about_eyebrow: "Giới thiệu",
-    about_h2: "Chúng tôi tự xây dựng và vận hành các dịch vụ ứng dụng H2H.",
-    about_intro:
-      "AppFactory tự lên ý tưởng, phát triển và vận hành các dịch vụ ứng dụng H2H của mình. Chúng tôi không bàn giao ứng dụng cho bên khác — chúng tôi tạo ra dịch vụ kết nối con người thông qua chính ứng dụng của mình. Chúng tôi mở rộng quanh mối quan hệ, ghép nối, cộng đồng, giao tiếp và kết nối toàn cầu, luôn đặt con người ở trung tâm.",
-    about_c1_tag: "Con người & Cộng đồng",
-    about_c1_h3: "Gần nhau, dù ở bất cứ đâu",
-    about_c1_p: "Ứng dụng của chúng tôi đưa những con người và cộng đồng rời rạc đến gần nhau hơn, tự nhiên hơn.",
-    about_c2_tag: "Tự làm & Vận hành",
-    about_c2_h3: "Từ ý tưởng đến vận hành",
-    about_c2_p: "Đây là dịch vụ của chính chúng tôi, không phải việc gia công — chúng tôi lên ý tưởng, phát triển và tiếp tục vận hành sau khi ra mắt.",
-    about_c3_tag: "Kết nối toàn cầu",
-    about_c3_h3: "Vươn xa, vượt biên giới",
-    about_c3_p: "Chúng tôi kết nối người dùng tại Hàn Quốc, Nhật Bản, Việt Nam và hơn thế — tự nhiên, bằng chính ngôn ngữ của họ.",
-
-    services_eyebrow: "Những gì chúng tôi tạo ra",
-    services_h2: "Dịch vụ ứng dụng H2H kết nối con người.",
-    services_intro: "Đây là các lĩnh vực dịch vụ ứng dụng mà AppFactory tự xây dựng và vận hành — tất cả đều hướng đến kết nối con người.",
-    svc1_h3: "H2H Matching Apps",
-    svc1_p: "Chúng tôi tạo ra các dịch vụ ứng dụng kết nối con người theo mục tiêu, sở thích và ngữ cảnh.",
-    svc2_h3: "Community Apps",
-    svc2_p: "Chúng tôi xây dựng các dịch vụ ứng dụng cộng đồng nơi mọi người tụ họp quanh sở thích chung.",
-    svc3_h3: "Communication Services",
-    svc3_p: "Chúng tôi tạo ra các dịch vụ giao tiếp giúp con người kết nối dễ dàng và ấm áp hơn.",
-    svc4_h3: "Global Connection Platforms",
-    svc4_p: "Chúng tôi tạo ra các nền tảng kết nối toàn cầu, liên kết con người vượt ngôn ngữ và biên giới.",
-
-    h2h_eyebrow: "Triết lý H2H",
-    h2h_h2: "Công nghệ không bao giờ thay thế con người.",
-    h2h_p:
-      "H2H nghĩa là Human to Human — con người với con người. Chúng tôi tin công nghệ tồn tại không phải để thay thế con người, mà để rút ngắn khoảng cách giữa họ. Một ứng dụng tốt không phải là ứng dụng nhiều tính năng nhất, mà là ứng dụng ai cũng có thể hiểu và sử dụng. Vì thế, AppFactory luôn đặt con người ở trung tâm của mọi dịch vụ ứng dụng mà chúng tôi tạo ra.",
-
-    projects_eyebrow: "Lĩnh vực dịch vụ H2H",
-    projects_h2: "Các dịch vụ H2H chúng tôi xây dựng.",
-    cat1_h3: "Matching Services",
-    cat1_p: "Dịch vụ ghép nối con người theo mục tiêu và sở thích.",
-    cat2_h3: "Community Services",
-    cat2_p: "Dịch vụ cộng đồng nơi sở thích chung gắn kết mọi người.",
-    cat3_h3: "Local Connection Services",
-    cat3_p: "Dịch vụ kết nối địa phương, gắn kết con người trong cùng khu vực.",
-    cat4_h3: "Global Communication Services",
-    cat4_p: "Dịch vụ giao tiếp toàn cầu giúp mọi người trò chuyện vượt ngôn ngữ.",
-    cat5_h3: "AI-assisted Human Services",
-    cat5_p: "Dịch vụ nơi AI giúp kết nối con người nhanh và tự nhiên hơn.",
-
-    cta_eyebrow: "Liên hệ",
-    cta_h2: "Trò chuyện cùng AppFactory.",
-    cta_lead: "Vui lòng liên hệ qua email nếu bạn có câu hỏi về AppFactory, hợp tác, dịch vụ hoặc chính sách.",
-    cta_button: "Gửi email cho chúng tôi",
-
-    footer_copy: "AppFactory tạo ra các dịch vụ ứng dụng H2H kết nối con người với con người.",
-    footer_privacy: "Chính sách bảo mật",
-    footer_terms: "Điều khoản dịch vụ",
-    footer_contact: "Liên hệ",
-    footer_delete: "Xóa tài khoản",
-    footer_rights: "© 2026 AppFactory. Bảo lưu mọi quyền.",
-  },
-};
-
-(function initLanguage() {
-  const STORAGE_KEY = "appfactory-lang";
-  const supported = Object.keys(translations); // ["ko", "en", "ja", "vi"]
-  const buttons = Array.from(document.querySelectorAll("[data-set-lang]"));
-  const nodes = Array.from(document.querySelectorAll("[data-i18n]"));
-
-  function readStored() {
-    try {
-      return window.localStorage.getItem(STORAGE_KEY);
-    } catch (error) {
-      return null;
-    }
-  }
-
-  function writeStored(lang) {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, lang);
-    } catch (error) {
-      // Storage may be unavailable (private mode); language still applies for the session.
-    }
-  }
-
-  function setLanguage(lang) {
-    if (!supported.includes(lang)) {
-      return;
-    }
-
-    const dict = translations[lang];
-
-    // Swap every translatable node without reloading the page.
-    nodes.forEach((node) => {
-      const value = dict[node.dataset.i18n];
-      if (typeof value === "string") {
-        node.textContent = value;
-      }
+    containers.forEach(function (container) {
+      container.innerHTML = '';
+      SUPPORTED.forEach(function (lang) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'lang-btn';
+        btn.setAttribute('data-lang', lang);
+        btn.setAttribute('aria-label', labels[lang]);
+        btn.setAttribute('title', labels[lang]);
+        btn.innerHTML = FLAGS[lang];
+        btn.addEventListener('click', function () { setLang(lang); });
+        container.appendChild(btn);
+      });
     });
-
-    document.documentElement.lang = lang;
-    document.body.dataset.lang = lang;
-
-    buttons.forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.setLang === lang));
-    });
-
-    writeStored(lang);
   }
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => setLanguage(button.dataset.setLang));
+  /* ---- Mobile nav toggle ------------------------------------------------- */
+  function initNav() {
+    var toggle = document.querySelector('.nav-toggle');
+    var menu = document.querySelector('.nav-links');
+    if (!toggle || !menu) return;
+    toggle.addEventListener('click', function () {
+      var open = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* ---- Footer year ------------------------------------------------------- */
+  function initYear() {
+    var el = document.querySelector('[data-year]');
+    if (el) {
+      var y = new Date().getFullYear();
+      el.textContent = String(y);
+    }
+  }
+
+  /* ---- Shared site translations (all pages) ------------------------------ */
+  register({
+    ko: {
+      meta: {
+        home: 'AppFactory — 사람과 사람을 잇는 H2H 앱'
+      },
+      nav: {
+        about: '소개', philosophy: 'H2H 철학', services: '서비스',
+        apps: '우리의 앱', policies: '정책', contact: '문의'
+      },
+      hero: {
+        eyebrow: 'Human to Human',
+        title: '사람과 사람을 잇는 앱을 만듭니다',
+        subtitle: 'AppFactory는 H2H 앱을 직접 만들고 운영하는 서비스 회사입니다. 우리는 기술이 아니라 사람의 연결을 설계합니다.',
+        ctaPrimary: 'H2H 철학 보기',
+        ctaSecondary: '우리의 앱'
+      },
+      about: {
+        tag: 'About AppFactory',
+        title: '우리는 서비스를 만드는 회사입니다',
+        body: 'AppFactory는 외주 개발 회사가 아닙니다. 우리는 다른 회사의 앱을 대신 만들지 않습니다. 우리는 우리만의 H2H 앱을 직접 기획하고, 만들고, 운영합니다. 모든 제품은 한 가지 질문에서 시작합니다 — 이 앱이 사람과 사람을 어떻게 더 가깝게 만들 수 있는가.',
+        c1Title: '직접 만들고 운영합니다',
+        c1Body: '아이디어부터 출시, 운영까지 우리 손으로. 우리는 우리 서비스의 주인입니다.',
+        c2Title: '사람이 먼저입니다',
+        c2Body: '기능보다 사람을 먼저 생각합니다. 모든 결정의 기준은 사람의 연결입니다.',
+        c3Title: '글로벌하게 연결합니다',
+        c3Body: '언어와 국경을 넘어 사람과 사람을 잇는 경험을 설계합니다.'
+      },
+      philosophy: {
+        tag: 'H2H Philosophy',
+        title: 'H2H — Human to Human',
+        lead: '우리는 앱을 기능의 묶음이 아니라 사람 사이의 다리로 봅니다.',
+        body: 'H2H는 AppFactory가 만드는 모든 것의 중심에 있는 원칙입니다. 화면 너머에는 언제나 사람이 있습니다. 그래서 우리는 화면이 아니라 그 사람을 위해 만듭니다. 좋은 앱은 사람을 화면에 붙잡아 두지 않습니다. 좋은 앱은 사람을 다른 사람에게 데려다줍니다.',
+        p1Title: '사람 사이의 거리를 좁힌다',
+        p1Body: '우리의 모든 앱은 두 사람 사이의 거리를 한 걸음 좁히는 것을 목표로 합니다.',
+        p2Title: '연결은 진심이어야 한다',
+        p2Body: '숫자를 위한 연결이 아니라, 의미 있는 연결을 만듭니다.',
+        p3Title: '기술은 보이지 않게',
+        p3Body: '기술은 도구일 뿐입니다. 사용자에게 남는 것은 사람과의 경험입니다.'
+      },
+      services: {
+        tag: 'Our H2H Services',
+        title: '우리가 설계하는 연결',
+        lead: 'AppFactory의 서비스는 모두 사람과 사람의 연결이라는 하나의 방향을 향합니다.',
+        s1Title: '연결을 위한 디자인',
+        s1Body: '사람들이 더 쉽게, 더 따뜻하게 서로에게 닿을 수 있는 경험을 디자인합니다.',
+        s2Title: '신뢰와 안전',
+        s2Body: '사람 사이의 연결은 신뢰 위에서만 의미가 있습니다. 안전을 기본으로 설계합니다.',
+        s3Title: '커뮤니티',
+        s3Body: '한 번의 만남이 아니라 계속 이어지는 관계가 자라는 공간을 만듭니다.',
+        s4Title: '경계 없는 연결',
+        s4Body: '다국어와 글로벌 경험으로 어디에 있든 사람을 잇습니다.'
+      },
+      apps: {
+        tag: 'Apps We Create',
+        title: 'AppFactory가 만드는 앱',
+        lead: 'AppFactory는 H2H 철학을 담은 자체 앱을 만들고 운영합니다. 새로운 연결의 방식을 계속해서 탐구합니다.',
+        a1Title: '함께 잇기',
+        a1Body: '비슷한 관심과 마음을 가진 사람들이 자연스럽게 만나고 이어지는 연결 경험.',
+        a2Title: '함께 나누기',
+        a2Body: '일상과 순간을 진심으로 나누며 관계가 깊어지는 공유 경험.',
+        a3Title: '함께 성장하기',
+        a3Body: '서로 돕고 배우며 함께 나아가는 사람 중심의 커뮤니티 경험.',
+        note: '구체적인 앱 라인업은 출시 시점에 순차적으로 공개됩니다.'
+      },
+      policies: {
+        tag: 'Policies',
+        title: '정책 안내',
+        lead: 'AppFactory와 우리 앱에 적용되는 정책입니다. 앱스토어 제출용 정책 링크로도 사용됩니다.',
+        privacy: '개인정보 처리방침',
+        privacyDesc: '우리 앱이 정보를 어떻게 다루는지 안내합니다.',
+        terms: '이용약관',
+        termsDesc: '서비스 이용에 관한 약관입니다.',
+        del: '계정 삭제 요청',
+        delDesc: '앱 계정과 데이터 삭제를 요청하는 방법입니다.',
+        open: '열기'
+      },
+      contact: {
+        tag: 'Contact',
+        title: '문의하기',
+        lead: 'AppFactory에 대한 문의는 이메일로 보내주세요. 별도의 회원가입이나 문의 폼은 없습니다.',
+        emailLabel: '이메일',
+        emailBtn: '이메일 보내기',
+        note: '이 홈페이지는 회원가입, 로그인, 결제, 문의 폼을 제공하지 않는 정적 회사 소개 사이트입니다.'
+      },
+      footer: {
+        tagline: '사람과 사람을 잇는 H2H 앱 서비스 회사',
+        nav: '둘러보기',
+        legal: '정책',
+        contact: '문의',
+        rights: '모든 권리 보유.'
+      },
+      backHome: '← 홈으로'
+    },
+    en: {
+      meta: { home: 'AppFactory — H2H apps that connect people' },
+      nav: {
+        about: 'About', philosophy: 'H2H Philosophy', services: 'Services',
+        apps: 'Our Apps', policies: 'Policies', contact: 'Contact'
+      },
+      hero: {
+        eyebrow: 'Human to Human',
+        title: 'We build apps that connect people',
+        subtitle: 'AppFactory builds and runs its own H2H apps. We don’t engineer features — we design human connection.',
+        ctaPrimary: 'Our Philosophy',
+        ctaSecondary: 'Our Apps'
+      },
+      about: {
+        tag: 'About AppFactory',
+        title: 'We are a service company',
+        body: 'AppFactory is not a development agency. We don’t build apps for other companies. We design, build, and operate our own H2H apps. Every product starts with one question — how can this app bring people closer together?',
+        c1Title: 'We build and operate',
+        c1Body: 'From idea to launch to daily operation, by our own hands. We own what we make.',
+        c2Title: 'People come first',
+        c2Body: 'We think about people before features. Human connection is the measure of every decision.',
+        c3Title: 'Connection, globally',
+        c3Body: 'We design experiences that link people across languages and borders.'
+      },
+      philosophy: {
+        tag: 'H2H Philosophy',
+        title: 'H2H — Human to Human',
+        lead: 'We see an app not as a bundle of features, but as a bridge between people.',
+        body: 'H2H is the principle at the heart of everything AppFactory makes. Behind every screen there is always a person. So we build for that person, not for the screen. A good app does not keep people on the screen — it carries them to one another.',
+        p1Title: 'Close the distance',
+        p1Body: 'Every app we make aims to shorten the distance between two people by one step.',
+        p2Title: 'Connection with meaning',
+        p2Body: 'We create meaningful connection — not connection for the sake of numbers.',
+        p3Title: 'Invisible technology',
+        p3Body: 'Technology is only a tool. What stays with the user is the experience with another human.'
+      },
+      services: {
+        tag: 'Our H2H Services',
+        title: 'The connection we design',
+        lead: 'Every AppFactory service points in one direction — connecting human to human.',
+        s1Title: 'Designed for connection',
+        s1Body: 'We design experiences that let people reach each other more easily and more warmly.',
+        s2Title: 'Trust & safety',
+        s2Body: 'Connection between people only means something on a foundation of trust. Safety is built in.',
+        s3Title: 'Community',
+        s3Body: 'We build spaces where relationships keep growing — not a single encounter.',
+        s4Title: 'Connection without borders',
+        s4Body: 'Multilingual, global experiences that connect people wherever they are.'
+      },
+      apps: {
+        tag: 'Apps We Create',
+        title: 'The apps AppFactory makes',
+        lead: 'AppFactory builds and operates its own apps grounded in the H2H philosophy. We keep exploring new ways for people to connect.',
+        a1Title: 'Connect together',
+        a1Body: 'A connection experience where people of similar hearts and interests naturally meet.',
+        a2Title: 'Share together',
+        a2Body: 'A sharing experience where relationships deepen through honest everyday moments.',
+        a3Title: 'Grow together',
+        a3Body: 'A people-first community where we help, learn, and move forward together.',
+        note: 'Our specific app lineup will be revealed step by step as each launches.'
+      },
+      policies: {
+        tag: 'Policies',
+        title: 'Policies',
+        lead: 'Policies that apply to AppFactory and our apps. They also serve as policy links for app store submission.',
+        privacy: 'Privacy Policy',
+        privacyDesc: 'How our apps handle information.',
+        terms: 'Terms of Service',
+        termsDesc: 'The terms for using our services.',
+        del: 'Delete Account Request',
+        delDesc: 'How to request deletion of your app account and data.',
+        open: 'Open'
+      },
+      contact: {
+        tag: 'Contact',
+        title: 'Get in touch',
+        lead: 'For any inquiry about AppFactory, please email us. There is no sign-up and no contact form.',
+        emailLabel: 'Email',
+        emailBtn: 'Send an email',
+        note: 'This homepage is a static company site. It has no sign-up, login, payment, or contact form.'
+      },
+      footer: {
+        tagline: 'An H2H app service company connecting people to people',
+        nav: 'Explore',
+        legal: 'Policies',
+        contact: 'Contact',
+        rights: 'All rights reserved.'
+      },
+      backHome: '← Back to home'
+    },
+    ja: {
+      meta: { home: 'AppFactory — 人と人をつなぐH2Hアプリ' },
+      nav: {
+        about: '会社紹介', philosophy: 'H2H哲学', services: 'サービス',
+        apps: '私たちのアプリ', policies: 'ポリシー', contact: 'お問い合わせ'
+      },
+      hero: {
+        eyebrow: 'Human to Human',
+        title: '人と人をつなぐアプリをつくる',
+        subtitle: 'AppFactoryは自社のH2Hアプリを自ら開発・運営するサービス企業です。私たちは機能ではなく、人のつながりを設計します。',
+        ctaPrimary: 'H2H哲学を見る',
+        ctaSecondary: '私たちのアプリ'
+      },
+      about: {
+        tag: 'About AppFactory',
+        title: '私たちはサービス企業です',
+        body: 'AppFactoryは受託開発会社ではありません。他社のアプリを代わりに作ることはしません。私たちは自社のH2Hアプリを自ら企画し、つくり、運営します。すべての製品はひとつの問いから始まります — このアプリは、人と人をどれだけ近づけられるか。',
+        c1Title: '自らつくり、運営する',
+        c1Body: 'アイデアからリリース、運営まで自分たちの手で。私たちは自社サービスの主体です。',
+        c2Title: '人が最優先',
+        c2Body: '機能より先に人を考えます。すべての判断基準は人のつながりです。',
+        c3Title: 'グローバルにつなぐ',
+        c3Body: '言語や国境を越えて、人と人をつなぐ体験を設計します。'
+      },
+      philosophy: {
+        tag: 'H2H Philosophy',
+        title: 'H2H — Human to Human',
+        lead: '私たちはアプリを機能の集まりではなく、人と人の架け橋と考えます。',
+        body: 'H2HはAppFactoryがつくるすべての中心にある原則です。画面の向こうには、いつも人がいます。だから私たちは画面ではなく、その人のためにつくります。良いアプリは人を画面に留めません。良いアプリは人を別の人へと運びます。',
+        p1Title: '人との距離を縮める',
+        p1Body: '私たちのすべてのアプリは、二人の距離を一歩縮めることを目指します。',
+        p2Title: 'つながりには意味を',
+        p2Body: '数字のためのつながりではなく、意味のあるつながりをつくります。',
+        p3Title: '技術は見えないように',
+        p3Body: '技術は道具にすぎません。利用者に残るのは、人とのつながりの体験です。'
+      },
+      services: {
+        tag: 'Our H2H Services',
+        title: '私たちが設計するつながり',
+        lead: 'AppFactoryのサービスはすべて、人と人をつなぐというひとつの方向を向いています。',
+        s1Title: 'つながりのためのデザイン',
+        s1Body: '人々がより簡単に、より温かく互いに届く体験をデザインします。',
+        s2Title: '信頼と安全',
+        s2Body: '人と人のつながりは信頼の上でこそ意味を持ちます。安全を前提に設計します。',
+        s3Title: 'コミュニティ',
+        s3Body: '一度の出会いではなく、続いていく関係が育つ場をつくります。',
+        s4Title: '境界のないつながり',
+        s4Body: '多言語とグローバルな体験で、どこにいても人をつなぎます。'
+      },
+      apps: {
+        tag: 'Apps We Create',
+        title: 'AppFactoryがつくるアプリ',
+        lead: 'AppFactoryはH2H哲学を込めた自社アプリをつくり、運営します。新しいつながりの形を探し続けます。',
+        a1Title: 'ともにつながる',
+        a1Body: '近い関心や思いを持つ人々が自然に出会い、つながる体験。',
+        a2Title: 'ともに分かち合う',
+        a2Body: '日々の瞬間を誠実に分かち合い、関係が深まる共有体験。',
+        a3Title: 'ともに成長する',
+        a3Body: '助け合い学び合いながら共に進む、人中心のコミュニティ体験。',
+        note: '具体的なアプリのラインナップは、リリースに合わせて順次公開します。'
+      },
+      policies: {
+        tag: 'Policies',
+        title: 'ポリシー',
+        lead: 'AppFactoryと私たちのアプリに適用されるポリシーです。アプリストア提出用のポリシーリンクとしても使えます。',
+        privacy: 'プライバシーポリシー',
+        privacyDesc: '私たちのアプリが情報をどう扱うかをご案内します。',
+        terms: '利用規約',
+        termsDesc: 'サービス利用に関する規約です。',
+        del: 'アカウント削除リクエスト',
+        delDesc: 'アプリのアカウントとデータの削除を依頼する方法です。',
+        open: '開く'
+      },
+      contact: {
+        tag: 'Contact',
+        title: 'お問い合わせ',
+        lead: 'AppFactoryへのお問い合わせはメールでお願いします。会員登録やお問い合わせフォームはありません。',
+        emailLabel: 'メール',
+        emailBtn: 'メールを送る',
+        note: 'このホームページは静的な会社紹介サイトです。会員登録・ログイン・決済・お問い合わせフォームはありません。'
+      },
+      footer: {
+        tagline: '人と人をつなぐH2Hアプリサービス企業',
+        nav: '見る',
+        legal: 'ポリシー',
+        contact: 'お問い合わせ',
+        rights: 'All rights reserved.'
+      },
+      backHome: '← ホームへ'
+    },
+    vi: {
+      meta: { home: 'AppFactory — Ứng dụng H2H kết nối con người' },
+      nav: {
+        about: 'Giới thiệu', philosophy: 'Triết lý H2H', services: 'Dịch vụ',
+        apps: 'Ứng dụng', policies: 'Chính sách', contact: 'Liên hệ'
+      },
+      hero: {
+        eyebrow: 'Human to Human',
+        title: 'Chúng tôi tạo ứng dụng kết nối con người',
+        subtitle: 'AppFactory tự xây dựng và vận hành các ứng dụng H2H của mình. Chúng tôi không thiết kế tính năng — chúng tôi thiết kế sự kết nối giữa con người.',
+        ctaPrimary: 'Triết lý của chúng tôi',
+        ctaSecondary: 'Ứng dụng của chúng tôi'
+      },
+      about: {
+        tag: 'About AppFactory',
+        title: 'Chúng tôi là một công ty dịch vụ',
+        body: 'AppFactory không phải là công ty gia công phần mềm. Chúng tôi không làm ứng dụng thay cho công ty khác. Chúng tôi tự lên ý tưởng, xây dựng và vận hành các ứng dụng H2H của riêng mình. Mọi sản phẩm bắt đầu từ một câu hỏi — ứng dụng này có thể đưa con người lại gần nhau hơn như thế nào?',
+        c1Title: 'Tự xây dựng và vận hành',
+        c1Body: 'Từ ý tưởng đến ra mắt và vận hành, bằng chính tay chúng tôi. Chúng tôi làm chủ sản phẩm của mình.',
+        c2Title: 'Con người là trên hết',
+        c2Body: 'Chúng tôi nghĩ về con người trước tính năng. Kết nối con người là thước đo của mọi quyết định.',
+        c3Title: 'Kết nối toàn cầu',
+        c3Body: 'Chúng tôi thiết kế trải nghiệm kết nối con người vượt ngôn ngữ và biên giới.'
+      },
+      philosophy: {
+        tag: 'H2H Philosophy',
+        title: 'H2H — Human to Human',
+        lead: 'Chúng tôi xem ứng dụng không phải là tập hợp tính năng, mà là cầu nối giữa con người.',
+        body: 'H2H là nguyên tắc nằm ở trung tâm của mọi thứ AppFactory tạo ra. Đằng sau mỗi màn hình luôn là một con người. Vì vậy chúng tôi làm cho con người đó, không phải cho màn hình. Một ứng dụng tốt không giữ người dùng lại trên màn hình — nó đưa họ đến với nhau.',
+        p1Title: 'Rút ngắn khoảng cách',
+        p1Body: 'Mọi ứng dụng của chúng tôi đều hướng đến rút ngắn khoảng cách giữa hai con người thêm một bước.',
+        p2Title: 'Kết nối có ý nghĩa',
+        p2Body: 'Chúng tôi tạo ra kết nối có ý nghĩa — không phải kết nối vì con số.',
+        p3Title: 'Công nghệ vô hình',
+        p3Body: 'Công nghệ chỉ là công cụ. Điều đọng lại với người dùng là trải nghiệm với con người khác.'
+      },
+      services: {
+        tag: 'Our H2H Services',
+        title: 'Sự kết nối chúng tôi thiết kế',
+        lead: 'Mọi dịch vụ của AppFactory đều hướng về một phía — kết nối con người với con người.',
+        s1Title: 'Thiết kế để kết nối',
+        s1Body: 'Chúng tôi thiết kế trải nghiệm để mọi người chạm đến nhau dễ dàng và ấm áp hơn.',
+        s2Title: 'Tin cậy & an toàn',
+        s2Body: 'Kết nối giữa con người chỉ có ý nghĩa trên nền tảng niềm tin. An toàn được thiết kế sẵn.',
+        s3Title: 'Cộng đồng',
+        s3Body: 'Chúng tôi tạo không gian nơi các mối quan hệ tiếp tục lớn lên — không chỉ một lần gặp.',
+        s4Title: 'Kết nối không biên giới',
+        s4Body: 'Trải nghiệm đa ngôn ngữ, toàn cầu, kết nối con người ở bất cứ đâu.'
+      },
+      apps: {
+        tag: 'Apps We Create',
+        title: 'Ứng dụng AppFactory tạo ra',
+        lead: 'AppFactory xây dựng và vận hành các ứng dụng của riêng mình dựa trên triết lý H2H. Chúng tôi luôn khám phá những cách kết nối mới.',
+        a1Title: 'Kết nối cùng nhau',
+        a1Body: 'Trải nghiệm kết nối nơi những người có cùng sở thích và tấm lòng gặp nhau tự nhiên.',
+        a2Title: 'Chia sẻ cùng nhau',
+        a2Body: 'Trải nghiệm chia sẻ nơi các mối quan hệ sâu sắc hơn qua những khoảnh khắc chân thành.',
+        a3Title: 'Phát triển cùng nhau',
+        a3Body: 'Cộng đồng lấy con người làm trung tâm, cùng giúp đỡ, học hỏi và tiến lên.',
+        note: 'Danh sách ứng dụng cụ thể sẽ được công bố dần khi ra mắt.'
+      },
+      policies: {
+        tag: 'Policies',
+        title: 'Chính sách',
+        lead: 'Các chính sách áp dụng cho AppFactory và ứng dụng của chúng tôi, cũng dùng làm liên kết chính sách khi nộp lên app store.',
+        privacy: 'Chính sách quyền riêng tư',
+        privacyDesc: 'Cách ứng dụng của chúng tôi xử lý thông tin.',
+        terms: 'Điều khoản dịch vụ',
+        termsDesc: 'Điều khoản sử dụng dịch vụ.',
+        del: 'Yêu cầu xóa tài khoản',
+        delDesc: 'Cách yêu cầu xóa tài khoản và dữ liệu ứng dụng.',
+        open: 'Mở'
+      },
+      contact: {
+        tag: 'Contact',
+        title: 'Liên hệ',
+        lead: 'Mọi thắc mắc về AppFactory xin gửi qua email. Không có đăng ký hay biểu mẫu liên hệ.',
+        emailLabel: 'Email',
+        emailBtn: 'Gửi email',
+        note: 'Trang chủ này là website giới thiệu công ty tĩnh. Không có đăng ký, đăng nhập, thanh toán hay biểu mẫu liên hệ.'
+      },
+      footer: {
+        tagline: 'Công ty dịch vụ ứng dụng H2H kết nối con người',
+        nav: 'Khám phá',
+        legal: 'Chính sách',
+        contact: 'Liên hệ',
+        rights: 'Đã đăng ký bản quyền.'
+      },
+      backHome: '← Về trang chủ'
+    }
   });
 
-  // Restore the last choice, otherwise fall back to the browser language, then Korean.
-  const stored = readStored();
-  const browser = (navigator.language || "").slice(0, 2).toLowerCase();
-  const initial = supported.includes(stored)
-    ? stored
-    : supported.includes(browser)
-      ? browser
-      : "ko";
+  /* ---- Boot -------------------------------------------------------------- */
+  function boot() {
+    buildLangSwitch();
+    initNav();
+    initYear();
+    apply(getLang());
+  }
 
-  setLanguage(initial);
+  /* Public API for page-level translation registration */
+  window.AF = {
+    register: register,
+    setLang: setLang,
+    getLang: getLang
+  };
 
-  // Expose for quick manual testing / programmatic use.
-  window.setLanguage = setLanguage;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
 })();

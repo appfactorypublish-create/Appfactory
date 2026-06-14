@@ -1,9 +1,4 @@
-# Cloudflare Pages redirects — clean URLs for the policy pages.
-# Real files live at *.html; these 200 rewrites serve them at extension-less
-# paths so app store consoles can use tidy links like https://appfactory.vn/privacy
-# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
-
-/privacy         /privacy.html         200
-/terms           /terms.html           200
-/contact         /contact.html         200
-/delete-account  /delete-account.html  200
+/privacy        /privacy.html        200
+/terms          /terms.html          200
+/contact        /contact.html        200
+/delete-account /delete-account.html 200

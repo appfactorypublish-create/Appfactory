@@ -1,20 +1,4 @@
-# Dependencies / build artifacts (the site ships no build step today;
-# these are a safety net so local tooling never lands in the repo)
-node_modules/
-dist/
-build/
-.cache/
-
-# Local editor / tooling
 .claude/
-.vscode/
-.idea/
-
-# OS cruft
+*.zip
 .DS_Store
 Thumbs.db
-desktop.ini
-
-# Logs & temp
-*.log
-*.tmp

@@ -1,298 +1,353 @@
-<!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="meta.home">AppFactory — H2H apps that connect people</title>
+  <meta name="description" content="AppFactory builds and operates its own H2H (Human to Human) apps that connect people to people." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js"></script>
+  <script src="policy.js"></script>
+</head>
+<body>
 
-    <title>AppFactory | Human to Human, Powered by Technology</title>
-    <meta
-      name="description"
-      content="AppFactory is an H2H (Human to Human) technology company building apps that connect people, communities, services, and global markets. Available in Korean, English, Japanese, and Vietnamese."
-    />
-    <meta name="theme-color" content="#030711" />
-    <link rel="canonical" href="https://appfactory.vn/" />
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/" aria-label="AppFactory">
+        <svg class="logo-mark" viewBox="0 0 48 48" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="afBody" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3b82f6" />
+              <stop offset=".5" stop-color="#22d3ee" />
+              <stop offset="1" stop-color="#8b5cf6" />
+            </linearGradient>
+            <linearGradient id="afBeam" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#22d3ee" stop-opacity="0" />
+              <stop offset=".5" stop-color="#d6fbff" />
+              <stop offset="1" stop-color="#8b5cf6" stop-opacity="0" />
+            </linearGradient>
+            <radialGradient id="afShine" cx="0.32" cy="0.26" r="0.8">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".55" />
+              <stop offset="0.5" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#afBody)" />
+          <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#afShine)" />
+          <!-- A symbol: peak with NO horizontal crossbar -->
+          <path d="M15.5 34.5 L24 14.5 L32.5 34.5" fill="none" stroke="#ffffff"
+                stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+          <!-- H2H connection light: a horizontal beam linking two people -->
+          <line x1="10.5" y1="27.5" x2="37.5" y2="27.5" stroke="url(#afBeam)" stroke-width="2.4" stroke-linecap="round" />
+          <circle cx="12" cy="27.5" r="2.5" fill="#eafdff" />
+          <circle cx="36" cy="27.5" r="2.5" fill="#eafdff" />
+        </svg>
+        <span class="logo-text"><b>App</b><span class="grad">Factory</span></span>
+      </a>
 
-    <!-- Favicon (inline-styled SVG, no external request) -->
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="AppFactory" />
-    <meta property="og:title" content="AppFactory | Human to Human, Powered by Technology" />
-    <meta
-      property="og:description"
-      content="We build apps that connect humans. From idea to global app service."
-    />
-    <meta property="og:url" content="https://appfactory.vn/" />
-    <meta property="og:locale" content="ko_KR" />
-    <meta property="og:locale:alternate" content="en_US" />
-    <meta property="og:locale:alternate" content="ja_JP" />
-    <meta property="og:locale:alternate" content="vi_VN" />
-    <!-- TODO: add a 1200x630 social share image once brand artwork exists:
-         <meta property="og:image" content="https://appfactory.vn/og-image.png" />
-         <meta name="twitter:card" content="summary_large_image" /> (upgrade from summary) -->
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="AppFactory | Human to Human, Powered by Technology" />
-    <meta
-      name="twitter:description"
-      content="We build apps that connect humans. From idea to global app service."
-    />
-
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#main" data-i18n="skip">본문으로 이동</a>
-
-    <header class="site-header" aria-label="Primary navigation">
-      <nav class="nav-shell">
-        <a class="brand-mark" href="#hero" aria-label="AppFactory home">
-          <img class="brand-logo" src="assets/logo.svg" alt="AppFactory" width="292" height="72" />
-        </a>
-        <div class="nav-right">
-          <div class="nav-links" aria-label="Page sections">
-            <a href="#about" data-i18n="nav_about">회사소개</a>
-            <a href="#services" data-i18n="nav_services">서비스</a>
-            <a href="#h2h">H2H</a>
-            <a href="#projects" data-i18n="nav_projects">H2H 서비스</a>
-            <a href="#cta" data-i18n="nav_contact">문의</a>
-          </div>
-          <div class="lang-switch" role="group" aria-label="Select language / 언어 선택">
-            <button type="button" data-set-lang="ko" aria-pressed="true" lang="ko" aria-label="Korean">
-              <svg class="flag flag-ko" viewBox="0 0 36 24" aria-hidden="true" focusable="false">
-                <rect x="0.5" y="0.5" width="35" height="23" rx="2.6" fill="#fff" stroke="rgba(0,0,0,.16)" />
-                <g transform="translate(18 12) rotate(28)">
-                  <path d="M0 -5.1a5.1 5.1 0 0 1 0 10.2 2.55 2.55 0 0 0 0 -5.1 2.55 2.55 0 0 1 0 -5.1Z" fill="#cd2e3a" />
-                  <path d="M0 5.1a5.1 5.1 0 0 1 0 -10.2 2.55 2.55 0 0 0 0 5.1 2.55 2.55 0 0 1 0 5.1Z" fill="#0047a0" />
-                </g>
-                <g stroke="#111827" stroke-width="1.1" stroke-linecap="round">
-                  <path d="M7.5 5.1l4.3-2.4M8.4 6.7l4.3-2.4M9.3 8.3l4.3-2.4" />
-                  <path d="M24.2 2.7l4.3 2.4M23.3 4.3l4.3 2.4M22.4 5.9l4.3 2.4" />
-                  <path d="M7.5 18.9l4.3 2.4M8.4 17.3l4.3 2.4M9.3 15.7l4.3 2.4" />
-                  <path d="M24.2 21.3l4.3-2.4M23.3 19.7l4.3-2.4M22.4 18.1l4.3-2.4" />
-                </g>
-              </svg>
-            </button>
-            <button type="button" data-set-lang="en" aria-pressed="false" lang="en" aria-label="English">
-              <svg class="flag flag-us" viewBox="0 0 36 24" aria-hidden="true" focusable="false">
-                <rect x="0.5" y="0.5" width="35" height="23" rx="2.6" fill="#fff" stroke="rgba(0,0,0,.16)" />
-                <g fill="#b22234">
-                  <rect x="0.5" y="0.5" width="35" height="1.8" rx="1" />
-                  <rect x="0.5" y="4.1" width="35" height="1.8" />
-                  <rect x="0.5" y="7.7" width="35" height="1.8" />
-                  <rect x="0.5" y="11.3" width="35" height="1.8" />
-                  <rect x="0.5" y="14.9" width="35" height="1.8" />
-                  <rect x="0.5" y="18.5" width="35" height="1.8" />
-                  <rect x="0.5" y="22.1" width="35" height="1.4" rx="1" />
-                </g>
-                <rect x="0.5" y="0.5" width="14.6" height="12.6" rx="2.2" fill="#3c3b6e" />
-                <g fill="#fff">
-                  <circle cx="3" cy="3" r="0.55" /><circle cx="5.6" cy="3" r="0.55" /><circle cx="8.2" cy="3" r="0.55" /><circle cx="10.8" cy="3" r="0.55" /><circle cx="13.4" cy="3" r="0.55" />
-                  <circle cx="4.3" cy="5.5" r="0.55" /><circle cx="6.9" cy="5.5" r="0.55" /><circle cx="9.5" cy="5.5" r="0.55" /><circle cx="12.1" cy="5.5" r="0.55" />
-                  <circle cx="3" cy="8" r="0.55" /><circle cx="5.6" cy="8" r="0.55" /><circle cx="8.2" cy="8" r="0.55" /><circle cx="10.8" cy="8" r="0.55" /><circle cx="13.4" cy="8" r="0.55" />
-                  <circle cx="4.3" cy="10.5" r="0.55" /><circle cx="6.9" cy="10.5" r="0.55" /><circle cx="9.5" cy="10.5" r="0.55" /><circle cx="12.1" cy="10.5" r="0.55" />
-                </g>
-              </svg>
-            </button>
-            <button type="button" data-set-lang="ja" aria-pressed="false" lang="ja" aria-label="Japanese">
-              <svg class="flag flag-jp" viewBox="0 0 36 24" aria-hidden="true" focusable="false">
-                <rect x="0.5" y="0.5" width="35" height="23" rx="2.6" fill="#fff" stroke="rgba(0,0,0,.16)" />
-                <circle cx="18" cy="12" r="5.1" fill="#bc002d" />
-              </svg>
-            </button>
-            <button type="button" data-set-lang="vi" aria-pressed="false" lang="vi" aria-label="Vietnamese">
-              <svg class="flag flag-vi" viewBox="0 0 36 24" aria-hidden="true" focusable="false">
-                <rect x="0.5" y="0.5" width="35" height="23" rx="2.6" fill="#da251d" stroke="rgba(0,0,0,.16)" />
-                <path d="M18 5.2l1.8 4.5 4.8.3-3.7 3.1 1.2 4.7-4.1-2.6-4.1 2.6 1.2-4.7-3.7-3.1 4.8-.3z" fill="#ffdf00" />
-              </svg>
-            </button>
-          </div>
-        </div>
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#philosophy" data-i18n="nav.philosophy">H2H Philosophy</a></li>
+          <li><a href="#services" data-i18n="nav.services">Services</a></li>
+          <li><a href="#apps" data-i18n="nav.apps">Our Apps</a></li>
+          <li><a href="#policies" data-i18n="nav.policies">Policies</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+        <div class="lang-switch" data-lang-switch aria-label="Language"></div>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <main id="main">
-      <section id="hero" class="hero-section">
-        <canvas id="network-canvas" aria-hidden="true"></canvas>
-        <div class="hero-glow hero-glow-a"></div>
-        <div class="hero-glow hero-glow-b"></div>
-        <div class="hero-content">
-          <p class="eyebrow" data-i18n="hero_eyebrow">H2H 앱 서비스</p>
-          <h1>
-            <span>Human to</span>
-            <span>Human,</span>
-            <span class="headline-phrase"><span>Powered</span> <span>by</span></span>
-            <span>Technology</span>
-          </h1>
-          <div class="hero-copy-grid">
-            <p data-i18n="hero_lead1">사람과 사람을 이어주는 H2H 앱 서비스를 만듭니다.</p>
-            <p data-i18n="hero_lead2">우리는 H2H 앱을 직접 기획하고, 개발하고, 운영합니다.</p>
-          </div>
-          <div class="hero-actions">
-            <a class="button-primary" href="#about" data-i18n="hero_primary">AppFactory 알아보기</a>
-            <a class="button-secondary" href="#h2h" data-i18n="hero_secondary">H2H 철학 보기</a>
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="hero-eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">Human to Human</span></span>
+          <h1 data-i18n="hero.title">We build apps that connect people</h1>
+          <p class="lead" data-i18n="hero.subtitle">AppFactory builds and runs its own H2H apps.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#philosophy" data-i18n="hero.ctaPrimary">Our Philosophy</a>
+            <a class="btn btn-ghost" href="#apps" data-i18n="hero.ctaSecondary">Our Apps</a>
           </div>
         </div>
-        <div class="hero-signal" aria-label="AppFactory highlights">
-          <div>
-            <span>04</span>
-            <p data-i18n="signal_languages">지원 언어</p>
-          </div>
-          <div>
-            <span>H2H</span>
-            <p data-i18n="signal_philosophy">철학</p>
-          </div>
-          <div>
-            <span>&#8734;</span>
-            <p data-i18n="signal_connections">연결</p>
-          </div>
-        </div>
-      </section>
 
-      <section id="about" class="section-block about-section">
-        <div class="section-heading">
-          <p class="eyebrow" data-i18n="about_eyebrow">회사소개</p>
-          <h2 data-i18n="about_h2">우리는 H2H 앱 서비스를 직접 만듭니다.</h2>
-          <p class="section-intro" data-i18n="about_intro">
-            AppFactory는 H2H 앱 서비스를 직접 기획하고, 개발하고, 운영합니다. 우리는 앱을 납품하는 회사가 아니라, 앱을 통해 사람과 사람을 연결하는 서비스를 만듭니다. 관계·매칭·커뮤니티·소통·글로벌 연결을 중심으로 서비스를 넓혀가며, 그 중심에는 언제나 사람이 있습니다.
-          </p>
-        </div>
-        <div class="language-panels">
-          <article class="copy-card accent-cyan">
-            <span class="card-tag" data-i18n="about_c1_tag">사람과 커뮤니티</span>
-            <h3 data-i18n="about_c1_h3">멀리 있어도, 가깝게</h3>
-            <p data-i18n="about_c1_p">우리 앱은 흩어져 있던 사람과 커뮤니티를 더 가깝고 자연스럽게 이어줍니다.</p>
-          </article>
-          <article class="copy-card accent-blue">
-            <span class="card-tag" data-i18n="about_c2_tag">직접 만들고 운영</span>
-            <h3 data-i18n="about_c2_h3">기획부터 운영까지</h3>
-            <p data-i18n="about_c2_p">외주가 아니라 우리 서비스입니다. 직접 기획하고 개발하고, 출시 후에도 끝까지 운영합니다.</p>
-          </article>
-          <article class="copy-card accent-violet">
-            <span class="card-tag" data-i18n="about_c3_tag">글로벌 연결</span>
-            <h3 data-i18n="about_c3_h3">국경을 넘어 더 멀리</h3>
-            <p data-i18n="about_c3_p">한국·일본·베트남을 비롯한 글로벌 사용자를 다국어로 자연스럽게 연결합니다.</p>
-          </article>
-        </div>
-      </section>
+        <div class="hero-visual" aria-hidden="true">
+          <svg viewBox="0 0 360 360" role="img">
+            <defs>
+              <linearGradient id="hvBeam" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#3b82f6" stop-opacity="0" />
+                <stop offset=".5" stop-color="#aef6ff" />
+                <stop offset="1" stop-color="#8b5cf6" stop-opacity="0" />
+              </linearGradient>
+              <radialGradient id="hvNodeA" cx="0.5" cy="0.4" r="0.7">
+                <stop offset="0" stop-color="#bfe6ff" />
+                <stop offset="1" stop-color="#3b82f6" />
+              </radialGradient>
+              <radialGradient id="hvNodeB" cx="0.5" cy="0.4" r="0.7">
+                <stop offset="0" stop-color="#e3d4ff" />
+                <stop offset="1" stop-color="#8b5cf6" />
+              </radialGradient>
+              <filter id="hvGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" />
+              </filter>
+            </defs>
 
-      <section id="services" class="section-block">
-        <div class="split-heading">
-          <div>
-            <p class="eyebrow" data-i18n="services_eyebrow">우리가 만드는 것</p>
-            <h2 data-i18n="services_h2">사람을 잇는 H2H 앱 서비스.</h2>
-          </div>
-          <p data-i18n="services_intro">AppFactory가 직접 만들고 운영하는 앱 서비스 영역입니다. 모두 사람과 사람의 연결을 목표로 합니다.</p>
-        </div>
-        <div class="service-grid">
-          <article class="service-card">
-            <div class="icon-node"></div>
-            <h3 data-i18n="svc1_h3">H2H Matching Apps</h3>
-            <p data-i18n="svc1_p">사람과 사람의 목적, 관심사, 상황을 연결하는 매칭 앱 서비스를 만듭니다.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon-node"></div>
-            <h3 data-i18n="svc2_h3">Community Apps</h3>
-            <p data-i18n="svc2_p">관심사를 중심으로 사람들이 모이고 머무는 커뮤니티 앱 서비스를 만듭니다.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon-node"></div>
-            <h3 data-i18n="svc3_h3">Communication Services</h3>
-            <p data-i18n="svc3_p">사람과 사람이 더 쉽고 따뜻하게 소통하도록 돕는 커뮤니케이션 서비스를 만듭니다.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon-node"></div>
-            <h3 data-i18n="svc4_h3">Global Connection Platforms</h3>
-            <p data-i18n="svc4_p">언어와 국경을 넘어 사람을 연결하는 글로벌 연결 플랫폼을 만듭니다.</p>
-          </article>
-        </div>
-      </section>
+            <!-- connecting light beam (H2H) -->
+            <line x1="92" y1="180" x2="268" y2="180" stroke="url(#hvBeam)" stroke-width="10" filter="url(#hvGlow)" />
+            <line x1="92" y1="180" x2="268" y2="180" stroke="url(#hvBeam)" stroke-width="3" />
 
-      <section id="h2h" class="section-block philosophy-section">
-        <div class="h2h-orbit" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-          <strong>H2H</strong>
-        </div>
-        <div class="philosophy-copy">
-          <p class="eyebrow" data-i18n="h2h_eyebrow">H2H 철학</p>
-          <h2 data-i18n="h2h_h2">기술은 사람을 대체하지 않습니다.</h2>
-          <div class="stacked-copy">
-            <p data-i18n="h2h_p">
-              H2H는 Human to Human, 사람과 사람입니다. 우리는 기술이 사람을 대신하는 것이 아니라, 사람 사이의 거리를 좁히기 위해 존재한다고 믿습니다. 좋은 앱은 기능이 많은 앱이 아니라 누구나 쉽게 이해하고 쓰는 서비스입니다. 그래서 AppFactory는 우리가 만드는 모든 앱 서비스의 한가운데에 늘 사람을 둡니다.
-            </p>
-          </div>
-        </div>
-      </section>
+            <!-- person A -->
+            <g transform="translate(92,180)">
+              <circle r="34" fill="url(#hvNodeA)" filter="url(#hvGlow)" opacity=".55" />
+              <circle r="26" fill="#0a0d1c" stroke="#3b82f6" stroke-width="2" />
+              <circle cx="0" cy="-7" r="8" fill="#bfe6ff" />
+              <path d="M-13 13 a13 11 0 0 1 26 0" fill="#bfe6ff" />
+            </g>
 
-      <section id="projects" class="section-block">
-        <div class="section-heading">
-          <p class="eyebrow" data-i18n="projects_eyebrow">H2H 서비스 영역</p>
-          <h2 data-i18n="projects_h2">우리가 만드는 H2H 서비스.</h2>
-        </div>
-        <div class="category-grid">
-          <article class="category-card">
-            <span class="card-index">01</span>
-            <h3 data-i18n="cat1_h3">Matching Services</h3>
-            <p data-i18n="cat1_p">목적과 관심사로 사람을 잇는 매칭 서비스.</p>
-          </article>
-          <article class="category-card">
-            <span class="card-index">02</span>
-            <h3 data-i18n="cat2_h3">Community Services</h3>
-            <p data-i18n="cat2_p">같은 관심사로 모이는 커뮤니티 서비스.</p>
-          </article>
-          <article class="category-card">
-            <span class="card-index">03</span>
-            <h3 data-i18n="cat3_h3">Local Connection Services</h3>
-            <p data-i18n="cat3_p">지역 안에서 사람과 사람을 잇는 로컬 연결 서비스.</p>
-          </article>
-          <article class="category-card">
-            <span class="card-index">04</span>
-            <h3 data-i18n="cat4_h3">Global Communication Services</h3>
-            <p data-i18n="cat4_p">언어를 넘어 소통하게 하는 글로벌 커뮤니케이션 서비스.</p>
-          </article>
-          <article class="category-card">
-            <span class="card-index">05</span>
-            <h3 data-i18n="cat5_h3">AI-assisted Human Services</h3>
-            <p data-i18n="cat5_p">AI가 사람의 연결을 더 빠르고 자연스럽게 돕는 서비스.</p>
-          </article>
-        </div>
-      </section>
+            <!-- person B -->
+            <g transform="translate(268,180)">
+              <circle r="34" fill="url(#hvNodeB)" filter="url(#hvGlow)" opacity=".55" />
+              <circle r="26" fill="#0a0d1c" stroke="#8b5cf6" stroke-width="2" />
+              <circle cx="0" cy="-7" r="8" fill="#e3d4ff" />
+              <path d="M-13 13 a13 11 0 0 1 26 0" fill="#e3d4ff" />
+            </g>
 
-      <section id="cta" class="section-block cta-section">
-        <div class="cta-panel">
-          <p class="eyebrow" data-i18n="cta_eyebrow">문의</p>
-          <h2 data-i18n="cta_h2">AppFactory와 이야기하기.</h2>
-          <p class="cta-lead" data-i18n="cta_lead">AppFactory와 관련된 문의는 이메일로 연락해 주세요. 회사·파트너십·서비스·정책 문의를 환영합니다.</p>
-          <div class="cta-actions">
-            <a class="button-primary" href="mailto:appfactory.publish@gmail.com" data-i18n="cta_button">이메일로 문의하기</a>
-            <a class="button-secondary" href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a>
-          </div>
-        </div>
-      </section>
-    </main>
+            <!-- pulse dots travelling the beam -->
+            <circle cx="150" cy="180" r="3.5" fill="#eafdff" />
+            <circle cx="210" cy="180" r="3.5" fill="#eafdff" />
 
-    <footer class="site-footer">
-      <div>
-        <a class="brand-mark" href="#hero" aria-label="AppFactory home">
-          <img class="brand-logo" src="assets/logo.svg" alt="AppFactory" width="292" height="72" />
-        </a>
-        <p>Human to Human, Powered by Technology</p>
+            <!-- A peak motif, no crossbar -->
+            <path d="M150 250 L180 196 L210 250" fill="none" stroke="#ffffff" stroke-opacity=".22"
+                  stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
       </div>
-      <div class="footer-copy">
-        <p data-i18n="footer_copy">AppFactory는 사람과 사람을 이어주는 H2H 앱 서비스를 만듭니다.</p>
-        <nav class="footer-links" aria-label="Policies">
-          <a href="privacy.html" data-i18n="footer_privacy">개인정보처리방침</a>
-          <a href="terms.html" data-i18n="footer_terms">이용약관</a>
-          <a href="contact.html" data-i18n="footer_contact">문의</a>
-          <a href="delete-account.html" data-i18n="footer_delete">계정 삭제</a>
-        </nav>
-        <p class="footer-rights" data-i18n="footer_rights">© 2026 AppFactory. 모든 권리 보유.</p>
-      </div>
-    </footer>
+    </section>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- ===================== ABOUT ===================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="lead-block">
+            <span class="section-tag" data-i18n="about.tag">About AppFactory</span>
+            <h2 class="section-title" data-i18n="about.title">We are a service company</h2>
+            <p data-i18n="about.body">AppFactory is not a development agency.</p>
+          </div>
+          <div class="grid">
+            <div class="card">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+              </div>
+              <h3 data-i18n="about.c1Title">We build and operate</h3>
+              <p data-i18n="about.c1Body"></p>
+            </div>
+            <div class="card">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+              </div>
+              <h3 data-i18n="about.c2Title">People come first</h3>
+              <p data-i18n="about.c2Body"></p>
+            </div>
+            <div class="card">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>
+              </div>
+              <h3 data-i18n="about.c3Title">Connection, globally</h3>
+              <p data-i18n="about.c3Body"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== H2H PHILOSOPHY ===================== -->
+    <section class="section philosophy" id="philosophy">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag" data-i18n="philosophy.tag">H2H Philosophy</span>
+          <h2 class="section-title" data-i18n="philosophy.title">H2H — Human to Human</h2>
+        </div>
+        <p class="quote" data-i18n="philosophy.lead">We see an app not as a bundle of features, but as a bridge between people.</p>
+        <p class="section-lead mb-48" data-i18n="philosophy.body"></p>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3 data-i18n="philosophy.p1Title">Close the distance</h3>
+            <p data-i18n="philosophy.p1Body"></p>
+          </div>
+          <div class="card">
+            <h3 data-i18n="philosophy.p2Title">Connection with meaning</h3>
+            <p data-i18n="philosophy.p2Body"></p>
+          </div>
+          <div class="card">
+            <h3 data-i18n="philosophy.p3Title">Invisible technology</h3>
+            <p data-i18n="philosophy.p3Body"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== OUR H2H SERVICES ===================== -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag" data-i18n="services.tag">Our H2H Services</span>
+          <h2 class="section-title" data-i18n="services.title">The connection we design</h2>
+          <p class="section-lead" data-i18n="services.lead"></p>
+        </div>
+        <div class="grid grid-4">
+          <div class="card">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7a4 4 0 0 1 6-5l1 1 1-1a4 4 0 0 1 6 5Z"/></svg></div>
+            <h3 data-i18n="services.s1Title">Designed for connection</h3>
+            <p data-i18n="services.s1Body"></p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></div>
+            <h3 data-i18n="services.s2Title">Trust &amp; safety</h3>
+            <p data-i18n="services.s2Body"></p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <h3 data-i18n="services.s3Title">Community</h3>
+            <p data-i18n="services.s3Body"></p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg></div>
+            <h3 data-i18n="services.s4Title">Connection without borders</h3>
+            <p data-i18n="services.s4Body"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== APPS WE CREATE ===================== -->
+    <section class="section philosophy" id="apps">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag" data-i18n="apps.tag">Apps We Create</span>
+          <h2 class="section-title" data-i18n="apps.title">The apps AppFactory makes</h2>
+          <p class="section-lead" data-i18n="apps.lead"></p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 0-.01"/><path d="M15 12a4 4 0 1 0 0-.01"/><path d="M12.5 10.5 11.5 13.5"/></svg></div>
+            <h3 data-i18n="apps.a1Title">Connect together</h3>
+            <p data-i18n="apps.a1Body"></p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></div>
+            <h3 data-i18n="apps.a2Title">Share together</h3>
+            <p data-i18n="apps.a2Body"></p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+            <h3 data-i18n="apps.a3Title">Grow together</h3>
+            <p data-i18n="apps.a3Body"></p>
+          </div>
+        </div>
+        <p class="contact-note apps-note" data-i18n="apps.note"></p>
+      </div>
+    </section>
+
+    <!-- ===================== POLICY LINKS ===================== -->
+    <section class="section" id="policies">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag" data-i18n="policies.tag">Policies</span>
+          <h2 class="section-title" data-i18n="policies.title">Policies</h2>
+          <p class="section-lead" data-i18n="policies.lead"></p>
+        </div>
+        <div class="policy-list">
+          <a class="policy-card" href="/privacy">
+            <h3 data-i18n="policies.privacy">Privacy Policy</h3>
+            <p data-i18n="policies.privacyDesc"></p>
+            <span class="policy-open"><span data-i18n="policies.open">Open</span> →</span>
+          </a>
+          <a class="policy-card" href="/terms">
+            <h3 data-i18n="policies.terms">Terms of Service</h3>
+            <p data-i18n="policies.termsDesc"></p>
+            <span class="policy-open"><span data-i18n="policies.open">Open</span> →</span>
+          </a>
+          <a class="policy-card" href="/delete-account">
+            <h3 data-i18n="policies.del">Delete Account Request</h3>
+            <p data-i18n="policies.delDesc"></p>
+            <span class="policy-open"><span data-i18n="policies.open">Open</span> →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <span class="section-tag" data-i18n="contact.tag">Contact</span>
+          <h2 class="section-title" data-i18n="contact.title">Get in touch</h2>
+          <p class="section-lead lead-center" data-i18n="contact.lead"></p>
+          <p class="email"><a href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a></p>
+          <a class="btn btn-primary" href="mailto:appfactory.publish@gmail.com" data-i18n="contact.emailBtn">Send an email</a>
+          <p class="contact-note" data-i18n="contact.note"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="AppFactory">
+            <svg class="logo-mark" viewBox="0 0 48 48" role="img" aria-hidden="true">
+              <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#afBody)" />
+              <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#afShine)" />
+              <path d="M15.5 34.5 L24 14.5 L32.5 34.5" fill="none" stroke="#ffffff"
+                    stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+              <line x1="10.5" y1="27.5" x2="37.5" y2="27.5" stroke="url(#afBeam)" stroke-width="2.4" stroke-linecap="round" />
+              <circle cx="12" cy="27.5" r="2.5" fill="#eafdff" />
+              <circle cx="36" cy="27.5" r="2.5" fill="#eafdff" />
+            </svg>
+            <span class="logo-text"><b>App</b><span class="grad">Factory</span></span>
+          </a>
+          <p data-i18n="footer.tagline">An H2H app service company connecting people to people</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.nav">Explore</h4>
+          <ul>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#philosophy" data-i18n="nav.philosophy">H2H Philosophy</a></li>
+            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a href="#apps" data-i18n="nav.apps">Our Apps</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.legal">Policies</h4>
+          <ul>
+            <li><a href="/privacy" data-i18n="policies.privacy">Privacy Policy</a></li>
+            <li><a href="/terms" data-i18n="policies.terms">Terms of Service</a></li>
+            <li><a href="/delete-account" data-i18n="policies.del">Delete Account Request</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <ul>
+            <li><a href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> AppFactory. <span data-i18n="footer.rights">All rights reserved.</span></span>
+        <span>Human to Human</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>

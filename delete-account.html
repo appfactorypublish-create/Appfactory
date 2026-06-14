@@ -1,359 +1,80 @@
-<!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="deletePage.title">Delete Account Request — AppFactory</title>
+  <meta name="description" content="How to request deletion of your account in an app operated by AppFactory." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js"></script>
+  <script src="policy.js"></script>
+</head>
+<body>
 
-    <title>AppFactory Delete Account Request | 계정 삭제 요청</title>
-    <meta
-      name="description"
-      content="The AppFactory website has no user accounts. This page explains how to delete your account in an app that AppFactory builds or operates — via in-app deletion or by email to appfactory.publish@gmail.com. Available in Korean, English, Japanese, and Vietnamese."
-    />
-    <meta name="theme-color" content="#030711" />
-    <link rel="canonical" href="https://appfactory.vn/delete-account" />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body data-lang="ko">
-    <a class="skip-link" href="#main" data-i18n="back_home">← 홈으로 돌아가기</a>
-
-    <header class="site-header" aria-label="Primary navigation">
-      <nav class="nav-shell">
-        <a class="brand-mark" href="index.html" aria-label="AppFactory home">
-          <img class="brand-logo" src="assets/logo.svg" alt="AppFactory" width="292" height="72" />
-        </a>
-        <div class="nav-right">
-          <div class="nav-links" aria-label="Page sections">
-            <a href="index.html" data-i18n="nav_home">홈</a>
-          </div>
-          <div class="lang-switch" role="group" aria-label="Select language / 언어 선택">
-            <button type="button" data-set-lang="ko" aria-pressed="true" lang="ko" aria-label="Korean">
-              <svg class="flag flag-ko" viewBox="0 0 36 24" aria-hidden="true" focusable="false">
-                <rect x="0.5" y="0.5" width="35" height="23" rx="2.6" fill="#fff" stroke="rgba(0,0,0,.16)" />
-                <g transform="translate(18 12) rotate(28)">
-                  <path d="M0 -5.1a5.1 5.1 0 0 1 0 10.2 2.55 2.55 0 0 0 0 -5.1 2.55 2.55 0 0 1 0 -5.1Z" fill="#cd2e3a" />
-                  <path d="M0 5.1a5.1 5.1 0 0 1 0 -10.2 2.55 2.55 0 0 0 0 5.1 2.55 2.55 0 0 1 0 5.1Z" fill="#0047a0" />
-                </g>
-                <g stroke="#111827" stroke-width="1.1" stroke-linecap="round">
-                  <path d="M7.5 5.1l4.3-2.4M8.4 6.7l4.3-2.4M9.3 8.3l4.3-2.4" />
-                  <path d="M24.2 2.7l4.3 2.4M23.3 4.3l4.3 2.4M22.4 5.9l4.3 2.4" />
-                  <path d="M7.5 18.9l4.3 2.4M8.4 17.3l4.3 2.4M9.3 15.7l4.3 2.4" />
-                  <path d="M24.2 21.3l4.3-2.4M23.3 19.7l4.3-2.4M22.4 18.1l4.3-2.4" />
-                </g>
-              </svg>
-            </button>
-            <button type="button" data-set-lang="en" aria-pressed="false" lang="en" aria-label="English">
-              <svg class="flag flag-us" viewBox="0 0 36 24" aria-hidden="true" focusable="false">
-                <rect x="0.5" y="0.5" width="35" height="23" rx="2.6" fill="#fff" stroke="rgba(0,0,0,.16)" />
-                <g fill="#b22234">
-                  <rect x="0.5" y="0.5" width="35" height="1.8" rx="1" />
-                  <rect x="0.5" y="4.1" width="35" height="1.8" />
-                  <rect x="0.5" y="7.7" width="35" height="1.8" />
-                  <rect x="0.5" y="11.3" width="35" height="1.8" />
-                  <rect x="0.5" y="14.9" width="35" height="1.8" />
-                  <rect x="0.5" y="18.5" width="35" height="1.8" />
-                  <rect x="0.5" y="22.1" width="35" height="1.4" rx="1" />
-                </g>
-                <rect x="0.5" y="0.5" width="14.6" height="12.6" rx="2.2" fill="#3c3b6e" />
-                <g fill="#fff">
-                  <circle cx="3" cy="3" r="0.55" /><circle cx="5.6" cy="3" r="0.55" /><circle cx="8.2" cy="3" r="0.55" /><circle cx="10.8" cy="3" r="0.55" /><circle cx="13.4" cy="3" r="0.55" />
-                  <circle cx="4.3" cy="5.5" r="0.55" /><circle cx="6.9" cy="5.5" r="0.55" /><circle cx="9.5" cy="5.5" r="0.55" /><circle cx="12.1" cy="5.5" r="0.55" />
-                  <circle cx="3" cy="8" r="0.55" /><circle cx="5.6" cy="8" r="0.55" /><circle cx="8.2" cy="8" r="0.55" /><circle cx="10.8" cy="8" r="0.55" /><circle cx="13.4" cy="8" r="0.55" />
-                  <circle cx="4.3" cy="10.5" r="0.55" /><circle cx="6.9" cy="10.5" r="0.55" /><circle cx="9.5" cy="10.5" r="0.55" /><circle cx="12.1" cy="10.5" r="0.55" />
-                </g>
-              </svg>
-            </button>
-            <button type="button" data-set-lang="ja" aria-pressed="false" lang="ja" aria-label="Japanese">
-              <svg class="flag flag-jp" viewBox="0 0 36 24" aria-hidden="true" focusable="false">
-                <rect x="0.5" y="0.5" width="35" height="23" rx="2.6" fill="#fff" stroke="rgba(0,0,0,.16)" />
-                <circle cx="18" cy="12" r="5.1" fill="#bc002d" />
-              </svg>
-            </button>
-            <button type="button" data-set-lang="vi" aria-pressed="false" lang="vi" aria-label="Vietnamese">
-              <svg class="flag flag-vi" viewBox="0 0 36 24" aria-hidden="true" focusable="false">
-                <rect x="0.5" y="0.5" width="35" height="23" rx="2.6" fill="#da251d" stroke="rgba(0,0,0,.16)" />
-                <path d="M18 5.2l1.8 4.5 4.8.3-3.7 3.1 1.2 4.7-4.1-2.6-4.1 2.6 1.2-4.7-3.7-3.1 4.8-.3z" fill="#ffdf00" />
-              </svg>
-            </button>
-          </div>
-        </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/" aria-label="AppFactory">
+        <svg class="logo-mark" viewBox="0 0 48 48" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="afBody" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3b82f6" /><stop offset=".5" stop-color="#22d3ee" /><stop offset="1" stop-color="#8b5cf6" />
+            </linearGradient>
+            <linearGradient id="afBeam" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#22d3ee" stop-opacity="0" /><stop offset=".5" stop-color="#d6fbff" /><stop offset="1" stop-color="#8b5cf6" stop-opacity="0" />
+            </linearGradient>
+            <radialGradient id="afShine" cx="0.32" cy="0.26" r="0.8">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".55" /><stop offset="0.5" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#afBody)" />
+          <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#afShine)" />
+          <path d="M15.5 34.5 L24 14.5 L32.5 34.5" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+          <line x1="10.5" y1="27.5" x2="37.5" y2="27.5" stroke="url(#afBeam)" stroke-width="2.4" stroke-linecap="round" />
+          <circle cx="12" cy="27.5" r="2.5" fill="#eafdff" /><circle cx="36" cy="27.5" r="2.5" fill="#eafdff" />
+        </svg>
+        <span class="logo-text"><b>App</b><span class="grad">Factory</span></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <div class="lang-switch" data-lang-switch aria-label="Language"></div>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <main id="main" class="legal-main">
-      <!-- ===================== KOREAN ===================== -->
-      <article data-lang-block="ko" lang="ko">
-        <p class="legal-eyebrow">계정 삭제</p>
-        <h1>계정 삭제 요청</h1>
-        <p class="legal-updated">최종 업데이트: 2026년 6월 8일</p>
-        <p class="legal-lead">
-          AppFactory 홈페이지에는 사용자 계정 기능이 없습니다. 본 페이지는 AppFactory가 제작 또는 운영하는
-          앱에서 계정 삭제가 필요한 사용자를 위한 안내입니다. Google Play 및 Apple App Store의 요구사항에 맞춰
-          명확한 삭제 절차를 제공합니다.
-        </p>
-        <div class="legal-body">
-          <h2>1. AppFactory 홈페이지에는 계정이 없습니다</h2>
-          <p>
-            본 웹사이트는 회원가입이나 로그인 기능이 없는 정적 소개 사이트입니다. 따라서 홈페이지에는 삭제할
-            계정이 존재하지 않습니다. 아래 안내는 AppFactory가 제작·운영하는 개별 앱의 계정에 적용됩니다.
-          </p>
-
-          <h2>2. 삭제 요청 방법</h2>
-          <p>다음 두 가지 방법 중 하나로 앱 계정을 삭제할 수 있습니다.</p>
-          <ul>
-            <li><strong>앱 내 삭제:</strong> 해당 앱에 계정 삭제 기능이 있는 경우(보통 설정 → 계정), 앱에서 직접 삭제할 수 있습니다.</li>
-            <li><strong>이메일 요청:</strong> 아래 이메일로 삭제 요청을 보내주세요. <a href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a></li>
-          </ul>
-
-          <h2>3. 이메일 요청 시 기재할 내용</h2>
-          <div class="legal-contact-box">
-            <p><strong>제목 예시:</strong> Account Deletion Request</p>
-            <p>아래 정보를 포함해 주세요.</p>
-            <ul>
-              <li>앱 이름</li>
-              <li>가입 시 사용한 이메일 주소</li>
-              <li>사용자 ID 또는 닉네임</li>
-              <li>삭제 요청 내용</li>
-            </ul>
-          </div>
-
-          <h2>4. 삭제되는 내용</h2>
-          <p>본인 확인이 완료되면, 해당 앱의 운영 시스템에서 계정과 그에 연결된 개인정보를 삭제합니다.</p>
-
-          <h2>5. 처리 기간</h2>
-          <p>확인된 삭제 요청은 30일 이내 처리를 목표로 합니다. 계정 보호를 위해 처리 전 본인 확인을 요청할 수 있습니다.</p>
-
-          <h2>6. 보관될 수 있는 정보</h2>
-          <p>
-            법적 의무, 보안, 정산, 분쟁 대응 등 필요한 경우, 일부 기록은 관련 법령 또는 정당한 목적에 따라 일정
-            기간 보관될 수 있습니다. 보관되는 데이터는 필요한 기간에 한해 유지된 뒤 삭제되거나 익명 처리됩니다.
-          </p>
-
-          <h2>7. 문의</h2>
-          <div class="legal-contact-box">
-            <p>계정 삭제 관련 문의: <a href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a></p>
-          </div>
-
-          <p class="legal-disclaimer">
-            본 안내는 앱 출시 준비를 돕기 위한 일반적인 초안이며 참고용으로만 제공됩니다. 특정 국가나 서비스에
-            대한 법률 자문이 아니므로, 실제 앱과 관할 지역에 맞게 전문가의 검토를 거쳐 사용하시기 바랍니다.
-          </p>
-          <a class="back-home" href="index.html" data-i18n="back_home">← 홈으로 돌아가기</a>
-        </div>
-      </article>
-
-      <!-- ===================== ENGLISH ===================== -->
-      <article data-lang-block="en" lang="en">
-        <p class="legal-eyebrow">Account</p>
-        <h1>Delete Account Request</h1>
-        <p class="legal-updated">Last updated: June 8, 2026</p>
-        <p class="legal-lead">
-          The AppFactory website has no user accounts. This page is for users who need to delete an account in an
-          app that AppFactory builds or operates. It provides a clear deletion path in line with Google Play and
-          Apple App Store requirements.
-        </p>
-        <div class="legal-body">
-          <h2>1. The AppFactory website has no accounts</h2>
-          <p>
-            This website is a static informational site with no registration or login. There is therefore no account
-            to delete on the website itself. The guidance below applies to accounts in the individual apps that
-            AppFactory builds or operates.
-          </p>
-
-          <h2>2. How to request deletion</h2>
-          <p>You can delete an app account in one of two ways:</p>
-          <ul>
-            <li><strong>In-app:</strong> If the app offers an account deletion option (usually under Settings → Account), you can delete it directly there.</li>
-            <li><strong>By email:</strong> Send a deletion request to <a href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a></li>
-          </ul>
-
-          <h2>3. What to include in your email</h2>
-          <div class="legal-contact-box">
-            <p><strong>Subject example:</strong> Account Deletion Request</p>
-            <p>Please include:</p>
-            <ul>
-              <li>App name</li>
-              <li>The email address you signed up with</li>
-              <li>Your user ID or nickname</li>
-              <li>Your deletion request details</li>
-            </ul>
-          </div>
-
-          <h2>4. What gets deleted</h2>
-          <p>Once your request is verified, we will delete your account and the personal data associated with it from the app's active systems.</p>
-
-          <h2>5. Processing time</h2>
-          <p>We aim to process verified deletion requests within 30 days. We may need to verify your identity before processing to protect your account.</p>
-
-          <h2>6. Data we may retain</h2>
-          <p>
-            Some records may be retained for a limited period where required for legal, security, accounting/settlement,
-            or dispute-resolution purposes, under applicable law or a legitimate purpose. Retained data is kept only as
-            long as necessary and is then deleted or anonymized.
-          </p>
-
-          <h2>7. Contact</h2>
-          <div class="legal-contact-box">
-            <p>Questions about account deletion? Email <a href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a></p>
-          </div>
-
-          <p class="legal-disclaimer">
-            This page is a general draft prepared to support app launch and is provided for informational purposes
-            only. It is not legal advice for any specific country or service. Please review and adapt it with a
-            qualified professional for your specific app and jurisdiction.
-          </p>
-          <a class="back-home" href="index.html" data-i18n="back_home">← Back to home</a>
-        </div>
-      </article>
-
-      <!-- ===================== JAPANESE ===================== -->
-      <article data-lang-block="ja" lang="ja">
-        <p class="legal-eyebrow">アカウント削除</p>
-        <h1>アカウント削除のご依頼</h1>
-        <p class="legal-updated">最終更新日: 2026年6月8日</p>
-        <p class="legal-lead">
-          AppFactory のウェブサイトにはユーザーアカウント機能はありません。本ページは、AppFactory が制作または
-          運営するアプリでアカウント削除が必要なユーザー向けのご案内です。Google Play および Apple App Store の
-          要件に沿った明確な削除手順をご用意しています。
-        </p>
-        <div class="legal-body">
-          <h2>1. AppFactory のウェブサイトにアカウントはありません</h2>
-          <p>
-            本ウェブサイトは、会員登録やログイン機能のない静的な紹介サイトです。そのため、ウェブサイト自体に
-            削除すべきアカウントは存在しません。以下のご案内は、AppFactory が制作・運営する個々のアプリの
-            アカウントに適用されます。
-          </p>
-
-          <h2>2. 削除のご依頼方法</h2>
-          <p>次の2つの方法のいずれかでアプリのアカウントを削除できます。</p>
-          <ul>
-            <li><strong>アプリ内で削除:</strong> アプリにアカウント削除機能がある場合（通常は「設定 → アカウント」）、アプリ内で直接削除できます。</li>
-            <li><strong>メールで依頼:</strong> 下記のメールアドレスに削除のご依頼をお送りください。 <a href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a></li>
-          </ul>
-
-          <h2>3. メールに記載いただく内容</h2>
-          <div class="legal-contact-box">
-            <p><strong>件名の例:</strong> Account Deletion Request</p>
-            <p>以下の情報をご記載ください。</p>
-            <ul>
-              <li>アプリ名</li>
-              <li>登録に使用したメールアドレス</li>
-              <li>ユーザー ID またはニックネーム</li>
-              <li>削除のご依頼内容</li>
-            </ul>
-          </div>
-
-          <h2>4. 削除される内容</h2>
-          <p>本人確認が完了次第、当該アプリの運用システムからアカウントおよびそれに紐づく個人情報を削除します。</p>
-
-          <h2>5. 処理期間</h2>
-          <p>確認済みの削除依頼は、30日以内の処理を目指します。アカウント保護のため、処理前に本人確認をお願いする場合があります。</p>
-
-          <h2>6. 保管される場合がある情報</h2>
-          <p>
-            法的義務、セキュリティ、精算、紛争対応などのために必要な場合、一部の記録は関連法令または正当な目的に
-            基づき一定期間保管されることがあります。保管されるデータは必要な期間に限り保持された後、削除または
-            匿名化されます。
-          </p>
-
-          <h2>7. お問い合わせ</h2>
-          <div class="legal-contact-box">
-            <p>アカウント削除に関するお問い合わせ: <a href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a></p>
-          </div>
-
-          <p class="legal-disclaimer">
-            本ページは、アプリ公開の準備を支援するための一般的な草案であり、情報提供のみを目的としています。
-            特定の国やサービスに対する法的助言ではありません。実際のアプリと管轄地域に合わせ、専門家の確認の
-            うえご利用ください。
-          </p>
-          <a class="back-home" href="index.html" data-i18n="back_home">← ホームに戻る</a>
-        </div>
-      </article>
-
-      <!-- ===================== VIETNAMESE ===================== -->
-      <article data-lang-block="vi" lang="vi">
-        <p class="legal-eyebrow">Xóa tài khoản</p>
-        <h1>Yêu cầu xóa tài khoản</h1>
-        <p class="legal-updated">Cập nhật lần cuối: 8 tháng 6, 2026</p>
-        <p class="legal-lead">
-          Website AppFactory không có tính năng tài khoản người dùng. Trang này dành cho người dùng cần xóa tài khoản
-          trong một ứng dụng do AppFactory xây dựng hoặc vận hành. Trang cung cấp quy trình xóa rõ ràng, phù hợp với
-          yêu cầu của Google Play và Apple App Store.
-        </p>
-        <div class="legal-body">
-          <h2>1. Website AppFactory không có tài khoản</h2>
-          <p>
-            Website này là trang giới thiệu tĩnh, không có đăng ký hay đăng nhập. Do đó không có tài khoản nào để xóa
-            trên chính website. Hướng dẫn dưới đây áp dụng cho tài khoản trong từng ứng dụng do AppFactory xây dựng
-            hoặc vận hành.
-          </p>
-
-          <h2>2. Cách yêu cầu xóa</h2>
-          <p>Bạn có thể xóa tài khoản ứng dụng theo một trong hai cách:</p>
-          <ul>
-            <li><strong>Trong ứng dụng:</strong> Nếu ứng dụng có tùy chọn xóa tài khoản (thường ở Cài đặt → Tài khoản), bạn có thể xóa trực tiếp tại đó.</li>
-            <li><strong>Qua email:</strong> Gửi yêu cầu xóa đến <a href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a></li>
-          </ul>
-
-          <h2>3. Thông tin cần ghi trong email</h2>
-          <div class="legal-contact-box">
-            <p><strong>Ví dụ tiêu đề:</strong> Account Deletion Request</p>
-            <p>Vui lòng cung cấp:</p>
-            <ul>
-              <li>Tên ứng dụng</li>
-              <li>Địa chỉ email bạn đã dùng để đăng ký</li>
-              <li>ID người dùng hoặc biệt danh</li>
-              <li>Nội dung yêu cầu xóa</li>
-            </ul>
-          </div>
-
-          <h2>4. Những gì sẽ bị xóa</h2>
-          <p>Sau khi yêu cầu được xác minh, chúng tôi sẽ xóa tài khoản và dữ liệu cá nhân liên quan khỏi hệ thống đang hoạt động của ứng dụng.</p>
-
-          <h2>5. Thời gian xử lý</h2>
-          <p>Chúng tôi cố gắng xử lý các yêu cầu xóa đã xác minh trong vòng 30 ngày. Chúng tôi có thể cần xác minh danh tính của bạn trước khi xử lý để bảo vệ tài khoản.</p>
-
-          <h2>6. Dữ liệu chúng tôi có thể lưu giữ</h2>
-          <p>
-            Một số bản ghi có thể được lưu giữ trong thời gian giới hạn khi cần cho mục đích pháp lý, an ninh, quyết
-            toán hoặc giải quyết tranh chấp, theo quy định pháp luật hoặc mục đích chính đáng. Dữ liệu được lưu giữ
-            chỉ trong thời gian cần thiết, sau đó sẽ bị xóa hoặc ẩn danh.
-          </p>
-
-          <h2>7. Liên hệ</h2>
-          <div class="legal-contact-box">
-            <p>Thắc mắc về việc xóa tài khoản? Email <a href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a></p>
-          </div>
-
-          <p class="legal-disclaimer">
-            Trang này là bản nháp tổng quát được chuẩn bị nhằm hỗ trợ việc phát hành ứng dụng và chỉ mang tính tham
-            khảo. Đây không phải là tư vấn pháp lý cho bất kỳ quốc gia hay dịch vụ cụ thể nào. Vui lòng rà soát và
-            điều chỉnh cùng chuyên gia phù hợp cho ứng dụng và khu vực pháp lý của bạn.
-          </p>
-          <a class="back-home" href="index.html" data-i18n="back_home">← Quay lại trang chủ</a>
-        </div>
-      </article>
-    </main>
-
-    <footer class="site-footer">
-      <div>
-        <a class="brand-mark" href="index.html" aria-label="AppFactory home">
-          <img class="brand-logo" src="assets/logo.svg" alt="AppFactory" width="292" height="72" />
-        </a>
-        <p>Human to Human, Powered by Technology</p>
+  <main>
+    <section class="legal-hero">
+      <div class="container">
+        <a class="back-home" href="/" data-i18n="backHome">← Back to home</a>
+        <h1 data-i18n="deletePage.title">Delete Account Request</h1>
+        <p class="legal-updated" data-i18n="legal.updated">Last updated</p>
       </div>
-      <div class="footer-copy">
-        <p data-i18n="footer_copy">AppFactory는 사람과 사람을 이어주는 H2H 앱 서비스를 만듭니다.</p>
-        <nav class="footer-links" aria-label="Policies">
-          <a href="privacy.html" data-i18n="footer_privacy">개인정보처리방침</a>
-          <a href="terms.html" data-i18n="footer_terms">이용약관</a>
-          <a href="contact.html" data-i18n="footer_contact">문의</a>
-          <a href="delete-account.html" data-i18n="footer_delete">계정 삭제</a>
-        </nav>
-        <p class="footer-rights" data-i18n="footer_rights">© 2026 AppFactory. 모든 권리 보유.</p>
-      </div>
-    </footer>
+    </section>
 
-    <script src="policy.js"></script>
-  </body>
+    <section class="legal-body container">
+      <p class="intro" data-i18n="deletePage.intro"></p>
+
+      <h2 data-i18n="deletePage.s1h"></h2>
+      <p data-i18n="deletePage.s1b"></p>
+      <div class="callout">
+        <p class="email-line mb-8"><span data-i18n="legal.contactBody"></span><a href="mailto:appfactory.publish@gmail.com">appfactory.publish@gmail.com</a></p>
+        <p class="subject-hint" data-i18n="deletePage.emailSubject"></p>
+      </div>
+
+      <h2 data-i18n="deletePage.s2h"></h2>
+      <p data-i18n="deletePage.s2b"></p>
+      <h2 data-i18n="deletePage.s3h"></h2>
+      <p data-i18n="deletePage.s3b"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom footer-bottom--bare">
+        <span>© <span data-year>2026</span> AppFactory. <span data-i18n="footer.rights">All rights reserved.</span></span>
+        <a href="/" data-i18n="backHome">← Back to home</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>
