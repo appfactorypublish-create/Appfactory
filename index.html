@@ -18,32 +18,60 @@
       <a class="logo" href="/" aria-label="AppFactory">
         <svg class="logo-mark" viewBox="0 0 48 48" role="img" aria-hidden="true">
           <defs>
-            <linearGradient id="afBody" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#3b82f6" />
-              <stop offset=".5" stop-color="#22d3ee" />
-              <stop offset="1" stop-color="#8b5cf6" />
+            <linearGradient id="afHeaderBg" x1="6" y1="4" x2="42" y2="44">
+              <stop offset="0" stop-color="#17285b" />
+              <stop offset=".5" stop-color="#0c1738" />
+              <stop offset="1" stop-color="#22194d" />
             </linearGradient>
-            <linearGradient id="afBeam" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#22d3ee" stop-opacity="0" />
-              <stop offset=".5" stop-color="#d6fbff" />
-              <stop offset="1" stop-color="#8b5cf6" stop-opacity="0" />
-            </linearGradient>
-            <radialGradient id="afShine" cx="0.32" cy="0.26" r="0.8">
-              <stop offset="0" stop-color="#ffffff" stop-opacity=".55" />
-              <stop offset="0.5" stop-color="#ffffff" stop-opacity="0" />
+            <radialGradient id="afHeaderGlow" cx="48%" cy="34%" r="64%">
+              <stop offset="0" stop-color="#55ecff" stop-opacity=".38" />
+              <stop offset=".48" stop-color="#4c80ff" stop-opacity=".14" />
+              <stop offset="1" stop-color="#071126" stop-opacity="0" />
             </radialGradient>
+            <linearGradient id="afHeaderLeft" x1="14" y1="41" x2="25" y2="7">
+              <stop offset="0" stop-color="#397cff" />
+              <stop offset=".52" stop-color="#2edcff" />
+              <stop offset="1" stop-color="#b8f7ff" />
+            </linearGradient>
+            <linearGradient id="afHeaderRight" x1="34" y1="41" x2="23" y2="7">
+              <stop offset="0" stop-color="#29e2f0" />
+              <stop offset=".46" stop-color="#4e89ff" />
+              <stop offset="1" stop-color="#b58cff" />
+            </linearGradient>
+            <linearGradient id="afHeaderEdge" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".72" />
+              <stop offset="1" stop-color="#ffffff" stop-opacity=".04" />
+            </linearGradient>
+            <filter id="afHeaderShadow" x="-60%" y="-60%" width="220%" height="220%">
+              <feDropShadow dx="0" dy="2.4" stdDeviation="1.8" flood-color="#021024" flood-opacity=".65" />
+              <feDropShadow dx="0" dy="0" stdDeviation="1.8" flood-color="#37dfff" flood-opacity=".34" />
+            </filter>
           </defs>
-          <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#afBody)" />
-          <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#afShine)" />
-          <!-- A symbol: peak with NO horizontal crossbar -->
-          <path d="M15.5 34.5 L24 14.5 L32.5 34.5" fill="none" stroke="#ffffff"
-                stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-          <!-- H2H connection light: a horizontal beam linking two people -->
-          <line x1="10.5" y1="27.5" x2="37.5" y2="27.5" stroke="url(#afBeam)" stroke-width="2.4" stroke-linecap="round" />
-          <circle cx="12" cy="27.5" r="2.5" fill="#eafdff" />
-          <circle cx="36" cy="27.5" r="2.5" fill="#eafdff" />
+          <rect x="3" y="3" width="42" height="42" rx="12" fill="url(#afHeaderBg)" />
+          <rect x="3" y="3" width="42" height="42" rx="12" fill="url(#afHeaderGlow)" />
+          <path d="M11.2 27.2 C9.8 19.8 13.9 12.6 21.3 10.1 C29.2 7.5 36.6 12.6 38 20.2"
+                fill="none" stroke="#aef6ff" stroke-width=".6" stroke-linecap="round" stroke-opacity=".26" />
+          <path d="M9.8 30.2 C15.5 39.2 29.4 40.7 37.8 29.6"
+                fill="none" stroke="#bba7ff" stroke-width=".55" stroke-linecap="round" stroke-opacity=".18" />
+          <g opacity=".82">
+            <circle cx="13.3" cy="27.3" r="1.2" fill="#d9fcff" />
+            <circle cx="35.7" cy="27.1" r="1.2" fill="#efe9ff" />
+            <circle cx="17.2" cy="14.6" r="1" fill="#bff9ff" />
+            <circle cx="32.4" cy="15.3" r="1" fill="#d8ccff" />
+          </g>
+          <g filter="url(#afHeaderShadow)">
+            <path d="M14.2 38.2 L21.1 13.1 C21.7 10.8 22.9 9.2 24.5 8.8 L27.1 11.1 C25.9 12.2 25.2 13.7 24.7 15.5 L18.5 39 C18.2 40.2 16.8 40.7 15.5 40.1 C14.4 39.7 13.9 39 14.2 38.2 Z"
+                  fill="url(#afHeaderLeft)" />
+            <path d="M33.8 38.2 L26.9 13.1 C26.3 10.8 25.1 9.2 23.5 8.8 L20.9 11.1 C22.1 12.2 22.8 13.7 23.3 15.5 L29.5 39 C29.8 40.2 31.2 40.7 32.5 40.1 C33.6 39.7 34.1 39 33.8 38.2 Z"
+                  fill="url(#afHeaderRight)" />
+            <path d="M16.4 37.5 L22.7 14.3" fill="none" stroke="url(#afHeaderEdge)" stroke-width="1.1" stroke-linecap="round" stroke-opacity=".46" />
+            <path d="M31.6 37.5 L25.3 14.3" fill="none" stroke="url(#afHeaderEdge)" stroke-width="1.1" stroke-linecap="round" stroke-opacity=".34" />
+          </g>
         </svg>
-        <span class="logo-text"><b>App</b><span class="grad">Factory</span></span>
+        <span class="logo-copy">
+          <span class="logo-text"><b>App</b><span class="grad">Factory</span></span>
+          <span class="logo-kicker">Human to Human</span>
+        </span>
       </a>
 
       <nav class="nav" aria-label="Primary">
@@ -368,15 +396,61 @@
         <div class="footer-brand">
           <a class="logo" href="/" aria-label="AppFactory">
             <svg class="logo-mark" viewBox="0 0 48 48" role="img" aria-hidden="true">
-              <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#afBody)" />
-              <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#afShine)" />
-              <path d="M15.5 34.5 L24 14.5 L32.5 34.5" fill="none" stroke="#ffffff"
-                    stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-              <line x1="10.5" y1="27.5" x2="37.5" y2="27.5" stroke="url(#afBeam)" stroke-width="2.4" stroke-linecap="round" />
-              <circle cx="12" cy="27.5" r="2.5" fill="#eafdff" />
-              <circle cx="36" cy="27.5" r="2.5" fill="#eafdff" />
+              <defs>
+                <linearGradient id="afFooterBg" x1="6" y1="4" x2="42" y2="44">
+                  <stop offset="0" stop-color="#17285b" />
+                  <stop offset=".5" stop-color="#0c1738" />
+                  <stop offset="1" stop-color="#22194d" />
+                </linearGradient>
+                <radialGradient id="afFooterGlow" cx="48%" cy="34%" r="64%">
+                  <stop offset="0" stop-color="#55ecff" stop-opacity=".38" />
+                  <stop offset=".48" stop-color="#4c80ff" stop-opacity=".14" />
+                  <stop offset="1" stop-color="#071126" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="afFooterLeft" x1="14" y1="41" x2="25" y2="7">
+                  <stop offset="0" stop-color="#397cff" />
+                  <stop offset=".52" stop-color="#2edcff" />
+                  <stop offset="1" stop-color="#b8f7ff" />
+                </linearGradient>
+                <linearGradient id="afFooterRight" x1="34" y1="41" x2="23" y2="7">
+                  <stop offset="0" stop-color="#29e2f0" />
+                  <stop offset=".46" stop-color="#4e89ff" />
+                  <stop offset="1" stop-color="#b58cff" />
+                </linearGradient>
+                <linearGradient id="afFooterEdge" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffffff" stop-opacity=".72" />
+                  <stop offset="1" stop-color="#ffffff" stop-opacity=".04" />
+                </linearGradient>
+                <filter id="afFooterShadow" x="-60%" y="-60%" width="220%" height="220%">
+                  <feDropShadow dx="0" dy="2.4" stdDeviation="1.8" flood-color="#021024" flood-opacity=".65" />
+                  <feDropShadow dx="0" dy="0" stdDeviation="1.8" flood-color="#37dfff" flood-opacity=".34" />
+                </filter>
+              </defs>
+              <rect x="3" y="3" width="42" height="42" rx="12" fill="url(#afFooterBg)" />
+              <rect x="3" y="3" width="42" height="42" rx="12" fill="url(#afFooterGlow)" />
+              <path d="M11.2 27.2 C9.8 19.8 13.9 12.6 21.3 10.1 C29.2 7.5 36.6 12.6 38 20.2"
+                    fill="none" stroke="#aef6ff" stroke-width=".6" stroke-linecap="round" stroke-opacity=".26" />
+              <path d="M9.8 30.2 C15.5 39.2 29.4 40.7 37.8 29.6"
+                    fill="none" stroke="#bba7ff" stroke-width=".55" stroke-linecap="round" stroke-opacity=".18" />
+              <g opacity=".82">
+                <circle cx="13.3" cy="27.3" r="1.2" fill="#d9fcff" />
+                <circle cx="35.7" cy="27.1" r="1.2" fill="#efe9ff" />
+                <circle cx="17.2" cy="14.6" r="1" fill="#bff9ff" />
+                <circle cx="32.4" cy="15.3" r="1" fill="#d8ccff" />
+              </g>
+              <g filter="url(#afFooterShadow)">
+                <path d="M14.2 38.2 L21.1 13.1 C21.7 10.8 22.9 9.2 24.5 8.8 L27.1 11.1 C25.9 12.2 25.2 13.7 24.7 15.5 L18.5 39 C18.2 40.2 16.8 40.7 15.5 40.1 C14.4 39.7 13.9 39 14.2 38.2 Z"
+                      fill="url(#afFooterLeft)" />
+                <path d="M33.8 38.2 L26.9 13.1 C26.3 10.8 25.1 9.2 23.5 8.8 L20.9 11.1 C22.1 12.2 22.8 13.7 23.3 15.5 L29.5 39 C29.8 40.2 31.2 40.7 32.5 40.1 C33.6 39.7 34.1 39 33.8 38.2 Z"
+                      fill="url(#afFooterRight)" />
+                <path d="M16.4 37.5 L22.7 14.3" fill="none" stroke="url(#afFooterEdge)" stroke-width="1.1" stroke-linecap="round" stroke-opacity=".46" />
+                <path d="M31.6 37.5 L25.3 14.3" fill="none" stroke="url(#afFooterEdge)" stroke-width="1.1" stroke-linecap="round" stroke-opacity=".34" />
+              </g>
             </svg>
-            <span class="logo-text"><b>App</b><span class="grad">Factory</span></span>
+            <span class="logo-copy">
+              <span class="logo-text"><b>App</b><span class="grad">Factory</span></span>
+              <span class="logo-kicker">Human to Human</span>
+            </span>
           </a>
           <p data-i18n="footer.tagline">An H2H app service company connecting people to people</p>
         </div>
