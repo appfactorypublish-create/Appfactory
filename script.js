@@ -248,7 +248,7 @@
         home: 'AppFactory — 사람과 사람을 잇는 H2H 앱'
       },
       nav: {
-        about: '소개', philosophy: 'H2H 철학', services: '서비스',
+        about: '소개', philosophy: 'H2H', services: '서비스',
         apps: '우리의 앱', policies: '정책', contact: '문의'
       },
       hero: {
@@ -348,7 +348,7 @@
     en: {
       meta: { home: 'AppFactory — H2H apps that connect people' },
       nav: {
-        about: 'About', philosophy: 'H2H Philosophy', services: 'Services',
+        about: 'About', philosophy: 'H2H', services: 'Services',
         apps: 'Our Apps', policies: 'Policies', contact: 'Contact'
       },
       hero: {
@@ -448,7 +448,7 @@
     ja: {
       meta: { home: 'AppFactory — 人と人をつなぐH2Hアプリ' },
       nav: {
-        about: '会社紹介', philosophy: 'H2H哲学', services: 'サービス',
+        about: '紹介', philosophy: 'H2H', services: 'サービス',
         apps: '私たちのアプリ', policies: 'ポリシー', contact: 'お問い合わせ'
       },
       hero: {
@@ -548,7 +548,7 @@
     vi: {
       meta: { home: 'AppFactory — Ứng dụng H2H kết nối con người' },
       nav: {
-        about: 'Giới thiệu', philosophy: 'Triết lý H2H', services: 'Dịch vụ',
+        about: 'Giới thiệu', philosophy: 'H2H', services: 'Dịch vụ',
         apps: 'Ứng dụng', policies: 'Chính sách', contact: 'Liên hệ'
       },
       hero: {
