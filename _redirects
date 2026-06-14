@@ -1,15 +1,15 @@
-/privacy  /privacy.html  200
-/terms    /terms.html    200
-/contact  /contact.html  200
+# Cloudflare Pages serves clean URLs natively (e.g. privacy.html at /privacy).
+# A "/x /x.html 200" rule for a single-segment path collides with that native
+# canonicalization and produces an infinite 308 redirect loop, so those paths
+# intentionally have NO rule here — /privacy /terms /contact /apps resolve natively.
 
-/apps     /apps.html 200
-/policies /apps.html 200
+# Alias for the app policy hub.
+/policies  /apps  302
 
+# Per-app policy clean URLs (nested paths have no native 1:1 file mapping).
 /apps/s-partner/privacy   /s-partner-privacy.html   200
 /apps/s-partner/terms     /s-partner-terms.html     200
-
-/apps/mbti/privacy        /mbti-privacy.html        200
-/apps/mbti/terms          /mbti-terms.html          200
-
+/apps/mbti/privacy        /mbti-privacy.html         200
+/apps/mbti/terms          /mbti-terms.html           200
 /apps/pickleball/privacy  /pickleball-privacy.html  200
 /apps/pickleball/terms    /pickleball-terms.html    200

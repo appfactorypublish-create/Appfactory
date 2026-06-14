@@ -15,10 +15,15 @@
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
 
-# Static assets change with each deploy; a day of caching is safe.
+# JS/CSS carry all copy and translations, so they must revalidate to ship
+# updates immediately (otherwise the edge can serve a stale build for a day).
 /styles.css
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
 /script.js
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
+/policy.js
+  Cache-Control: public, max-age=0, must-revalidate
+/app-policies.js
+  Cache-Control: public, max-age=0, must-revalidate
 /favicon.svg
   Cache-Control: public, max-age=604800
