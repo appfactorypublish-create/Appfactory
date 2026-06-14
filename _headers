@@ -6,8 +6,8 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
-  # The site is fully self-hosted (no CDN/fonts/analytics), so a tight CSP holds.
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  # Self-hosted, plus an allowance for Cloudflare's auto-injected Web Analytics beacon.
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self' static.cloudflareinsights.com; connect-src 'self' cloudflareinsights.com; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
 
 # HTML: always revalidate so language/content updates ship immediately.
 /
