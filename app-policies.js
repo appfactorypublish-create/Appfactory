@@ -444,7 +444,7 @@
       '<ul class="pol-list">' +
         '<li><strong>담당 부서:</strong> Customer Support Team</li>' +
         '<li><strong>이메일 주소:</strong> <a href="mailto:' + EMAIL + '">' + EMAIL + '</a></li>' +
-        '<li><strong>회사 정식 소재지:</strong> [확인 필요: 베트남 법인의 영문 정식 주소 입력]</li>' +
+        '<li><strong>회사 정식 소재지:</strong> 베트남 호치민시 (APPFACTORY VIETNAM CO., LTD.)</li>' +
       '</ul>' +
 
       '<h2>제11조 (개인정보 처리방침 변경)</h2>' +
