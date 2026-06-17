@@ -529,6 +529,30 @@ section { position: relative; }
   background: rgba(255,255,255,.02);
   color: var(--text-mute); font-size: 13.5px; line-height: 1.6;
 }
+/* Formal policy: emphasised list terms + inline links */
+.legal-body .pol-list strong { color: var(--text); font-weight: 700; }
+.legal-body .pol-list a,
+.legal-body p a:not(.policy-open):not(.back-home) { color: var(--cyan); font-weight: 600; }
+.legal-body .pol-list a:hover,
+.legal-body p a:hover { color: var(--text); }
+/* Formal policy: data-processing table (제4조) */
+.legal-body .pol-table-wrap { margin: 0 0 22px; overflow-x: auto; }
+.legal-body .pol-table {
+  width: 100%; border-collapse: collapse; min-width: 560px;
+  font-size: 14.5px;
+}
+.legal-body .pol-table th,
+.legal-body .pol-table td {
+  border: 1px solid var(--line-2);
+  padding: 11px 13px; text-align: left; vertical-align: top;
+  line-height: 1.55;
+}
+.legal-body .pol-table thead th {
+  background: var(--surface-2, rgba(255,255,255,.03));
+  color: var(--text); font-weight: 700;
+}
+.legal-body .pol-table td { color: var(--text-soft); }
+.legal-body .pol-effective { color: var(--text-mute); }
 
 /* App policy hub */
 .app-hub-grid {

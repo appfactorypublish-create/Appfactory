@@ -255,6 +255,14 @@
       id: 's-partner', name: 'S Partner', matching: true,
       subject: 'Account Deletion Request - S Partner',
       slug: { privacy: 's-partner-privacy', terms: 's-partner-terms', del: 's-partner-delete-account' },
+      // Full, formal Korean privacy policy (Korean PIPA-based). This is an
+      // authoritative legal document and overrides the generic privacy
+      // template for every language (S Partner targets Korean users).
+      privacyDoc: {
+        title: '에스 파트너매치(Sports PartnerMatch) 개인정보 처리방침',
+        effective: '시행일자: 2026년 7월 1일',
+        render: sPartnerPrivacyKo
+      },
       desc: {
         ko: '스포츠 파트너와 운동 모임을 잇는 H2H 매칭 앱',
         en: 'An H2H matching app connecting sports partners and workout meetups',
@@ -334,8 +342,113 @@
     return '<p class="pol-disclaimer">' + esc(t.disclaimer) + '</p>';
   }
 
+  /* ---- S Partner: full formal Korean privacy policy --------------------- */
+  function sPartnerPrivacyKo() {
+    return '' +
+      '<h2>제1조 (목적)</h2>' +
+      '<p>APPFACTORY VIETNAM CO., LTD.(이하 "회사"라 합니다)은 이용자의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 개인정보 보호법 제30조에 따라 다음과 같이 개인정보 처리방침을 수립·공개합니다. 회사는 대한민국 이용자를 대상으로 "에스 파트너매치(Sports PartnerMatch)" 서비스를 제공하며, 베트남에 소재한 법인으로서 대한민국 개인정보 보호법을 준수합니다.</p>' +
+
+      '<h2>제2조 (수집하는 개인정보의 항목 및 수집방법)</h2>' +
+      '<p>회사는 회원가입, 원활한 고객 상담, 각종 서비스 제공을 위해 서비스 이용 초기 단계 및 이용 과정에서 아래와 같은 개인정보를 수집하고 있습니다.</p>' +
+      '<p class="pol-sublabel">수집 항목</p>' +
+      '<ul class="pol-list">' +
+        '<li><strong>필수 항목:</strong> 이메일 주소, 비밀번호(자체 가입 시), 닉네임, 생년월일, 성별, 프로필 사진(최소 1장 이상)</li>' +
+        '<li><strong>소셜 연동 가입 시 수집 항목:</strong> (카카오/구글) 계정 고유 식별자, 프로필 정보(이름, 프로필 사진)</li>' +
+        '<li><strong>선택 항목(매칭 정확도 향상 목적):</strong> 키, 체형, 직업, 학력, 흡연/음주 여부, 운동 종목·관심사, 자기소개 문구</li>' +
+      '</ul>' +
+      '<p class="pol-sublabel">서비스 이용 과정에서 자동 생성 및 수집될 수 있는 항목</p>' +
+      '<ul class="pol-list">' +
+        '<li>기기 식별자(UUID, ADID/IDFA), OS 버전, 단말기 모델명, IP 주소, 쿠키, 서비스 이용 기록, 불량 이용 기록</li>' +
+      '</ul>' +
+      '<p class="pol-sublabel">기기 권한을 통한 수집 항목</p>' +
+      '<ul class="pol-list">' +
+        '<li><strong>위치 정보:</strong> 위치기반 매칭 기능 활성화 시, 단말기의 GPS 및 Wi-Fi 정보를 통한 실시간 위치 정보</li>' +
+        '<li><strong>카메라 및 갤러리(저장공간):</strong> 프로필 사진 등록 및 매칭 상대방과의 채팅 내 이미지 전송 시 접근</li>' +
+      '</ul>' +
+
+      '<h2>제3조 (개인정보의 수집 및 이용목적)</h2>' +
+      '<p>회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>' +
+      '<ul class="pol-list">' +
+        '<li><strong>회원 관리:</strong> 회원제 서비스 이용에 따른 본인확인, 개인 식별, 불량회원의 부정 이용 방지와 비인가 사용 방지, 가입 의사 확인, 만 14세 미만 아동의 가입 제한, 고충처리 및 분쟁 조정을 위한 기록 보존</li>' +
+        '<li><strong>서비스 제공:</strong> 위치 기반 맞춤형 매칭 서비스 제공, 프로필 노출, 인앱 결제 및 정기 구독 서비스 제공, 콘텐츠 구매 인증</li>' +
+        '<li><strong>이용자 보호:</strong> 신고·차단 기능 운영, 부적절한 콘텐츠 및 이용자 제재, 안전한 커뮤니티 환경 유지</li>' +
+        '<li><strong>신규 서비스 개발 및 마케팅(선택 동의 시):</strong> 신규 서비스 개발 및 맞춤 서비스 제공, 이벤트 및 광고성 정보 제공 및 참여기회 제공</li>' +
+      '</ul>' +
+
+      '<h2>제4조 (개인정보의 처리 위탁)</h2>' +
+      '<p>회사는 원활한 서비스 제공을 위하여 다음과 같이 개인정보 처리 업무를 외부 전문업체에 위탁하고 있으며, 위탁계약 체결 시 개인정보가 안전하게 관리될 수 있도록 필요한 사항을 규정하고 있습니다.</p>' +
+      '<div class="pol-table-wrap"><table class="pol-table">' +
+        '<thead><tr><th>수탁업체 (위탁받는 자)</th><th>위탁 업무 내용</th><th>위탁하는 개인정보 항목</th></tr></thead>' +
+        '<tbody>' +
+          '<tr><td>Google LLC (Firebase)</td><td>회원 인증, 데이터베이스(Firestore) 저장, 클라우드 기능(서버리스) 운영, 푸시 알림</td><td>제2조에 명시된 수집 항목 일체, 기기 식별자, 서비스 이용 기록</td></tr>' +
+          '<tr><td>RevenueCat, Inc.</td><td>인앱 구독 결제 관리 및 구독 상태 검증</td><td>인앱 결제 영수증 번호, 구독 상태 데이터, 유저 고유 식별자</td></tr>' +
+          '<tr><td>Google LLC / Apple Inc.</td><td>앱마켓을 통한 인앱 결제 처리</td><td>결제 영수증 정보, 인앱 구매 내역</td></tr>' +
+        '</tbody>' +
+      '</table></div>' +
+
+      '<h2>제5조 (개인정보의 국외 이전)</h2>' +
+      '<p>회사는 대한민국 이용자에게 안정적인 서비스를 제공하기 위해 운영 주체인 베트남 법인으로 고유 식별자를 포함한 개인정보를 이전하여 처리합니다. 클라우드 데이터베이스 인프라의 경우, 국내 이용자의 원활한 네트워크 속도 및 데이터 주권 보장을 위해 대한민국 내 리전에 저장됩니다.</p>' +
+      '<ul class="pol-list">' +
+        '<li><strong>회사(운영 및 처리 주체):</strong> APPFACTORY VIETNAM CO., LTD. (베트남 호치민시)</li>' +
+        '<li><strong>클라우드 인프라 제공사:</strong> Google LLC — 데이터 저장 리전: 대한민국 서울 (asia-northeast3)</li>' +
+        '<li><strong>이전되는 개인정보 항목:</strong> 제2조에 따라 수집되는 회원 정보 일체</li>' +
+        '<li><strong>이전 일시 및 방법:</strong> 서비스 이용 시점에 정보통신망을 통해 운영 주체(베트남) 및 인프라 서버(한국 서울)로 전송</li>' +
+        '<li><strong>이전받는 자의 이용목적 및 보유기간:</strong> 제3조의 목적 범위 내에서 제6조의 보유기간 동안</li>' +
+        '<li><strong>국외 이전 거부 방법 및 절차:</strong> 이용자는 개인정보의 국외 이전을 거부할 수 있으나, 이 경우 서비스 이용이 제한될 수 있습니다. 국외 이전을 거부하고자 하시는 경우, 앱 내 \'회원 탈퇴(계정 삭제)\' 기능을 이용하시거나 개인정보 보호책임자(<a href="mailto:' + EMAIL + '">' + EMAIL + '</a>)에게 이메일로 연락해 주시기 바랍니다.</li>' +
+      '</ul>' +
+
+      '<h2>제6조 (개인정보의 보유 및 이용기간)</h2>' +
+      '<p>회사는 이용자로부터 개인정보를 수집할 때 동의받은 보유·이용기간 또는 법령에 따른 보유·이용기간 내에서 개인정보를 처리·보존합니다. 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.</p>' +
+      '<ul class="pol-list">' +
+        '<li><strong>회원 가입 및 관리:</strong> 앱 탈퇴 시까지. 단, 부정 가입 및 변칙 탈퇴를 통한 부정 이용 재발 방지를 위해 탈퇴일로부터 30일간 회원의 식별 정보(이메일, 기기 식별자, 불량 이용 기록)를 분리 보관 후 파기합니다.</li>' +
+      '</ul>' +
+      '<p>관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 아래와 같이 일정 기간 회원정보를 보관합니다.</p>' +
+      '<ul class="pol-list">' +
+        '<li>계약 또는 청약철회 등에 관한 기록: 5년 (전자상거래등에서의 소비자보호에 관한 법률)</li>' +
+        '<li>대금결제 및 재화 등의 공급에 관한 기록: 5년 (전자상거래등에서의 소비자보호에 관한 법률)</li>' +
+        '<li>소비자의 불만 또는 분쟁처리에 관한 기록: 3년 (전자상거래등에서의 소비자보호에 관한 법률)</li>' +
+        '<li>표시/광고에 관한 기록: 6개월 (전자상거래등에서의 소비자보호에 관한 법률)</li>' +
+        '<li>서비스 접속 기록(로그인 기록): 3개월 (통신비밀보호법)</li>' +
+      '</ul>' +
+
+      '<h2>제7조 (개인정보의 파기절차 및 방법)</h2>' +
+      '<p>회사는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다. 파기방법은 다음과 같습니다.</p>' +
+      '<ul class="pol-list">' +
+        '<li>전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.</li>' +
+        '<li>종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기합니다.</li>' +
+      '</ul>' +
+
+      '<h2>제8조 (이용자의 권리와 그 행사방법)</h2>' +
+      '<ul class="pol-list">' +
+        '<li>이용자는 회사에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 요구 등의 권리를 행사할 수 있습니다.</li>' +
+        '<li>제1항에 따른 권리 행사는 앱 내 \'프로필 수정\' 및 \'회원 탈퇴(계정 삭제)\' 기능을 통해 직접 수행하시거나, 개인정보 보호책임자에게 이메일을 통해 하실 수 있으며 회사는 이에 대해 지체 없이 조치하겠습니다.</li>' +
+        '<li>이용자가 회원 탈퇴(계정 삭제)를 요청하는 경우, 회사는 인증·프로필·작성 게시물·차단 목록 등 관련 개인정보를 삭제합니다. 다만 신고(모더레이션) 기록은 이용자 보호 및 부정 이용 방지를 위해 개인 식별자를 익명화한 형태로 보존될 수 있습니다.</li>' +
+        '<li>이용자가 개인정보의 오류에 대한 정정을 요청한 경우, 회사는 정정을 완료하기 전까지 당해 개인정보를 이용 또는 제공하지 않습니다.</li>' +
+      '</ul>' +
+
+      '<h2>제9조 (개인정보의 안전성 확보 조치)</h2>' +
+      '<p>회사는 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.</p>' +
+      '<ul class="pol-list">' +
+        '<li><strong>관리적 조치:</strong> 내부관리계획 수립·시행, 정기적 직원 교육 등</li>' +
+        '<li><strong>기술적 조치:</strong> 개인정보처리시스템 접근권한 관리, 접근통제시스템 설치, 고유식별정보 등의 암호화, 보안프로그램 설치</li>' +
+        '<li><strong>물리적 조치:</strong> 데이터 보관 시스템 등에 대한 접근통제</li>' +
+      '</ul>' +
+
+      '<h2>제10조 (개인정보 보호책임자 및 안내)</h2>' +
+      '<p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 이용자의 고충처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>' +
+      '<ul class="pol-list">' +
+        '<li><strong>담당 부서:</strong> Customer Support Team</li>' +
+        '<li><strong>이메일 주소:</strong> <a href="mailto:' + EMAIL + '">' + EMAIL + '</a></li>' +
+        '<li><strong>회사 정식 소재지:</strong> [확인 필요: 베트남 법인의 영문 정식 주소 입력]</li>' +
+      '</ul>' +
+
+      '<h2>제11조 (개인정보 처리방침 변경)</h2>' +
+      '<p>본 개인정보 처리방침은 2026년 7월 1일부터 적용됩니다. 법령 및 방침에 따른 변경내용의 추가, 삭제 및 수정이 있을 시에는 변경사항의 시행 7일 전부터 앱 내 공지사항을 통해 고지할 것입니다.</p>';
+  }
+
   /* ---- Builders --------------------------------------------------------- */
   function buildPrivacy(app, lang) {
+    if (app.privacyDoc) return app.privacyDoc.render();
     var t = T[lang], html = '';
     html += '<p class="intro">' + tpl(t.pIntro, app.name) + '</p>';
     html += h2(t.collectLabel) + p(tpl(t.pCollectLead, app.name)) + ul(app.collected[lang]);
@@ -396,20 +509,31 @@
     var app = APPS[appId];
     if (!app || !BUILDERS[type]) return;
     var t = T[lang] || T.en;
+    var h1 = document.querySelector('[data-policy-title]');
+    var sub = document.querySelector('[data-policy-app]');
+    var up = document.querySelector('[data-policy-updated]');
+    var back = document.querySelector('[data-policy-back]');
+    var container = document.querySelector('[data-policy-body]');
+
+    // Formal, authoritative document (e.g. S Partner privacy): Korean-only
+    // title / effective date / body, regardless of the selected language.
+    if (type === 'privacy' && app.privacyDoc) {
+      var pd = app.privacyDoc;
+      document.title = pd.title + ' | AppFactory';
+      if (h1) h1.textContent = pd.title;
+      if (sub) sub.textContent = app.desc.ko;
+      if (up) { up.textContent = pd.effective; up.classList.add('pol-effective'); }
+      if (back) back.textContent = t.hubBack;
+      if (container) container.innerHTML = pd.render();
+      return;
+    }
 
     var title = app.name + ' — ' + t[TITLES[type]];
     document.title = title + ' | AppFactory';
-
-    var h1 = document.querySelector('[data-policy-title]');
     if (h1) h1.textContent = app.name + ' ' + t[TITLES[type]];
-    var sub = document.querySelector('[data-policy-app]');
     if (sub) sub.textContent = app.desc[lang] || app.desc.en;
-    var up = document.querySelector('[data-policy-updated]');
     if (up) up.textContent = t.updated;
-    var back = document.querySelector('[data-policy-back]');
     if (back) back.textContent = t.hubBack;
-
-    var container = document.querySelector('[data-policy-body]');
     if (container) container.innerHTML = BUILDERS[type](app, lang);
   }
 
