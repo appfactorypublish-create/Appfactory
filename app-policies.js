@@ -309,40 +309,10 @@
         ja: ['本アプリは医学的・心理学的な診断を提供せず、エンターテインメントおよび自己理解のためのコンテンツです。', '現在は広告・分析用の識別子を使用していない場合がありますが、サービス改善のため将来使用する可能性があります。'],
         vi: ['Ứng dụng không cung cấp chẩn đoán y tế hay tâm lý; đây là nội dung mang tính giải trí và tự hiểu bản thân.', 'Hiện tại có thể không sử dụng mã nhận dạng quảng cáo/phân tích, nhưng có thể sử dụng trong tương lai để cải thiện dịch vụ.']
       }
-    },
-
-    'pickleball': {
-      id: 'pickleball', name: 'Pickleball Partner Match', matching: true,
-      subject: 'Account Deletion Request - Pickleball Partner Match',
-      slug: { privacy: 'pickleball-privacy', terms: 'pickleball-terms', del: 'pickleball-delete-account' },
-      desc: {
-        ko: '피클볼을 즐기는 사람들을 잇는 H2H 매칭 앱',
-        en: 'An H2H matching app connecting pickleball players',
-        ja: 'ピックルボールを楽しむ人々をつなぐH2Hマッチングアプリ',
-        vi: 'Ứng dụng kết nối H2H cho người chơi pickleball'
-      },
-      collected: {
-        ko: ['이메일 또는 로그인 정보', '닉네임', '프로필 사진', '활동 지역', '경기 수준', '선호 시간대', '파트너 모집 게시글', '외부 연락 링크', '신고 및 문의 내용', '앱 사용 기록', '기기 및 로그 정보'],
-        en: ['Email or login information', 'Nickname', 'Profile photo', 'Activity area', 'Play level', 'Preferred time slots', 'Partner recruitment posts', 'External contact links', 'Reports and inquiries', 'App usage records', 'Device and log information'],
-        ja: ['メールまたはログイン情報', 'ニックネーム', 'プロフィール写真', '活動地域', 'プレーレベル', '希望する時間帯', 'パートナー募集の投稿', '外部連絡リンク', '通報・問い合わせ内容', 'アプリ利用履歴', '端末およびログ情報'],
-        vi: ['Email hoặc thông tin đăng nhập', 'Biệt danh', 'Ảnh hồ sơ', 'Khu vực hoạt động', 'Trình độ chơi', 'Khung giờ ưa thích', 'Bài đăng tìm bạn chơi', 'Liên kết liên hệ bên ngoài', 'Nội dung báo cáo và liên hệ', 'Lịch sử sử dụng ứng dụng', 'Thông tin thiết bị và nhật ký']
-      },
-      purposes: {
-        ko: ['피클볼 파트너 매칭', '모임 및 게시글 표시', '사용자 안전', '신고 및 문의 대응', '서비스 개선'],
-        en: ['Matching pickleball partners', 'Displaying meetups and posts', 'User safety', 'Handling reports and inquiries', 'Improving the service'],
-        ja: ['ピックルボールのパートナーマッチング', '集まり・投稿の表示', 'ユーザーの安全', '通報・問い合わせ対応', 'サービス改善'],
-        vi: ['Ghép bạn chơi pickleball', 'Hiển thị buổi gặp và bài đăng', 'An toàn người dùng', 'Xử lý báo cáo và liên hệ', 'Cải thiện dịch vụ']
-      },
-      notes: {
-        ko: ['본 앱은 사용자가 입력한 외부 연락 링크를 통해 사용자 간 연결이 이루어질 수 있습니다. 외부 서비스 이용 시 해당 서비스의 정책이 적용됩니다.'],
-        en: ['Users may be connected through external contact links they enter. When you use an external service, that service’s policy applies.'],
-        ja: ['本アプリは利用者が入力した外部連絡リンクを通じて利用者同士がつながる場合があります。外部サービスの利用時には当該サービスのポリシーが適用されます。'],
-        vi: ['Người dùng có thể được kết nối qua các liên kết liên hệ bên ngoài do họ nhập. Khi dùng dịch vụ bên ngoài, chính sách của dịch vụ đó được áp dụng.']
-      }
     }
   };
 
-  var APP_ORDER = ['s-partner', 'mbti', 'pickleball'];
+  var APP_ORDER = ['s-partner', 'mbti'];
 
   /* ---- HTML helpers ----------------------------------------------------- */
   function esc(s) {

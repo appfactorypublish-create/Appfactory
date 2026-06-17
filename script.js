@@ -308,9 +308,6 @@
         a2Title: 'MBTI Swipe',
         a2Status: '준비 중',
         a2Body: '상황 카드 기반의 성향 테스트로, 자기 이해를 가볍고 공유하기 좋은 경험으로 바꾸는 엔터테인먼트 서비스입니다.',
-        a3Title: 'Pickleball Partner Match',
-        a3Status: '출시 예정',
-        a3Body: '피클볼을 즐기는 사람들을 연결하는 스포츠 파트너 매칭 서비스. 처음 시작하는 사람부터 꾸준히 즐기는 사람까지 이어줍니다.',
         note: '더 많은 H2H 서비스가 준비되고 있습니다. 각 앱은 준비와 출시에 맞춰 이곳에서 차례로 소개됩니다.'
       },
       policies: {
@@ -408,9 +405,6 @@
         a2Title: 'MBTI Swipe',
         a2Status: 'Being prepared',
         a2Body: 'A situation-card based personality test that turns self-understanding into a light, shareable experience — entertainment with a human touch.',
-        a3Title: 'Pickleball Partner Match',
-        a3Status: 'Planned',
-        a3Body: 'A sports partner matching service that connects people who love pickleball, from first-timers to regular players.',
         note: 'More H2H services are on the way. Each app will be introduced here as it is prepared and released.'
       },
       policies: {
@@ -508,9 +502,6 @@
         a2Title: 'MBTI Swipe',
         a2Status: '準備中',
         a2Body: 'シチュエーションカード型の性格テストで、自己理解を軽やかでシェアしやすい体験に変えるエンターテインメントサービスです。',
-        a3Title: 'Pickleball Partner Match',
-        a3Status: '公開予定',
-        a3Body: 'ピックルボールを楽しむ人々をつなぐスポーツパートナーマッチングサービス。はじめての人から常連の人までつなぎます。',
         note: 'さらに多くのH2Hサービスを準備しています。各アプリは準備とリリースに合わせて、ここで順番にご紹介します。'
       },
       policies: {
@@ -608,9 +599,6 @@
         a2Title: 'MBTI Swipe',
         a2Status: 'Đang chuẩn bị',
         a2Body: 'Trắc nghiệm tính cách dựa trên thẻ tình huống, biến việc hiểu bản thân thành trải nghiệm nhẹ nhàng và dễ chia sẻ — giải trí với chạm cảm xúc con người.',
-        a3Title: 'Pickleball Partner Match',
-        a3Status: 'Dự kiến ra mắt',
-        a3Body: 'Dịch vụ ghép đôi bạn chơi thể thao, kết nối những người yêu pickleball, từ người mới chơi đến người chơi thường xuyên.',
         note: 'Nhiều dịch vụ H2H khác đang trên đường ra mắt. Mỗi ứng dụng sẽ được giới thiệu tại đây khi được chuẩn bị và phát hành.'
       },
       policies: {
