@@ -553,6 +553,7 @@ section { position: relative; }
 }
 .legal-body .pol-table td { color: var(--text-soft); }
 .legal-body .pol-effective { color: var(--text-mute); }
+.legal-body .pol-divider { margin: 40px 0; border: 0; border-top: 1px solid var(--line); }
 
 /* App policy hub */
 .app-hub-grid {

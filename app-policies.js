@@ -268,6 +268,12 @@
         effective: '시행일자: 2026년 7월 1일',
         render: sPartnerTermsKo
       },
+      // Account deletion instructions (Google Play "Account deletion URL").
+      // Bilingual (Korean + English) and authoritative across all languages.
+      deleteDoc: {
+        title: '에스 파트너매치(Sports PartnerMatch) 계정 삭제 요청 / Account Deletion Request',
+        render: sPartnerDeleteDoc
+      },
       desc: {
         ko: '스포츠 파트너와 운동 모임을 잇는 H2H 매칭 앱',
         en: 'An H2H matching app connecting sports partners and workout meetups',
@@ -552,6 +558,64 @@
       '<p>본 약관은 2026년 7월 1일부터 시행합니다.</p>';
   }
 
+  /* ---- S Partner: bilingual account deletion instructions --------------- */
+  function sPartnerDeleteDoc() {
+    return '' +
+      /* ----- 한국어 ----- */
+      '<h2>계정 삭제 요청</h2>' +
+      '<p>Sports PartnerMatch 사용자는 앱 안에서 직접 계정을 삭제할 수 있습니다.</p>' +
+      '<p class="pol-sublabel">앱 내 삭제 경로</p>' +
+      '<ul class="pol-list"><li><strong>내정보 → 계정 삭제</strong></li></ul>' +
+      '<p>앱에 접속할 수 없는 경우 아래 이메일로 계정 삭제를 요청할 수 있습니다.</p>' +
+      '<div class="callout">' +
+        '<p class="email-line mb-8"><span>삭제 요청 이메일: </span><a href="mailto:' + EMAIL + '">' + EMAIL + '</a></p>' +
+        '<p class="subject-hint pol-subject">이메일 제목: “Sports PartnerMatch 계정 삭제 요청”</p>' +
+        '<p class="pol-sublabel">이메일 내용에 포함할 정보</p>' +
+        '<ul class="pol-list">' +
+          '<li>가입 이메일</li>' +
+          '<li>닉네임 또는 사용자 식별 정보</li>' +
+          '<li>“Sports PartnerMatch 계정 삭제를 요청합니다”라는 문장</li>' +
+        '</ul>' +
+      '</div>' +
+      '<h2>삭제되는 데이터</h2>' +
+      '<ul class="pol-list">' +
+        '<li>사용자 계정</li>' +
+        '<li>프로필 정보</li>' +
+        '<li>사용자가 작성한 모집글</li>' +
+        '<li>사용자가 업로드한 사진</li>' +
+        '<li>사용자와 연결된 앱 데이터</li>' +
+      '</ul>' +
+      '<p>일부 데이터는 법적 의무, 보안, 부정 사용 방지, 분쟁 대응을 위해 필요한 경우 제한된 기간 동안 보관될 수 있습니다.</p>' +
+
+      '<hr class="pol-divider" />' +
+
+      /* ----- English ----- */
+      '<h2>Account Deletion Request</h2>' +
+      '<p>Sports PartnerMatch users can delete their account in the app.</p>' +
+      '<p class="pol-sublabel">In-app deletion path</p>' +
+      '<ul class="pol-list"><li><strong>Profile / 내정보 → Delete account / 계정 삭제</strong></li></ul>' +
+      '<p>If you cannot access the app, you can request account deletion by email.</p>' +
+      '<div class="callout">' +
+        '<p class="email-line mb-8"><span>Deletion request email: </span><a href="mailto:' + EMAIL + '">' + EMAIL + '</a></p>' +
+        '<p class="subject-hint pol-subject">Email subject: “Sports PartnerMatch account deletion request”</p>' +
+        '<p class="pol-sublabel">Please include</p>' +
+        '<ul class="pol-list">' +
+          '<li>Account email</li>' +
+          '<li>Nickname or user identifier</li>' +
+          '<li>A clear request: “Please delete my Sports PartnerMatch account.”</li>' +
+        '</ul>' +
+      '</div>' +
+      '<h2>Deleted data</h2>' +
+      '<ul class="pol-list">' +
+        '<li>Account</li>' +
+        '<li>Profile data</li>' +
+        '<li>Recruitment posts created by the user</li>' +
+        '<li>Uploaded photos</li>' +
+        '<li>Related app data</li>' +
+      '</ul>' +
+      '<p>Some data may be retained for a limited period when required for legal, security, fraud-prevention, abuse-prevention, or dispute-resolution reasons.</p>';
+  }
+
   /* ---- Builders --------------------------------------------------------- */
   function buildPrivacy(app, lang) {
     if (app.privacyDoc) return app.privacyDoc.render();
@@ -588,6 +652,7 @@
   }
 
   function buildDelete(app, lang) {
+    if (app.deleteDoc) return app.deleteDoc.render();
     var t = T[lang], html = '';
     html += '<p class="intro">' + tpl(t.dIntro, app.name) + '</p>';
     html += h2(t.dInAppH) + p(t.dInAppB);
@@ -625,12 +690,16 @@
     // Formal, authoritative document (e.g. S Partner privacy & terms):
     // Korean-only title / effective date / body, regardless of language.
     var formalDoc = (type === 'privacy' && app.privacyDoc) ||
-                    (type === 'terms' && app.termsDoc) || null;
+                    (type === 'terms' && app.termsDoc) ||
+                    (type === 'del' && app.deleteDoc) || null;
     if (formalDoc) {
       document.title = formalDoc.title + ' | AppFactory';
       if (h1) h1.textContent = formalDoc.title;
       if (sub) sub.textContent = app.desc.ko;
-      if (up) { up.textContent = formalDoc.effective; up.classList.add('pol-effective'); }
+      if (up) {
+        if (formalDoc.effective) { up.textContent = formalDoc.effective; up.classList.add('pol-effective'); }
+        else { up.textContent = ''; }
+      }
       if (back) back.textContent = t.hubBack;
       if (container) container.innerHTML = formalDoc.render();
       return;
@@ -668,6 +737,7 @@
         '<div class="app-card-links">' +
           '<a href="/apps/' + id + '/privacy">' + esc(t.linkPrivacy) + '</a>' +
           '<a href="/apps/' + id + '/terms">' + esc(t.linkTerms) + '</a>' +
+          (app.deleteDoc ? '<a href="/apps/' + id + '/delete-account">' + esc(t.linkDelete) + '</a>' : '') +
         '</div>' +
       '</article>';
     });
