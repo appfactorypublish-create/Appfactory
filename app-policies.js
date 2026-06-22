@@ -71,7 +71,10 @@
       hubNote: 'AppFactory 홈페이지는 회사 및 앱 소개를 위한 정적 사이트로, 회원가입·로그인·결제·게시판·댓글·문의폼이 없습니다. 문의는 이메일로만 받습니다.',
       linkPrivacy: '개인정보 처리방침',
       linkTerms: '이용약관',
-      linkDelete: '계정 삭제 요청'
+      linkDelete: '계정 삭제 요청',
+      hubEyebrow: 'H2H 앱 · 직접 만들고 운영',
+      catMatching: '매칭',
+      catEntertainment: '엔터테인먼트'
     },
     en: {
       hubBack: '← Policy Hub',
@@ -129,7 +132,10 @@
       hubNote: 'The AppFactory homepage is a static company/app information site with no sign-up, login, payment, board, comments, or contact form. Inquiries are handled by email only.',
       linkPrivacy: 'Privacy Policy',
       linkTerms: 'Terms of Service',
-      linkDelete: 'Delete Account Request'
+      linkDelete: 'Delete Account Request',
+      hubEyebrow: 'H2H apps · built & run by us',
+      catMatching: 'Matching',
+      catEntertainment: 'Entertainment'
     },
     ja: {
       hubBack: '← ポリシー一覧',
@@ -187,7 +193,10 @@
       hubNote: 'AppFactoryホームページは会社およびアプリ紹介のための静的サイトで、会員登録・ログイン・決済・掲示板・コメント・お問い合わせフォームはありません。お問い合わせはメールのみで受け付けます。',
       linkPrivacy: 'プライバシーポリシー',
       linkTerms: '利用規約',
-      linkDelete: 'アカウント削除リクエスト'
+      linkDelete: 'アカウント削除リクエスト',
+      hubEyebrow: 'H2Hアプリ · 自社で開発・運営',
+      catMatching: 'マッチング',
+      catEntertainment: 'エンタメ'
     },
     vi: {
       hubBack: '← Trang chính sách',
@@ -245,7 +254,10 @@
       hubNote: 'Trang chủ AppFactory là website tĩnh giới thiệu công ty và ứng dụng, không có đăng ký, đăng nhập, thanh toán, diễn đàn, bình luận hay biểu mẫu liên hệ. Mọi liên hệ chỉ qua email.',
       linkPrivacy: 'Chính sách quyền riêng tư',
       linkTerms: 'Điều khoản sử dụng',
-      linkDelete: 'Yêu cầu xóa tài khoản'
+      linkDelete: 'Yêu cầu xóa tài khoản',
+      hubEyebrow: 'Ứng dụng H2H · tự xây & vận hành',
+      catMatching: 'Kết nối',
+      catEntertainment: 'Giải trí'
     }
   };
 
@@ -259,19 +271,19 @@
       // authoritative legal document and overrides the generic privacy
       // template for every language (S Partner targets Korean users).
       privacyDoc: {
-        title: '에스 파트너매치(Sports PartnerMatch) 개인정보 처리방침',
+        title: 'S Partner(Sports Partner) 개인정보 처리방침',
         effective: '시행일자: 2026년 7월 1일',
         render: sPartnerPrivacyKo
       },
       termsDoc: {
-        title: '에스 파트너매치(Sports PartnerMatch) 서비스 이용약관',
+        title: 'S Partner(Sports Partner) 서비스 이용약관',
         effective: '시행일자: 2026년 7월 1일',
         render: sPartnerTermsKo
       },
       // Account deletion instructions (Google Play "Account deletion URL").
       // Bilingual (Korean + English) and authoritative across all languages.
       deleteDoc: {
-        title: '에스 파트너매치(Sports PartnerMatch) 계정 삭제 요청 / Account Deletion Request',
+        title: 'S Partner(Sports Partner) 계정 삭제 요청 / Account Deletion Request',
         render: sPartnerDeleteDoc
       },
       desc: {
@@ -281,10 +293,10 @@
         vi: 'Ứng dụng kết nối H2H cho bạn tập thể thao và nhóm vận động'
       },
       collected: {
-        ko: ['이메일 또는 로그인 정보', '닉네임', '프로필 사진', '운동 종목', '활동 지역', '자기소개', '파트너 모집 게시글', '외부 메신저 연결 정보(예: 카카오 오픈프로필, 텔레그램 링크)', '앱 사용 기록', '신고 및 문의 내용', '기기 및 로그 정보'],
-        en: ['Email or login information', 'Nickname', 'Profile photo', 'Sport / activity type', 'Activity area', 'Self-introduction', 'Partner recruitment posts', 'External messenger links (e.g., KakaoTalk open profile, Telegram link)', 'App usage records', 'Reports and inquiries', 'Device and log information'],
-        ja: ['メールまたはログイン情報', 'ニックネーム', 'プロフィール写真', '運動種目', '活動地域', '自己紹介', 'パートナー募集の投稿', '外部メッセンジャーの連絡先（例: カカオオープンプロフィール、テレグラムのリンク）', 'アプリ利用履歴', '通報・問い合わせ内容', '端末およびログ情報'],
-        vi: ['Email hoặc thông tin đăng nhập', 'Biệt danh', 'Ảnh hồ sơ', 'Môn thể thao', 'Khu vực hoạt động', 'Giới thiệu bản thân', 'Bài đăng tìm bạn tập', 'Liên kết messenger bên ngoài (vd: KakaoTalk open profile, link Telegram)', 'Lịch sử sử dụng ứng dụng', 'Nội dung báo cáo và liên hệ', 'Thông tin thiết bị và nhật ký']
+        ko: ['이메일 또는 로그인 정보', '닉네임', '프로필 사진', '운동 종목', '활동 지역', '자기소개', '파트너 모집 게시글', '인앱 채팅 메시지 및 대화 정보(참여자, 메시지 내용, 전송 시각, 읽음 상태)', '(선택) 모집 게시글의 외부 연락 링크(카카오 오픈채팅·텔레그램)', '신고 및 차단 정보', '앱 사용 기록', '신고 및 문의 내용', '기기 및 로그 정보'],
+        en: ['Email or login information', 'Nickname', 'Profile photo', 'Sport / activity type', 'Activity area', 'Self-introduction', 'Partner recruitment posts', 'In-app chat messages and conversation data (participants, message content, timestamps, read status)', 'Optional external contact link on recruitment posts (KakaoTalk OpenChat / Telegram)', 'Report and block information', 'App usage records', 'Reports and inquiries', 'Device and log information'],
+        ja: ['メールまたはログイン情報', 'ニックネーム', 'プロフィール写真', '運動種目', '活動地域', '自己紹介', 'パートナー募集の投稿', 'アプリ内チャットのメッセージおよび会話情報（参加者、メッセージ内容、送信時刻、既読状態）', '（任意）募集投稿の外部連絡リンク（カカオオープンチャット・テレグラム）', '通報・ブロック情報', 'アプリ利用履歴', '通報・問い合わせ内容', '端末およびログ情報'],
+        vi: ['Email hoặc thông tin đăng nhập', 'Biệt danh', 'Ảnh hồ sơ', 'Môn thể thao', 'Khu vực hoạt động', 'Giới thiệu bản thân', 'Bài đăng tìm bạn tập', 'Tin nhắn và dữ liệu hội thoại trong ứng dụng (người tham gia, nội dung tin nhắn, thời gian, trạng thái đã đọc)', '(Tùy chọn) Liên kết liên hệ ngoài trên bài đăng (KakaoTalk OpenChat / Telegram)', 'Thông tin báo cáo và chặn', 'Lịch sử sử dụng ứng dụng', 'Nội dung báo cáo và liên hệ', 'Thông tin thiết bị và nhật ký']
       },
       purposes: {
         ko: ['스포츠 파트너 매칭', '모집 게시글 표시', '사용자 프로필 제공', '안전한 서비스 운영', '신고 및 문의 대응', '서비스 개선'],
@@ -293,10 +305,10 @@
         vi: ['Ghép bạn tập thể thao', 'Hiển thị bài đăng tuyển', 'Cung cấp hồ sơ người dùng', 'Vận hành dịch vụ an toàn', 'Xử lý báo cáo và liên hệ', 'Cải thiện dịch vụ']
       },
       notes: {
-        ko: ['본 앱은 앱 내 직접 채팅을 제공하지 않으며, 사용자가 입력한 외부 연락 링크(예: 카카오 오픈프로필, 텔레그램)를 통해 사용자 간 연결이 이루어질 수 있습니다. 외부 서비스 이용 시 해당 서비스의 정책이 적용됩니다.'],
-        en: ['This app does not provide in-app direct chat. Users may be connected through external contact links they enter (e.g., KakaoTalk open profile, Telegram). When you use an external service, that service’s policy applies.'],
-        ja: ['本アプリはアプリ内の直接チャットを提供せず、利用者が入力した外部連絡リンク（例: カカオオープンプロフィール、テレグラム）を通じて利用者同士がつながる場合があります。外部サービスの利用時には当該サービスのポリシーが適用されます。'],
-        vi: ['Ứng dụng không cung cấp trò chuyện trực tiếp trong ứng dụng. Người dùng có thể được kết nối qua các liên kết liên hệ bên ngoài do họ nhập (vd: KakaoTalk open profile, Telegram). Khi dùng dịch vụ bên ngoài, chính sách của dịch vụ đó được áp dụng.']
+        ko: ['본 앱은 매칭 상대방과 대화할 수 있는 인앱 채팅(텍스트 기반) 기능을 제공합니다. 모집 게시글에는 회원이 외부 연락 링크(예: 카카오 오픈채팅, 텔레그램)를 선택적으로 입력할 수 있으며, 외부 서비스 이용 시 해당 서비스의 정책이 적용됩니다.'],
+        en: ['This app provides in-app chat (text-based) for communicating with a matched partner. Recruitment posts may optionally include an external contact link (e.g., KakaoTalk OpenChat, Telegram) entered by the user; when you use an external service, that service’s policy applies.'],
+        ja: ['本アプリはマッチング相手と会話できるアプリ内チャット（テキストベース）機能を提供します。募集投稿には利用者が外部連絡リンク（例: カカオオープンチャット、テレグラム）を任意で入力でき、外部サービスの利用時には当該サービスのポリシーが適用されます。'],
+        vi: ['Ứng dụng cung cấp trò chuyện trong ứng dụng (dạng văn bản) để liên lạc với bạn tập đã ghép. Bài đăng tìm bạn tập có thể tùy chọn kèm liên kết liên hệ bên ngoài (vd: KakaoTalk OpenChat, Telegram) do người dùng nhập; khi dùng dịch vụ bên ngoài, chính sách của dịch vụ đó được áp dụng.']
       }
     },
 
@@ -333,6 +345,15 @@
 
   var APP_ORDER = ['s-partner', 'mbti'];
 
+  // Node accents for the hub "connection beam" — sampled across the brand
+  // gradient (blue -> cyan -> violet). One per app, cycled if more are added.
+  var HUB_NODES = [
+    { c: '#38bdf8', g: 'rgba(56,189,248,.45)' },
+    { c: '#a78bfa', g: 'rgba(167,139,250,.45)' },
+    { c: '#22d3ee', g: 'rgba(34,211,238,.45)' },
+    { c: '#f472b6', g: 'rgba(244,114,182,.45)' }
+  ];
+
   /* ---- HTML helpers ----------------------------------------------------- */
   function esc(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -357,7 +378,7 @@
   function sPartnerPrivacyKo() {
     return '' +
       '<h2>제1조 (목적)</h2>' +
-      '<p>APPFACTORY VIETNAM CO., LTD.(이하 "회사"라 합니다)은 이용자의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 개인정보 보호법 제30조에 따라 다음과 같이 개인정보 처리방침을 수립·공개합니다. 회사는 대한민국 이용자를 대상으로 "에스 파트너매치(Sports PartnerMatch)" 서비스를 제공하며, 베트남에 소재한 법인으로서 대한민국 개인정보 보호법을 준수합니다.</p>' +
+      '<p>APPFACTORY VIETNAM CO., LTD.(이하 "회사"라 합니다)은 이용자의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 개인정보 보호법 제30조에 따라 다음과 같이 개인정보 처리방침을 수립·공개합니다. 회사는 대한민국 이용자를 대상으로 "S Partner(Sports Partner)" 서비스를 제공하며, 베트남에 소재한 법인으로서 대한민국 개인정보 보호법을 준수합니다.</p>' +
 
       '<h2>제2조 (수집하는 개인정보의 항목 및 수집방법)</h2>' +
       '<p>회사는 회원가입, 원활한 고객 상담, 각종 서비스 제공을 위해 서비스 이용 초기 단계 및 이용 과정에서 아래와 같은 개인정보를 수집하고 있습니다.</p>' +
@@ -371,18 +392,24 @@
       '<ul class="pol-list">' +
         '<li>기기 식별자(UUID, ADID/IDFA), OS 버전, 단말기 모델명, IP 주소, 쿠키, 서비스 이용 기록, 불량 이용 기록</li>' +
       '</ul>' +
+      '<p class="pol-sublabel">인앱 채팅 및 게시글 이용 과정에서 수집되는 항목</p>' +
+      '<ul class="pol-list">' +
+        '<li><strong>인앱 채팅:</strong> 대화 참여자 식별자, 메시지 내용(텍스트), 메시지 전송 시각, 읽음 표시(읽음 상태), 마지막 메시지 및 연결된 모집 게시글 요약 정보. 인앱 채팅은 텍스트 메시지 기반으로 제공됩니다.</li>' +
+        '<li><strong>모집 게시글 연락 수단:</strong> 인앱 채팅을 기본 연락 수단으로 제공하며, 회원은 모집 게시글에 외부 연락 링크(카카오 오픈채팅 또는 텔레그램)를 선택적으로 입력할 수 있습니다.</li>' +
+        '<li><strong>신고·차단 정보:</strong> 신고 대상·사유·일시, 차단 목록 등 안전한 서비스 운영을 위한 기록</li>' +
+      '</ul>' +
       '<p class="pol-sublabel">기기 권한을 통한 수집 항목</p>' +
       '<ul class="pol-list">' +
         '<li><strong>위치 정보:</strong> 위치기반 매칭 기능 활성화 시, 단말기의 GPS 및 Wi-Fi 정보를 통한 실시간 위치 정보</li>' +
-        '<li><strong>카메라 및 갤러리(저장공간):</strong> 프로필 사진 등록 및 매칭 상대방과의 채팅 내 이미지 전송 시 접근</li>' +
+        '<li><strong>카메라 및 갤러리(저장공간):</strong> 프로필 사진 및 모집 게시글 사진 등록 시 접근</li>' +
       '</ul>' +
 
       '<h2>제3조 (개인정보의 수집 및 이용목적)</h2>' +
       '<p>회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>' +
       '<ul class="pol-list">' +
         '<li><strong>회원 관리:</strong> 회원제 서비스 이용에 따른 본인확인, 개인 식별, 불량회원의 부정 이용 방지와 비인가 사용 방지, 가입 의사 확인, 만 14세 미만 아동의 가입 제한, 고충처리 및 분쟁 조정을 위한 기록 보존</li>' +
-        '<li><strong>서비스 제공:</strong> 위치 기반 맞춤형 매칭 서비스 제공, 프로필 노출, 인앱 결제 및 정기 구독 서비스 제공, 콘텐츠 구매 인증</li>' +
-        '<li><strong>이용자 보호:</strong> 신고·차단 기능 운영, 부적절한 콘텐츠 및 이용자 제재, 안전한 커뮤니티 환경 유지</li>' +
+        '<li><strong>서비스 제공:</strong> 위치 기반 맞춤형 매칭 서비스 제공, 프로필 노출, 이용자 간 인앱 채팅 커뮤니케이션 제공, 인앱 결제 및 정기 구독 서비스 제공, 콘텐츠 구매 인증</li>' +
+        '<li><strong>이용자 보호:</strong> 신고·차단 기능 운영, 부적절한 콘텐츠 및 이용자 제재, 신고된 채팅 내용의 안전 검토, 사기·스팸 및 부정 이용 방지, 약관 집행, 분쟁 대응 및 고객 문의 처리, 안전한 커뮤니티 환경 유지</li>' +
         '<li><strong>신규 서비스 개발 및 마케팅(선택 동의 시):</strong> 신규 서비스 개발 및 맞춤 서비스 제공, 이벤트 및 광고성 정보 제공 및 참여기회 제공</li>' +
       '</ul>' +
 
@@ -433,7 +460,9 @@
       '<ul class="pol-list">' +
         '<li>이용자는 회사에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 요구 등의 권리를 행사할 수 있습니다.</li>' +
         '<li>제1항에 따른 권리 행사는 앱 내 \'프로필 수정\' 및 \'회원 탈퇴(계정 삭제)\' 기능을 통해 직접 수행하시거나, 개인정보 보호책임자에게 이메일을 통해 하실 수 있으며 회사는 이에 대해 지체 없이 조치하겠습니다.</li>' +
-        '<li>이용자가 회원 탈퇴(계정 삭제)를 요청하는 경우, 회사는 인증·프로필·작성 게시물·차단 목록 등 관련 개인정보를 삭제합니다. 다만 신고(모더레이션) 기록은 이용자 보호 및 부정 이용 방지를 위해 개인 식별자를 익명화한 형태로 보존될 수 있습니다.</li>' +
+        '<li>이용자가 회원 탈퇴(계정 삭제)를 요청하는 경우, 회사는 인증 정보, 프로필, 회원이 작성한 모집 게시물 및 업로드한 사진, 본인의 차단 목록 등 관련 개인정보를 삭제합니다.</li>' +
+        '<li>다만 인앱 채팅 메시지 및 대화 내용은 대화 상대방의 채팅 기록 보존, 서비스 안전, 분쟁 대응 및 법적 의무 이행을 위해 회원 탈퇴 이후에도 보관될 수 있습니다. 이 경우 탈퇴 회원의 프로필 정보는 삭제되므로 해당 메시지는 더 이상 탈퇴 회원의 프로필과 연결되지 않습니다.</li>' +
+        '<li>신고(모더레이션) 기록은 이용자 보호 및 부정 이용 방지를 위해 개인 식별자를 익명화한 형태로 보존될 수 있으며, 일부 안전 관련 기록은 관계법령에서 정한 기간 동안 제한적으로 보관될 수 있습니다.</li>' +
         '<li>이용자가 개인정보의 오류에 대한 정정을 요청한 경우, 회사는 정정을 완료하기 전까지 당해 개인정보를 이용 또는 제공하지 않습니다.</li>' +
       '</ul>' +
 
@@ -461,7 +490,7 @@
   function sPartnerTermsKo() {
     return '' +
       '<h2>제1조 (목적)</h2>' +
-      '<p>본 약관은 APPFACTORY VIETNAM CO., LTD.(이하 "회사"라 합니다)이 제공하는 모바일 애플리케이션 "에스 파트너매치(Sports PartnerMatch)" 및 관련 서비스(이하 "서비스"라 합니다)를 이용함에 있어 회사와 회원 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>' +
+      '<p>본 약관은 APPFACTORY VIETNAM CO., LTD.(이하 "회사"라 합니다)이 제공하는 모바일 애플리케이션 "S Partner(Sports Partner)" 및 관련 서비스(이하 "서비스"라 합니다)를 이용함에 있어 회사와 회원 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>' +
 
       '<h2>제2조 (용어의 정의)</h2>' +
       '<p>본 약관에서 사용하는 용어의 정의는 다음과 같습니다.</p>' +
@@ -498,6 +527,9 @@
         '<li>대가성 조건 만남, 성매매 알선, 금전 요구, 사기 행위 및 타 서비스(인스타그램, 오픈채팅 등)로 유인하여 영업 및 마케팅을 하는 행위</li>' +
         '<li>음란성·폭력성이 담긴 사진이나 비속어, 모욕적인 언사가 포함된 메시지를 프로필에 등록하거나 매칭 상대방에게 전송하는 행위</li>' +
         '<li>회사 및 제3자의 지식재산권을 침해하거나, 서비스의 안정적인 운영을 방해하는 해킹 및 매크로 프로그램 이용 행위</li>' +
+        '<li>매칭 상대방 또는 다른 회원에게 괴롭힘, 위협, 스토킹, 혐오·차별적 표현, 성적 요구 또는 성희롱성 메시지를 전송하는 행위</li>' +
+        '<li>스팸, 도배, 무분별한 광고, 피싱, 금전·투자 사기, 악성 링크 또는 유해 파일을 전송하는 행위</li>' +
+        '<li>본인을 사칭하거나 타인의 신원·사진·개인정보를 도용하는 행위, 본인의 동의 없이 타인의 개인정보를 채팅으로 공유하는 행위</li>' +
       '</ul>' +
 
       '<h2>제6조 (이용자 생성 콘텐츠 및 신고·차단)</h2>' +
@@ -506,6 +538,15 @@
         '<li>회사는 다른 회원의 부적절한 콘텐츠나 행위를 신고할 수 있는 기능과, 특정 회원을 차단할 수 있는 기능을 제공합니다.</li>' +
         '<li>회사는 신고된 콘텐츠가 제5조의 금지행위에 해당한다고 판단되는 경우 해당 콘텐츠를 삭제하거나 게시 회원의 이용을 제한할 수 있습니다.</li>' +
         '<li>회사는 콘텐츠 검토 및 이용자 보호를 위해 신고 기록을 보존할 수 있으며, 회원 탈퇴 시 해당 기록의 개인 식별자는 익명화하여 처리합니다.</li>' +
+      '</ul>' +
+
+      '<h2>제6조의2 (인앱 채팅 서비스)</h2>' +
+      '<ul class="pol-list">' +
+        '<li>회사는 회원이 스포츠 파트너 매칭 및 이와 관련된 소통을 할 수 있도록 인앱 채팅 기능을 제공합니다. 인앱 채팅은 매칭 및 운동 모임 관련 커뮤니케이션 목적으로만 이용해야 합니다.</li>' +
+        '<li>회원은 채팅 이용 시 제5조의 금지행위를 준수하여야 하며, 채팅에서 이루어지는 자신의 발언과 행위에 대한 책임은 해당 회원 본인에게 있습니다.</li>' +
+        '<li>신고되거나 차단된 회원은 인앱 채팅 이용이 제한될 수 있습니다. 회원이 상대방을 차단하면 양방향으로 새로운 대화 시작 및 메시지 전송이 제한됩니다.</li>' +
+        '<li>회사는 통상적으로 회원 간의 채팅 내용을 모니터링하지 않습니다. 다만 신고가 접수되거나 서비스 안전, 부정 이용 방지, 약관 집행 또는 법령 준수를 위하여 필요한 경우에 한하여 해당 채팅 내용을 검토할 수 있습니다.</li>' +
+        '<li>인앱 채팅 메시지는 회원 탈퇴 이후에도 대화 상대방의 기록 보존, 서비스 안전 및 법적 대응을 위하여 보관될 수 있습니다. 채팅 데이터의 구체적인 보관 및 처리 기준은 개인정보 처리방침을 따릅니다.</li>' +
       '</ul>' +
 
       '<h2>제7조 (유료 서비스 및 인앱 결제)</h2>' +
@@ -563,18 +604,18 @@
     return '' +
       /* ----- 한국어 ----- */
       '<h2>계정 삭제 요청</h2>' +
-      '<p>Sports PartnerMatch 사용자는 앱 안에서 직접 계정을 삭제할 수 있습니다.</p>' +
+      '<p>Sports Partner 사용자는 앱 안에서 직접 계정을 삭제할 수 있습니다.</p>' +
       '<p class="pol-sublabel">앱 내 삭제 경로</p>' +
       '<ul class="pol-list"><li><strong>내정보 → 계정 삭제</strong></li></ul>' +
       '<p>앱에 접속할 수 없는 경우 아래 이메일로 계정 삭제를 요청할 수 있습니다.</p>' +
       '<div class="callout">' +
         '<p class="email-line mb-8"><span>삭제 요청 이메일: </span><a href="mailto:' + EMAIL + '">' + EMAIL + '</a></p>' +
-        '<p class="subject-hint pol-subject">이메일 제목: “Sports PartnerMatch 계정 삭제 요청”</p>' +
+        '<p class="subject-hint pol-subject">이메일 제목: “Sports Partner 계정 삭제 요청”</p>' +
         '<p class="pol-sublabel">이메일 내용에 포함할 정보</p>' +
         '<ul class="pol-list">' +
           '<li>가입 이메일</li>' +
           '<li>닉네임 또는 사용자 식별 정보</li>' +
-          '<li>“Sports PartnerMatch 계정 삭제를 요청합니다”라는 문장</li>' +
+          '<li>“Sports Partner 계정 삭제를 요청합니다”라는 문장</li>' +
         '</ul>' +
       '</div>' +
       '<h2>삭제되는 데이터</h2>' +
@@ -585,24 +626,29 @@
         '<li>사용자가 업로드한 사진</li>' +
         '<li>사용자와 연결된 앱 데이터</li>' +
       '</ul>' +
-      '<p>일부 데이터는 법적 의무, 보안, 부정 사용 방지, 분쟁 대응을 위해 필요한 경우 제한된 기간 동안 보관될 수 있습니다.</p>' +
+      '<h2>탈퇴 후에도 보관될 수 있는 데이터</h2>' +
+      '<ul class="pol-list">' +
+        '<li><strong>인앱 채팅 메시지 및 대화 내용:</strong> 대화 상대방의 채팅 기록 보존, 서비스 안전, 분쟁 대응 및 법적 의무를 위해 탈퇴 후에도 보관될 수 있습니다. 탈퇴 시 회원의 프로필 정보가 삭제되므로 해당 메시지는 더 이상 회원의 프로필과 연결되지 않습니다.</li>' +
+        '<li><strong>신고·차단 등 안전 기록:</strong> 부정 이용 방지, 약관 집행 및 법적 의무 이행을 위해 개인 식별자를 익명화한 형태로 제한된 기간 동안 보관될 수 있습니다.</li>' +
+      '</ul>' +
+      '<p>위에 명시된 항목 외에도 일부 데이터는 법적 의무, 보안, 부정 사용 방지, 분쟁 대응을 위해 필요한 경우 제한된 기간 동안 보관될 수 있습니다.</p>' +
 
       '<hr class="pol-divider" />' +
 
       /* ----- English ----- */
       '<h2>Account Deletion Request</h2>' +
-      '<p>Sports PartnerMatch users can delete their account in the app.</p>' +
+      '<p>Sports Partner users can delete their account in the app.</p>' +
       '<p class="pol-sublabel">In-app deletion path</p>' +
       '<ul class="pol-list"><li><strong>Profile / 내정보 → Delete account / 계정 삭제</strong></li></ul>' +
       '<p>If you cannot access the app, you can request account deletion by email.</p>' +
       '<div class="callout">' +
         '<p class="email-line mb-8"><span>Deletion request email: </span><a href="mailto:' + EMAIL + '">' + EMAIL + '</a></p>' +
-        '<p class="subject-hint pol-subject">Email subject: “Sports PartnerMatch account deletion request”</p>' +
+        '<p class="subject-hint pol-subject">Email subject: “Sports Partner account deletion request”</p>' +
         '<p class="pol-sublabel">Please include</p>' +
         '<ul class="pol-list">' +
           '<li>Account email</li>' +
           '<li>Nickname or user identifier</li>' +
-          '<li>A clear request: “Please delete my Sports PartnerMatch account.”</li>' +
+          '<li>A clear request: “Please delete my Sports Partner account.”</li>' +
         '</ul>' +
       '</div>' +
       '<h2>Deleted data</h2>' +
@@ -613,7 +659,12 @@
         '<li>Uploaded photos</li>' +
         '<li>Related app data</li>' +
       '</ul>' +
-      '<p>Some data may be retained for a limited period when required for legal, security, fraud-prevention, abuse-prevention, or dispute-resolution reasons.</p>';
+      '<h2>Data that may be retained after deletion</h2>' +
+      '<ul class="pol-list">' +
+        '<li><strong>In-app chat messages and conversations:</strong> may be retained after deletion to preserve the other participant\'s conversation history and for service safety, dispute resolution, and legal obligations. Because your profile is deleted, these messages are no longer linked to your profile.</li>' +
+        '<li><strong>Safety records such as reports and block records:</strong> may be retained for a limited period in an anonymized form (personal identifiers removed) for abuse prevention, policy enforcement, and legal compliance.</li>' +
+      '</ul>' +
+      '<p>Beyond the items listed above, some data may be retained for a limited period when required for legal, security, fraud-prevention, abuse-prevention, or dispute-resolution reasons.</p>';
   }
 
   /* ---- Builders --------------------------------------------------------- */
@@ -720,6 +771,8 @@
     if (!host) return;
     var t = T[lang] || T.en;
 
+    var eyebrow = document.querySelector('[data-hub-eyebrow]');
+    if (eyebrow) eyebrow.textContent = t.hubEyebrow;
     var head = document.querySelector('[data-hub-title]');
     if (head) head.textContent = t.hubTitle;
     var lead = document.querySelector('[data-hub-lead]');
@@ -728,11 +781,37 @@
     if (note) note.textContent = t.hubNote;
     document.title = t.hubTitle + ' | AppFactory';
 
+    function nodeVars(i) {
+      var n = HUB_NODES[i % HUB_NODES.length];
+      return '--node:' + n.c + ';--node-glow:' + n.g;
+    }
+
+    // Signature: the connection beam — one node per app joined by a live beam.
+    var connector = document.querySelector('[data-hub-connector]');
+    if (connector) {
+      var nodes = APP_ORDER.map(function (id, i) {
+        return '<li class="connector-node" style="' + nodeVars(i) + '">' +
+          '<span class="cn-dot"></span>' +
+          '<span class="cn-label">' + esc(APPS[id].name) + '</span>' +
+        '</li>';
+      }).join('');
+      connector.innerHTML =
+        '<div class="connector-track">' +
+          '<span class="connector-beam"></span>' +
+          '<ul class="connector-nodes">' + nodes + '</ul>' +
+        '</div>';
+    }
+
     var html = '';
-    APP_ORDER.forEach(function (id) {
+    APP_ORDER.forEach(function (id, i) {
       var app = APPS[id];
-      html += '<article class="app-card">' +
-        '<h3 class="app-card-name">' + esc(app.name) + '</h3>' +
+      var chip = app.matching ? t.catMatching : t.catEntertainment;
+      html += '<article class="app-card" style="' + nodeVars(i) + '">' +
+        '<div class="app-card-head">' +
+          '<span class="app-node"></span>' +
+          '<h3 class="app-card-name">' + esc(app.name) + '</h3>' +
+          '<span class="app-chip">' + esc(chip) + '</span>' +
+        '</div>' +
         '<p class="app-card-desc">' + esc(app.desc[lang] || app.desc.en) + '</p>' +
         '<div class="app-card-links">' +
           '<a href="/apps/' + id + '/privacy">' + esc(t.linkPrivacy) + '</a>' +
