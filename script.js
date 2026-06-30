@@ -305,7 +305,7 @@
         a1Title: 'S Partner',
         a1Status: '개발 중',
         a1Body: '스포츠 파트너와 운동 모임을 연결하는 H2H 매칭 서비스. 함께 운동할 사람을 찾는 일이 한결 쉬워집니다.',
-        a2Title: 'MBTI Swipe',
+        a2Title: 'MBTIcards',
         a2Status: '준비 중',
         a2Body: '상황 카드 기반의 성향 테스트로, 자기 이해를 가볍고 공유하기 좋은 경험으로 바꾸는 엔터테인먼트 서비스입니다.',
         note: '더 많은 H2H 서비스가 준비되고 있습니다. 각 앱은 준비와 출시에 맞춰 이곳에서 차례로 소개됩니다.'
@@ -402,7 +402,7 @@
         a1Title: 'S Partner',
         a1Status: 'In development',
         a1Body: 'An H2H matching service that connects sports partners and workout meetups, so finding someone to move with feels effortless.',
-        a2Title: 'MBTI Swipe',
+        a2Title: 'MBTIcards',
         a2Status: 'Being prepared',
         a2Body: 'A situation-card based personality test that turns self-understanding into a light, shareable experience — entertainment with a human touch.',
         note: 'More H2H services are on the way. Each app will be introduced here as it is prepared and released.'
@@ -499,7 +499,7 @@
         a1Title: 'S Partner',
         a1Status: '開発中',
         a1Body: 'スポーツパートナーや運動仲間をつなぐH2Hマッチングサービス。一緒に体を動かす相手を、もっと気軽に見つけられます。',
-        a2Title: 'MBTI Swipe',
+        a2Title: 'MBTIcards',
         a2Status: '準備中',
         a2Body: 'シチュエーションカード型の性格テストで、自己理解を軽やかでシェアしやすい体験に変えるエンターテインメントサービスです。',
         note: 'さらに多くのH2Hサービスを準備しています。各アプリは準備とリリースに合わせて、ここで順番にご紹介します。'
@@ -596,7 +596,7 @@
         a1Title: 'S Partner',
         a1Status: 'Đang phát triển',
         a1Body: 'Dịch vụ ghép đôi H2H kết nối bạn tập thể thao và nhóm vận động, để việc tìm người cùng vận động trở nên dễ dàng.',
-        a2Title: 'MBTI Swipe',
+        a2Title: 'MBTIcards',
         a2Status: 'Đang chuẩn bị',
         a2Body: 'Trắc nghiệm tính cách dựa trên thẻ tình huống, biến việc hiểu bản thân thành trải nghiệm nhẹ nhàng và dễ chia sẻ — giải trí với chạm cảm xúc con người.',
         note: 'Nhiều dịch vụ H2H khác đang trên đường ra mắt. Mỗi ứng dụng sẽ được giới thiệu tại đây khi được chuẩn bị và phát hành.'

@@ -30,4 +30,22 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://appfactory.vn/apps/mbticards/privacy</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://appfactory.vn/apps/mbticards/terms</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://appfactory.vn/apps/mbticards/delete-account</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>

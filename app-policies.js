@@ -313,14 +313,14 @@
     },
 
     'mbti': {
-      id: 'mbti', name: 'MBTI Swipe', matching: false,
-      subject: 'Account Deletion Request - MBTI Swipe',
+      id: 'mbti', urlSlug: 'mbticards', name: 'MBTIcards', matching: false, hasDelete: true,
+      subject: 'Account Deletion Request - MBTIcards',
       slug: { privacy: 'mbti-privacy', terms: 'mbti-terms', del: 'mbti-delete-account' },
       desc: {
-        ko: '상황 카드 기반의 성향 테스트 · 엔터테인먼트 앱',
-        en: 'A situation-card based personality test / entertainment app',
-        ja: 'シチュエーションカード型の性格テスト・エンタメアプリ',
-        vi: 'Ứng dụng trắc nghiệm tính cách / giải trí dựa trên thẻ tình huống'
+        ko: 'MBTIcards는 상황 카드 기반의 성향 테스트와 자기이해를 돕는 엔터테인먼트 앱입니다.',
+        en: 'MBTIcards is an entertainment app that uses scenario-based cards to help users explore personality tendencies and self-understanding.',
+        ja: 'MBTIcardsは、シチュエーションカードを通じて性格傾向や自己理解を楽しめるエンターテインメントアプリです。',
+        vi: 'MBTIcards là ứng dụng giải trí sử dụng các thẻ tình huống để giúp người dùng khám phá xu hướng tính cách và hiểu hơn về bản thân.'
       },
       collected: {
         ko: ['테스트 응답', '결과 유형', '언어 설정', '앱 사용 기록', '기기 및 로그 정보'],
@@ -805,6 +805,7 @@
     var html = '';
     APP_ORDER.forEach(function (id, i) {
       var app = APPS[id];
+      var slug = app.urlSlug || id;
       var chip = app.matching ? t.catMatching : t.catEntertainment;
       html += '<article class="app-card" style="' + nodeVars(i) + '">' +
         '<div class="app-card-head">' +
@@ -814,9 +815,9 @@
         '</div>' +
         '<p class="app-card-desc">' + esc(app.desc[lang] || app.desc.en) + '</p>' +
         '<div class="app-card-links">' +
-          '<a href="/apps/' + id + '/privacy">' + esc(t.linkPrivacy) + '</a>' +
-          '<a href="/apps/' + id + '/terms">' + esc(t.linkTerms) + '</a>' +
-          (app.deleteDoc ? '<a href="/apps/' + id + '/delete-account">' + esc(t.linkDelete) + '</a>' : '') +
+          '<a href="/apps/' + slug + '/privacy">' + esc(t.linkPrivacy) + '</a>' +
+          '<a href="/apps/' + slug + '/terms">' + esc(t.linkTerms) + '</a>' +
+          ((app.deleteDoc || app.hasDelete) ? '<a href="/apps/' + slug + '/delete-account">' + esc(t.linkDelete) + '</a>' : '') +
         '</div>' +
       '</article>';
     });

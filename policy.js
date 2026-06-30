@@ -21,7 +21,7 @@
         contactBody: '본 정책에 대한 문의는 아래 이메일로 보내주세요: ',
         disclaimer: '본 문서는 법률 자문이 아니며, 일반적인 앱 출시 준비를 위한 초안입니다. 실제 서비스 운영 시 관련 법령에 맞게 검토하시기 바랍니다.',
         appPointerH: '앱별 정책',
-        appPointerB: 'AppFactory가 운영하는 각 앱(S Partner, MBTI Swipe)의 상세 정책은 앱별 정책 페이지에서 확인할 수 있습니다.',
+        appPointerB: 'AppFactory가 운영하는 각 앱(S Partner, MBTIcards)의 상세 정책은 앱별 정책 페이지에서 확인할 수 있습니다.',
         appPointerLink: '앱별 정책 보기 →'
       },
       privacyPage: {
@@ -61,7 +61,7 @@
         intro: '본 페이지는 AppFactory가 운영하는 앱의 계정 삭제 요청 안내입니다. AppFactory 홈페이지에는 별도의 계정이 없으므로, 여기서 안내하는 삭제는 홈페이지 계정이 아니라 AppFactory 앱 계정에 대한 것입니다.',
         s1h: '삭제 요청 방법',
         s1b: '앱에서 계정 삭제 기능을 제공하는 경우 앱 안에서 직접 삭제할 수 있습니다. 앱 내 기능을 사용할 수 없거나 문제가 있는 경우, 아래 이메일로 요청해 주세요. 요청 시 앱 이름, 가입 이메일, 닉네임 또는 사용자 ID, 삭제 요청 내용을 함께 보내주시면 도움이 됩니다.',
-        emailSubject: '제목 예시: “Account Deletion Request - S Partner / MBTI Swipe”',
+        emailSubject: '제목 예시: “Account Deletion Request - S Partner / MBTIcards”',
         s2h: '삭제되는 데이터',
         s2b: '요청이 확인되면 계정 정보와 사용자가 작성한 콘텐츠 등 관련 개인정보가 삭제됩니다. 단, 법령 준수, 보안, 분쟁 대응, 부정 이용 방지 등을 위해 일부 기록은 일정 기간 동안 보관될 수 있습니다.',
         s3h: '처리 기간',
@@ -77,7 +77,7 @@
         contactBody: 'For any questions about this policy, please email us at: ',
         disclaimer: 'This document is not legal advice; it is a general draft to help prepare app store submissions. Please review it against applicable law for actual operation.',
         appPointerH: 'App-Specific Policies',
-        appPointerB: 'Detailed policies for each app operated by AppFactory (S Partner, MBTI Swipe) are available on the App Policies pages.',
+        appPointerB: 'Detailed policies for each app operated by AppFactory (S Partner, MBTIcards) are available on the App Policies pages.',
         appPointerLink: 'View app policies →'
       },
       privacyPage: {
@@ -117,7 +117,7 @@
         intro: 'This page explains how to request deletion of an account in an app operated by AppFactory. The AppFactory homepage has no account of its own, so the deletion described here applies to your AppFactory app account, not a homepage account.',
         s1h: 'How to Request Deletion',
         s1b: 'If the app provides an in-app account deletion feature, you can delete your account directly within the app. If the in-app feature is unavailable or not working, please send a request to the email below. It helps if you include the app name, your sign-up email, your nickname or user ID, and your deletion request.',
-        emailSubject: 'Example subject: “Account Deletion Request - S Partner / MBTI Swipe”',
+        emailSubject: 'Example subject: “Account Deletion Request - S Partner / MBTIcards”',
         s2h: 'Data That Will Be Deleted',
         s2b: 'Once your request is confirmed, related personal information such as your account details and content you created will be deleted. Some records may be retained for a limited period for legal compliance, security, dispute resolution, and abuse prevention.',
         s3h: 'Processing Time',
@@ -133,7 +133,7 @@
         contactBody: '本ポリシーに関するお問い合わせは、次のメールアドレスまでご連絡ください: ',
         disclaimer: '本書類は法的助言ではなく、一般的なアプリ提出準備のための草案です。実際の運営では適用法令に照らしてご確認ください。',
         appPointerH: 'アプリ別ポリシー',
-        appPointerB: 'AppFactoryが運営する各アプリ（S Partner、MBTI Swipe）の詳細ポリシーは、アプリ別ポリシーのページでご確認いただけます。',
+        appPointerB: 'AppFactoryが運営する各アプリ（S Partner、MBTIcards）の詳細ポリシーは、アプリ別ポリシーのページでご確認いただけます。',
         appPointerLink: 'アプリ別ポリシーを見る →'
       },
       privacyPage: {
@@ -173,7 +173,7 @@
         intro: '本ページは、AppFactoryが運営するアプリのアカウント削除リクエストのご案内です。AppFactoryホームページには独自のアカウントがないため、ここで説明する削除はホームページのアカウントではなく、AppFactoryアプリのアカウントに関するものです。',
         s1h: '削除のリクエスト方法',
         s1b: 'アプリにアカウント削除機能がある場合は、アプリ内で直接削除できます。アプリ内の機能が利用できない、または問題がある場合は、下記メールまでご依頼ください。ご依頼の際は、アプリ名、登録メールアドレス、ニックネームまたはユーザーID、削除リクエストの内容を併せてお知らせいただけると助かります。',
-        emailSubject: '件名の例: 「Account Deletion Request - S Partner / MBTI Swipe」',
+        emailSubject: '件名の例: 「Account Deletion Request - S Partner / MBTIcards」',
         s2h: '削除されるデータ',
         s2b: 'リクエストが確認されると、アカウント情報や利用者が作成したコンテンツなどの関連個人情報が削除されます。ただし、法令遵守、セキュリティ、紛争対応、不正利用防止などのため、一部の記録は一定期間保管される場合があります。',
         s3h: '処理期間',
@@ -189,7 +189,7 @@
         contactBody: 'Mọi thắc mắc về chính sách này, vui lòng gửi email tới: ',
         disclaimer: 'Tài liệu này không phải là tư vấn pháp lý; đây là bản nháp chung giúp chuẩn bị nộp lên app store. Vui lòng rà soát theo luật hiện hành khi vận hành thực tế.',
         appPointerH: 'Chính sách theo ứng dụng',
-        appPointerB: 'Chính sách chi tiết của từng ứng dụng do AppFactory vận hành (S Partner, MBTI Swipe) có trên các trang Chính sách theo ứng dụng.',
+        appPointerB: 'Chính sách chi tiết của từng ứng dụng do AppFactory vận hành (S Partner, MBTIcards) có trên các trang Chính sách theo ứng dụng.',
         appPointerLink: 'Xem chính sách theo ứng dụng →'
       },
       privacyPage: {
@@ -229,7 +229,7 @@
         intro: 'Trang này hướng dẫn cách yêu cầu xóa tài khoản trong ứng dụng do AppFactory vận hành. Trang chủ AppFactory không có tài khoản riêng, nên việc xóa được mô tả ở đây áp dụng cho tài khoản ứng dụng AppFactory của bạn, không phải tài khoản trang chủ.',
         s1h: 'Cách yêu cầu xóa',
         s1b: 'Nếu ứng dụng có tính năng xóa tài khoản trong ứng dụng, bạn có thể xóa trực tiếp trong ứng dụng. Nếu tính năng trong ứng dụng không khả dụng hoặc gặp sự cố, vui lòng gửi yêu cầu tới email bên dưới. Sẽ hữu ích nếu bạn kèm theo tên ứng dụng, email đăng ký, biệt danh hoặc ID người dùng, và nội dung yêu cầu xóa.',
-        emailSubject: 'Ví dụ tiêu đề: “Account Deletion Request - S Partner / MBTI Swipe”',
+        emailSubject: 'Ví dụ tiêu đề: “Account Deletion Request - S Partner / MBTIcards”',
         s2h: 'Dữ liệu sẽ bị xóa',
         s2b: 'Khi yêu cầu được xác nhận, các thông tin cá nhân liên quan như chi tiết tài khoản và nội dung bạn tạo sẽ bị xóa. Một số hồ sơ có thể được lưu trong thời gian giới hạn để tuân thủ pháp luật, bảo mật, giải quyết tranh chấp và ngăn chặn lạm dụng.',
         s3h: 'Thời gian xử lý',
