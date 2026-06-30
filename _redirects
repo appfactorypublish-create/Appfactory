@@ -12,3 +12,10 @@
 /apps/s-partner/delete-account  /s-partner-delete-account.html  200
 /apps/mbti/privacy        /mbti-privacy.html         200
 /apps/mbti/terms          /mbti-terms.html           200
+
+# MBTIcards account deletion (Google Play / App Store deletion URL).
+# Several slug spellings all resolve to the same page so the URL submitted to
+# the stores keeps working regardless of which form is referenced.
+/apps/mbticards/delete-account    /mbticards-delete-account.html    200
+/apps/mbti-cards/delete-account   /mbticards-delete-account.html    200
+/apps/mbti/delete-account         /mbticards-delete-account.html    200
