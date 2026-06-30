@@ -583,6 +583,91 @@ section { position: relative; }
 .footer-links a:hover { color: var(--cyan); }
 @media (max-width: 1023px) { .app-hub-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 767px) { .app-hub-grid { grid-template-columns: 1fr; } }
+
+/* ========================================================================
+   App policy hub — "Connection" redesign. All rules scoped under .apps-hub
+   (body class) so the shared .legal-hero / .app-card on other pages are
+   untouched. Signature element: an animated gradient beam linking the apps.
+   ======================================================================== */
+.apps-hub .hub-hero { padding-bottom: 6px; }
+.apps-hub .hub-eyebrow {
+  margin: 4px 0 14px; font-size: 12px; font-weight: 800;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-mute);
+}
+.apps-hub .hub-eyebrow::before {
+  content: ""; display: inline-block; width: 26px; height: 2px;
+  margin-right: 12px; vertical-align: middle; border-radius: 2px;
+  background: var(--grad);
+}
+.apps-hub .legal-hero h1 { margin-bottom: 12px; }
+.apps-hub .section-lead { max-width: 660px; }
+
+/* The signature beam */
+.apps-hub .hub-connector { margin: 38px 0 2px; }
+.apps-hub .connector-track {
+  position: relative; display: flex; align-items: center; min-height: 56px;
+}
+.apps-hub .connector-beam {
+  position: absolute; left: 8px; right: 8px; top: 50%; height: 2px;
+  transform: translateY(-50%); border-radius: 2px; overflow: hidden;
+  background: linear-gradient(90deg,
+    rgba(120,140,220,.10), var(--blue), var(--cyan), var(--violet), rgba(120,140,220,.10));
+}
+.apps-hub .connector-beam::after {
+  content: ""; position: absolute; top: 0; left: -30%; height: 100%; width: 30%;
+  background: linear-gradient(90deg, transparent, rgba(238,251,255,.92), transparent);
+  animation: hubBeam 3.6s cubic-bezier(.55,0,.45,1) infinite;
+}
+@keyframes hubBeam { to { left: 100%; } }
+.apps-hub .connector-nodes {
+  position: relative; z-index: 1; width: 100%;
+  list-style: none; margin: 0; padding: 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.apps-hub .connector-node { display: inline-flex; align-items: center; gap: 10px; }
+.apps-hub .connector-node:last-child { flex-direction: row-reverse; }
+.apps-hub .cn-dot {
+  width: 15px; height: 15px; border-radius: 50%; flex: 0 0 auto;
+  background: var(--node, var(--cyan));
+  box-shadow: 0 0 0 5px var(--bg), 0 0 0 6px var(--node-glow, rgba(34,211,238,.4)),
+              0 0 20px var(--node-glow, rgba(34,211,238,.5));
+}
+.apps-hub .cn-label {
+  font-size: 13px; font-weight: 700; letter-spacing: -0.01em; color: var(--text);
+  background: rgba(5,6,14,.66); padding: 3px 10px; border-radius: 999px;
+  border: 1px solid var(--line);
+}
+
+/* Cards become "nodes" — quiet, tied to the beam by accent + dot */
+.apps-hub .app-hub-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 940px; margin-inline: auto; gap: 22px;
+}
+.apps-hub .app-card { position: relative; overflow: hidden; padding: 28px 30px; }
+.apps-hub .app-card::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--node, var(--cyan));
+}
+.apps-hub .app-card-head { display: flex; align-items: center; gap: 11px; }
+.apps-hub .app-node {
+  width: 11px; height: 11px; border-radius: 50%; flex: 0 0 auto;
+  background: var(--node, var(--cyan));
+  box-shadow: 0 0 0 4px var(--node-glow, rgba(34,211,238,.35));
+}
+.apps-hub .app-card-name { flex: 1 1 auto; }
+.apps-hub .app-chip {
+  flex: 0 0 auto; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-soft);
+  border: 1px solid var(--line-2); border-radius: 999px; padding: 3px 11px;
+  white-space: nowrap;
+}
+@media (max-width: 700px) {
+  .apps-hub .app-hub-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .apps-hub .connector-beam::after { display: none; }
+}
+
 .legal-body .intro {
   font-size: 17px;
   color: var(--text-soft);
