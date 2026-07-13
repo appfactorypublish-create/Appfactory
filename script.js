@@ -425,6 +425,7 @@
         tag: 'Contact',
         title: 'Get in touch',
         lead: 'For questions about our services, partnerships, policies, or any of our apps, reach us by email. There is no contact form and no sign-up — just a direct line to the AppFactory team.',
+        email: 'contact@appfactory.vn',
         emailLabel: 'Email',
         emailBtn: 'Send an email',
         note: 'This homepage is a static company site with no sign-up, login, payment, or contact form. All inquiries are handled by email only.'
