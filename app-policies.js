@@ -10,7 +10,7 @@
 (function () {
   'use strict';
 
-  var EMAIL = 'connect@appfactory.vn';
+  var EMAIL = 'contact@appfactory.vn';
   var UPDATED = '2026-06-14';
 
   /* ---- Per-language common labels & section text ------------------------ */

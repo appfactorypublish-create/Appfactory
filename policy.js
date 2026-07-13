@@ -10,7 +10,7 @@
   'use strict';
   if (!window.AF || typeof window.AF.register !== 'function') return;
 
-  var EMAIL = 'connect@appfactory.vn';
+  var EMAIL = 'contact@appfactory.vn';
 
   window.AF.register({
     /* ----------------------------- KOREAN ----------------------------- */
