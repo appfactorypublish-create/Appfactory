@@ -59,6 +59,8 @@
       dSubjectLabel: '제목 예시: ',
       dInfoLabel: '보내주실 정보',
       dInfo: ['앱 이름', '가입 이메일', '닉네임 또는 사용자 ID', '삭제 요청 내용'],
+      dDataH: '삭제 및 비식별화',
+      dDataB: '계정 삭제 요청이 확인되면 계정 및 계정에 연결된 개인정보를 삭제하거나 비식별화 처리합니다.',
       dProcessH: '처리 기간',
       dProcessB: '계정 삭제 요청은 요청 확인 후 합리적인 기간 내에 처리됩니다.',
       dRetentionH: '보관 안내',
@@ -120,6 +122,8 @@
       dSubjectLabel: 'Example subject: ',
       dInfoLabel: 'Information to include',
       dInfo: ['App name', 'Sign-up email', 'Nickname or user ID', 'Your deletion request'],
+      dDataH: 'Deletion & De-identification',
+      dDataB: 'Once your deletion request is confirmed, we delete or de-identify your account and the personal information linked to it.',
       dProcessH: 'Processing Time',
       dProcessB: 'Account deletion requests are processed within a reasonable period after the request is confirmed.',
       dRetentionH: 'Retention Notice',
@@ -181,6 +185,8 @@
       dSubjectLabel: '件名の例: ',
       dInfoLabel: 'お送りいただく情報',
       dInfo: ['アプリ名', '登録メールアドレス', 'ニックネームまたはユーザーID', '削除リクエストの内容'],
+      dDataH: '削除と匿名化',
+      dDataB: 'アカウント削除リクエストが確認されると、アカウントおよびアカウントに紐づく個人情報を削除または匿名化して処理します。',
       dProcessH: '処理期間',
       dProcessB: 'アカウント削除リクエストは、リクエスト確認後の合理的な期間内に処理されます。',
       dRetentionH: '保管に関するお知らせ',
@@ -242,6 +248,8 @@
       dSubjectLabel: 'Ví dụ tiêu đề: ',
       dInfoLabel: 'Thông tin cần gửi',
       dInfo: ['Tên ứng dụng', 'Email đăng ký', 'Biệt danh hoặc ID người dùng', 'Nội dung yêu cầu xóa'],
+      dDataH: 'Xóa & khử nhận dạng',
+      dDataB: 'Khi yêu cầu xóa tài khoản được xác nhận, chúng tôi sẽ xóa hoặc khử nhận dạng tài khoản và thông tin cá nhân liên kết với tài khoản đó.',
       dProcessH: 'Thời gian xử lý',
       dProcessB: 'Yêu cầu xóa tài khoản được xử lý trong một khoảng thời gian hợp lý sau khi yêu cầu được xác nhận.',
       dRetentionH: 'Thông báo lưu trữ',
@@ -340,10 +348,46 @@
         ja: ['本アプリは医学的・心理学的な診断を提供せず、エンターテインメントおよび自己理解のためのコンテンツです。', '現在は広告・分析用の識別子を使用していない場合がありますが、サービス改善のため将来使用する可能性があります。'],
         vi: ['Ứng dụng không cung cấp chẩn đoán y tế hay tâm lý; đây là nội dung mang tính giải trí và tự hiểu bản thân.', 'Hiện tại có thể không sử dụng mã nhận dạng quảng cáo/phân tích, nhưng có thể sử dụng trong tương lai để cải thiện dịch vụ.']
       }
+    },
+
+    'k-romance': {
+      id: 'k-romance', name: 'K-ROMANCE', matching: true, hasDelete: true,
+      subject: 'Account Deletion Request - K-ROMANCE',
+      slug: { privacy: 'k-romance-privacy', terms: 'k-romance-terms', del: 'k-romance-delete-account' },
+      desc: {
+        ko: '문화와 언어를 넘어 사람과 사람의 진지한 연결을 돕는 H2H 앱',
+        en: 'An H2H app designed to support meaningful connections across cultures and languages.',
+        ja: '文化や言語を越えて、人と人の真剣なつながりを支えるH2Hアプリです。',
+        vi: 'Ứng dụng H2H hỗ trợ những kết nối chân thành giữa con người, vượt qua khác biệt về văn hóa và ngôn ngữ.'
+      },
+      collected: {
+        ko: ['계정 정보', '이메일 또는 로그인 정보', '닉네임', '프로필 정보', '프로필 사진', '언어 설정', '관심사 또는 매칭 선호 정보', '사용자가 작성한 소개 문구', '앱 사용 기록', '신고·차단·문의 내용', '기기 및 로그 정보', '결제 또는 구독 기능이 제공되는 경우 스토어 결제 상태 정보'],
+        en: ['Account information', 'Email or login information', 'Nickname', 'Profile information', 'Profile photo', 'Language setting', 'Interests or matching preferences', 'Self-introduction written by the user', 'App usage records', 'Reports, blocks, and inquiries', 'Device and log information', 'Store payment status information, where payment or subscription features are provided'],
+        ja: ['アカウント情報', 'メールまたはログイン情報', 'ニックネーム', 'プロフィール情報', 'プロフィール写真', '言語設定', '興味・関心またはマッチングの希望条件', '利用者が作成した自己紹介文', 'アプリ利用履歴', '通報・ブロック・問い合わせ内容', '端末およびログ情報', '決済またはサブスクリプション機能が提供される場合、ストアの決済状態情報'],
+        vi: ['Thông tin tài khoản', 'Email hoặc thông tin đăng nhập', 'Biệt danh', 'Thông tin hồ sơ', 'Ảnh hồ sơ', 'Cài đặt ngôn ngữ', 'Sở thích hoặc tiêu chí ghép nối', 'Phần giới thiệu bản thân do người dùng viết', 'Lịch sử sử dụng ứng dụng', 'Nội dung báo cáo, chặn và liên hệ', 'Thông tin thiết bị và nhật ký', 'Thông tin trạng thái thanh toán trên cửa hàng, nếu có tính năng thanh toán hoặc đăng ký']
+      },
+      purposes: {
+        ko: ['문화와 언어를 넘는 사람 중심의 연결 지원', '프로필 및 매칭 관련 기능 제공', '안전한 서비스 운영', '신고 및 문의 대응', '서비스 개선'],
+        en: ['Supporting people-centered connections across cultures and languages', 'Providing profile and matching-related features', 'Operating the service safely', 'Handling reports and inquiries', 'Improving the service'],
+        ja: ['文化や言語を越えた、人を中心としたつながりの支援', 'プロフィールおよびマッチング関連機能の提供', '安全なサービス運営', '通報・問い合わせ対応', 'サービス改善'],
+        vi: ['Hỗ trợ kết nối lấy con người làm trung tâm, vượt qua khác biệt về văn hóa và ngôn ngữ', 'Cung cấp hồ sơ và các tính năng liên quan đến ghép nối', 'Vận hành dịch vụ an toàn', 'Xử lý báo cáo và liên hệ', 'Cải thiện dịch vụ']
+      },
+      notes: {
+        ko: ['위 항목은 앱 기능에 따라 달라질 수 있으며, 서비스 제공에 필요한 경우에만 수집됩니다. 결제 또는 구독 기능이 제공되는 경우, 결제 조건은 앱 또는 스토어 화면에서 별도로 안내됩니다.'],
+        en: ['The items above may vary depending on app features and are collected only when needed to provide the service. Where payment or subscription features are provided, payment terms are presented separately in the app or on the store screen.'],
+        ja: ['上記の項目はアプリの機能によって異なる場合があり、サービス提供に必要な場合にのみ収集されます。決済またはサブスクリプション機能が提供される場合、決済条件はアプリまたはストア画面で別途ご案内します。'],
+        vi: ['Các mục trên có thể thay đổi tùy theo tính năng của ứng dụng và chỉ được thu thập khi cần thiết để cung cấp dịch vụ. Nếu có tính năng thanh toán hoặc đăng ký, điều kiện thanh toán được hướng dẫn riêng trong ứng dụng hoặc trên màn hình cửa hàng.']
+      },
+      termsNotes: {
+        ko: ['허위 프로필, 사기, 스팸, 괴롭힘, 성적 콘텐츠, 불법 행위, 금전 요구, 타인의 개인정보 공유는 금지됩니다. 이용자는 상대방을 존중하고 안전하게 소통해야 합니다.', '신고 및 차단 기능이 제공될 수 있으며, AppFactory는 안전과 운영상 필요에 따라 서비스 이용을 제한할 수 있습니다.'],
+        en: ['Fake profiles, fraud, spam, harassment, sexual content, illegal activity, requests for money, and sharing other people’s personal information are prohibited. Users must treat others with respect and communicate safely.', 'Reporting and blocking features may be provided, and AppFactory may restrict use of the service where needed for safety or operational reasons.'],
+        ja: ['虚偽のプロフィール、詐欺、スパム、嫌がらせ、性的なコンテンツ、違法行為、金銭の要求、他人の個人情報の共有は禁止されています。利用者は相手を尊重し、安全にコミュニケーションを行ってください。', '通報・ブロック機能が提供されることがあり、AppFactoryは安全および運営上の必要に応じてサービスの利用を制限することがあります。'],
+        vi: ['Nghiêm cấm hồ sơ giả mạo, lừa đảo, spam, quấy rối, nội dung khiêu dâm, hành vi bất hợp pháp, yêu cầu tiền bạc và chia sẻ thông tin cá nhân của người khác. Người dùng phải tôn trọng đối phương và giao tiếp an toàn.', 'Tính năng báo cáo và chặn có thể được cung cấp, và AppFactory có thể hạn chế việc sử dụng dịch vụ khi cần thiết vì lý do an toàn hoặc vận hành.']
+      }
     }
   };
 
-  var APP_ORDER = ['s-partner', 'mbti'];
+  var APP_ORDER = ['s-partner', 'mbti', 'k-romance'];
 
   // Node accents for the hub "connection beam" — sampled across the brand
   // gradient (blue -> cyan -> violet). One per app, cycled if more are added.
@@ -692,6 +736,9 @@
     html += '<p class="intro">' + tpl(t.tIntro, app.name) + '</p>';
     html += h2(t.tServiceH) + p(tpl(t.tServiceB, app.name));
     html += h2(t.tConductH) + p(t.tConductB);
+    ((app.termsNotes && app.termsNotes[lang]) || []).forEach(function (n) {
+      html += '<div class="callout"><p class="pol-note"><strong>' + esc(t.noteLabel) + ':</strong> ' + esc(n) + '</p></div>';
+    });
     if (app.matching) html += h2(t.tMeetH) + p(t.tMeetB);
     html += h2(t.tPaymentH) + p(t.tPaymentB);
     html += h2(t.tIpH) + p(t.tIpB);
@@ -713,6 +760,7 @@
       '<p class="subject-hint pol-subject">' + esc(t.dSubjectLabel) + '“' + esc(app.subject) + '”</p>' +
       sublabel(t.dInfoLabel) + ul(t.dInfo) +
       '</div>';
+    html += h2(t.dDataH) + p(t.dDataB);
     html += h2(t.dProcessH) + p(t.dProcessB);
     html += h2(t.dRetentionH) + p(t.dRetentionB);
     html += contactBlock(t);

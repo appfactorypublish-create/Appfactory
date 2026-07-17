@@ -17,6 +17,9 @@
 /apps/mbticards/privacy         /mbti-privacy.html              200
 /apps/mbticards/terms           /mbti-terms.html                200
 /apps/mbticards/delete-account  /mbticards-delete-account.html  200
+/apps/k-romance/privacy         /k-romance-privacy.html         200
+/apps/k-romance/terms           /k-romance-terms.html           200
+/apps/k-romance/delete-account  /k-romance-delete-account.html  200
 
 # Compatibility aliases — older slugs still resolve to the same pages so any
 # URL already submitted to the app stores keeps working.
