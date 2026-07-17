@@ -6,3 +6,10 @@ Thumbs.db
 # Local QA / verification screenshots (not site assets)
 hero-desktop.png
 hero-mobile.png
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
